@@ -151,6 +151,8 @@ class AppContext:
                     self.sync_controller.entertainment_stream = (
                         self.entertainment_stream
                     )
+                # Ensure ModeManager sees the updated entertainment stream
+                self.mode_manager.entertainment_stream = self.entertainment_stream
 
             if hasattr(self, "mode_manager"):
                 self.mode_manager.reading_settings = self.settings.reading_mode
