@@ -1,0 +1,196 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:0c34f0907f4bfc86eb4a0b5db8b43bdbf210d4bf1cf43c5c59dacfd2e92a53b3",
+  "claims": [
+    {
+      "id": "claim_eeafb5e701844b1b8ff72ca6664503b1",
+      "statement": "HueStream v2 wire format is pinned by HueStreamProtocol: 9-byte b\"HueStream\" magic, version 0x02 0x00, port 2100 (DTLS over UDP), colorspace byte 0x00 RGB / 0x01 XY, a 52-byte message header (9 magic + 2 version + 1 sequence + 2 reserved + 1 colorspace + 1 reserved + 36 ASCII config ID), and 7-byte channel records.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/entertainment.py#L22-L48",
+          "version": "repo-lines-v1:sha256:2648ee7bae843a06afd4a098c15805bbcf85d36bf3e9983e3ac74c5f0f86aad9:eyJzZWxlY3RlZExpbmVDb3VudCI6MjcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk4MDhiZTllZWFjN2EyOTIyMzcyZWQ2MDM1ODQyZWRhMWE3MWFkYWMxODU4Zjg2NGJkMWUzN2M5NDc4MDQ0ZTEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjM1MmJhOWIwNDFiMjE4MGY0YmQ5OGIxOGNlNDUyODUxNzU5OTAwNWY5Y2E3Y2VkNWI4NTI5NDM5NWYxNGJjMmEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjM1ZjBmNDlhYmM0OGViYzkyNzJmMzRkZjhkYTlhM2Y3YzcwNjEzMzMwMjFlMDE0MzRmZmQ0MWI0ZTMzY2Q4NTkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_8c309c1d85c146d69bc9de666ab09d7c",
+      "statement": "The message buffer is pre-allocated once per connection at exactly MESSAGE_HEADER_SIZE + 7×N_channels bytes with the static header written once (magic, version, zeroed reserved bytes, 36-byte ASCII config UUID at offset 16); per-message updates rewrite only byte 11 (sequence), byte 14 (colorspace), and the channel payload, so no allocation happens per frame.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/entertainment.py#L205-L220",
+          "version": "repo-lines-v1:sha256:d45bd11970092d8cfdb93e5369a31489497b058690d5337fbd0e32c54e79986e:eyJzZWxlY3RlZExpbmVDb3VudCI6MTYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYzMDU1ZTYzZWQxOWM2ZDdlYTAzZjZmMTQzZTIxNjdjYWI4MzU1MzZjMzU1NzAwZWEyOGFkZjMxMzk4OGZjMWQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIzZjc5MGE5MDZhYTVlNzZhMTNlMTE0ZjlhOGE2ZTNkNzcwOWYxZWM3YzI4MGE0ZmE5MGFiOTIyNGRlZmRhN2QiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjVlZjVmMzQ2NDY5ZWI4NzFlMDNmMjM4M2E0ZDBiMWU4YTk5NDVlODBiNjA4MmI4MDhjZTUwMmViZDI0YzNhYjYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjA0YzEwZTAwOTc0ODM1NWYzNWExMTQ0MzczOTA5MDAxOGYyNTEzYmVmZmQyOGI4OGYyOWE0NzY0ODkyMTg5YjkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_0c5ad54876b84893910fc0f1769c69c5",
+      "statement": "connect(bridge) runs a strict sequence — fetch entertainment configuration (abort if missing), parse channels, initialize the message buffer, fetch the PSK identity, activate streaming via REST followed by a connection_timeout sleep, then open DTLS — and issues a REST deactivation if the DTLS handshake fails; any exception is caught and reported as connection failure.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/entertainment.py#L114-L147",
+          "version": "repo-lines-v1:sha256:bb23ad3dcf946159d2e46b541629258dfa20083e1e3a4d0ff4ac2e130d5fccba:eyJzZWxlY3RlZExpbmVDb3VudCI6MzQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImMzYWE4YzdhMGVkZDVhZmVhOTk2ZTVlOTdjNmU0M2M3ZTJlYTljMGIxMjgyZmU2OWQzZmY0OWY3MmU3ZjFlNGEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjlmMTFlYTExZWYwMWUyZTk2OWU1ZjRjNjI3MmYzZGI2NmRlNWY4ZTU0ZDFjYWFhNGFmZWYyZDIwYmJhMmVmMjYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA1OTFjMjY4ODM5NjZlOTc4MzA5NDI1Y2YyYzc0YmYzOTIxYTNkN2YyNDNjOGE2MTBjZWE0MDE1YWY1ZWQwYWIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImEwNjI3NTRhN2IzZTgxMDY2ZDhlMzc0MTdhMDkyODhjYzQwNGQ3OGM0MzM4MDhjODVkNDlhNjI2OTY2Yjk1ZTIifQ"
+        },
+        {
+          "resource": "repo://src/lumux/entertainment.py#L177-L190",
+          "version": "repo-lines-v1:sha256:ff1132617b827175eaad2056f82b603fdaae3d46f9c10b605b0968834f7ec9db:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJmNjM4NDY4ZjAzZGMxZTU4ZjI2Y2YzOGVkZTJhZjc2YmM3MjRlZGM5OWI5Y2JjNWJhZjhjNTg4YjYwY2FmYmUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI2NDQ3NTM3MzQ3YmJmZjY5YzdmMjU4MTAzNzMzYzdiODk5NmYwMjcyMDViZWY0MTBlOGRjNzQyMjI2ZmNiMzAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc0N2UxYTRmMjYxMzk3MTVjMmFmN2FjZTBhMDUwMTYzYWI4Y2NiNWFiYTljZDcxODFiYzEzZGYzYjFmMDAxM2YiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjA4ZGI2NzBhNGEyMjk3YzZiOTc2MDkxYmNmNWQxNTg1ZGM5M2I5MWI2YjA3MjI1ZTdmYmE2ODU3OTkzMzIxM2IifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_e01acb5caad249948a87c24c8007befe",
+      "statement": "The DTLS PSK identity is the hue-application-id returned in the response headers of the bridge's /auth/v1 endpoint (fetched with the app key as hue-application-key), falling back to the app key when unavailable.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/bridge_client.py#L131-L155",
+          "version": "repo-lines-v1:sha256:1c671e67f5d900d34215c8b48534b00f29fd5e62d95f4a25c358ac1986e3a4b3:eyJzZWxlY3RlZExpbmVDb3VudCI6MjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUyMjUzZTAyNTEzM2JhNjdmZWNmNDQwN2E1OGQyMjA1ZmUwY2QwZGU3NTAxNTFmZDAwMzY0NjY4Zjg0MjEzOTEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQyMDc4MzkyZmZlOTM1MTNhNGNlYzA2MjQ2ODZhOTcyM2Y4MzgxYjM4YTNjNjBmYWQ0NmYzYjEwYTc2NjVlN2UiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjM2NDk4OWIxMzBmZjE1YmFiYjMwNTA2ZDYwNTAxNzYxMTQxOGM1Y2M2NmUzYjY1YjUxZGU3Y2I2OTBmM2I4MTciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjkyMTYzYjgzZjFiZmRiMWMwMTFhNzFjYjA2YWEyYTk3Y2NjMGU4NWNiYTJmN2Y3YTY4MzBiYTlhMWUyYmQ0YjUifQ"
+        },
+        {
+          "resource": "repo://src/lumux/entertainment.py#L158-L175",
+          "version": "repo-lines-v1:sha256:c9f4edf97a364d02fbb3906a00e3e4ad4cad6892ae138aeebe16365bea675f29:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZjNjgwZDA0OGNhOWZmMmNhMTAyY2I4MDE0ZmIwNDg2MmEwMzZmYzUwMGYwNTIwNzNiZjEzNmIzYzNkNTRiOTYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRlMTYwNjMwOTNjZWMwYmM4MDQ5YzYwNWEyYzk1NzAyYWJkY2IxM2ZhMDE2NzY3NGEzZjY3OTkyYzBhNDU1YmYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImU2YjEwYTllM2JlMTVjNDA3OWM2ZmUwY2QyNjQzNzYxODBmNWU5YTQ2NjY4YzMwMmU1NjVlODE2ZTA5YjFjZmQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjA1MDUzMDEyZjRkZTVhNTg3NWYyZGU1MThiM2NjZTQ0NDZmZTBhZmI0ZjZmYjViY2EwYzIzZGI1ZTYxZDc3MDcifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_4c3eed47ca384c678197d4da5e1d7141",
+      "statement": "The DTLS connection is an openssl s_client child process, not a native socket: `openssl s_client -dtls1_2 -psk_identity <hue-application-id|app_key> -psk <client_key> -cipher PSK-AES128-GCM-SHA256:PSK-CHACHA20-POLY1305 -connect <bridge_ip>:2100 -quiet` with piped stdin/stdout/stderr, where client_key is the 32-char hex clientkey returned by the legacy /api user-creation call made with generateclientkey=true.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/bridge_client.py#L359-L378",
+          "version": "repo-lines-v1:sha256:c899081cef6cf884139fe946f8dae9af7b50c6df364841fb60d417956052c3eb:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjllZDUyMzI1MjU5ZWFkY2UyMGU1YzdiZTFjZDU4NGY1ZmEyN2Y0OTNjNGIxOWFlNDRkMTY4ZjcwNzMxNmIxOTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcxM2ExNjFmMzEzMDRlNzVmNjE3NDRiYzhmOTAwM2UzM2EwODJmNWQzNTdmM2QxOTZjNzg0NDIwZGUzN2MwYjIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImU3YjczZWZmN2E1M2RhYzRjYTEwYjIyNGE3ZGU2OTg5NzM3OTE2ZmYyNDI4NGQwZGUzZWQ5NGU4N2IyZDQ3NzAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjVmZTUyMTlhN2U1N2RhYmU2YTY5ZTUwYTJkNWU5NzBiNWRlZDI1YzVkNzU2MWM3OTBjMDc1ZmZmNzI1NWZjMzAifQ"
+        },
+        {
+          "resource": "repo://src/lumux/entertainment.py#L283-L299",
+          "version": "repo-lines-v1:sha256:2939f3c1a05222f00a5c5cd766c072f38615c8d1edd6249d33cfde23992973fc:eyJzZWxlY3RlZExpbmVDb3VudCI6MTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRlYTE4NjY2YTRkZjRhNDhmYWZmOTM4OTJkMmQ1Mjg5MTZlNWIxNTE3ODFiZTkwOTc0ZjI3NDgxYjAxZTg1MjYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImJhYWU4YTBjYTc2Zjk4ZjdiN2RjNzk4NDk1MWQ2M2U1N2RiM2M2NDU1NzljYTUxYmFkNmE1MzlkNjE0ZWRiYmUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjY5Y2ViNTgwMTczZDdkNTY0NDFjYjkxMWEzOWE2YzFkMGUzM2EzNWM4M2VmODY3YTlmZjUyY2ZjNjUxY2ZlMjIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImFhNzg1YzE1YTA4MjNkMmVjNTg1ZjI5NGViMzkzMGIwZDYwY2E0NDYzMjVlYjk3NDIyM2Q4ZWJlOTk3ODIwMTEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_5f833e486e274ed7a5e7439ba11d62d1",
+      "statement": "Because the openssl transport exposes no readable handshake callback, handshake success is verified by process polling: sleep connection_timeout (default 0.5 s) then poll(), sleep handshake_delay (default 0.3 s) then poll again; a dead process drains its stdout/stderr, prints the exit code, and is reported as failure.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/entertainment.py#L301-L324",
+          "version": "repo-lines-v1:sha256:b912e5da8de0892fb6a61b11e4f404636f2d13c897d2950ce2f7f8f6c39da2f3:eyJzZWxlY3RlZExpbmVDb3VudCI6MjQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImExNTU5NTI0NTQyMTZmNzA5NWFjNDA1ZDIzNTlhZDAyZWQ0YzE3NGFhMGU0NDBhYjgyZjhmMjhjMThmZGNiNTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI5N2M3MTI0N2FmM2NkMWVkZjU1NWE3ZDEwNzU5MzE1N2Y2ZGMyYTIyYWYwZGU4MmU3Nzc0YWJmMTBmOGFkZTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImRlOGUwNDdiZjNiM2NlNWMxNTI2ZmJhMjg5YzA0M2I4M2Y5OTQyYmNlNjE2N2E0MmJhYzFmOGUxOWI2ZDVmMDQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjgwMTQ0ZjEwNWJmNzMyYWUzY2M1YTNjYjhjZjgxYjJmZmRkZmQ2YjQ0MTk4ODFkNTM1YTBmZTE1ZDc3MDg2ZTgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_725f38f2abab4cfc96b490fca05457c2",
+      "statement": "is_connected() returns true only when the _connected flag is set and the openssl process is still alive (poll() is None), so a silently-dead subprocess is treated as disconnected before the next send is attempted.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/entertainment.py#L350-L354",
+          "version": "repo-lines-v1:sha256:fb88cea1858d04967d2c1d5313b8d595fe80c507ec067bb1f13b34223d5bb9a2:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMTkyYTg3NDYxM2FmNjZlNWZkYzViMWQyZWYyNjgyZjhmYTJiZDY3NWIxNjYxMmU5YzJhMzYyYmJlYjM2Y2RkOCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZjA0MjhlM2ExNmYxMDliM2ViMDk1ZDc3N2VlMTdjMDlkMjQ3NGEzODI0NDhlNTg3MzNkZGUzYjdiZDQyNDMyZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMDBmZDkxZTIxNWI0YzlhMzhkN2NmNThlMjhhNjQxY2EzMTE0OTFiN2JiZmFhYjM3MWI2ODQ0YjBjYmU4NWQxZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNDc0OTc3ZTc2OTAyODI1M2Y3M2YyYzUxZmVmNDAyYTdiYTAyM2FlNDZiODE2Yjk1ZDFkOWZhOTdkNTgwZDI4YSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_29519e690ce34a71b117f56dd6f8cada",
+      "statement": "The send path writes the message to the subprocess stdin with a flush under a lock; a BrokenPipeError/OSError marks _connected = False and re-raises, and the send_colors/send_colors_xy wrappers catch the exception and reset the flag.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/entertainment.py#L356-L394",
+          "version": "repo-lines-v1:sha256:3259e3af1cbc1013c012744e5dd1c1080675e9cdb823d1a3499c97a4f5ca9efc:eyJzZWxlY3RlZExpbmVDb3VudCI6MzksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImMyYjlkMzk1MzgzOWY4ZTUxZTU1NDEwYzk2YzU3NzA1ODVkYWU0NjJmOWE3YjVjYWVlYjhjMGE4NjcyMjRmN2UiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ0MTM3NTVkNTE3MTcyNjAwNzQyYjVjZjllZDI3MTljZWYxMmMxNDMzYmUyZTBjY2RjZjU2OTg4ZjE1ODE1ZjciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjkyODFmY2ZiZDc3ZDM1ZjYzNmZiYmRmYmM2MDI5ZDRiNmVmZWJiZDE4NDZlY2U3ZjBhNjJhOGRhM2UyNGMwMjQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjJkNjhhYmUxM2Q0NjM3YzQ3YWQ4NTE5N2VkNjQwNzc0ZWFjZGRhMTAxNzU0ZDVjZmMxMjg4NmIyYzBhNWE4ZGYifQ"
+        },
+        {
+          "resource": "repo://src/lumux/entertainment.py#L396-L413",
+          "version": "repo-lines-v1:sha256:b31ab450165bfd1657dc8419a8f3dd0ae5aea62b4e5e3db993b1c1d471865e77:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY1MmRhMzkzZTQ4MzllY2IyZGRhOTc4OTE1ZDM4NGFjYmY4M2UyNzVjNTI4YjExNzdhZWJjMjRjYTc4NjI2MmMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIyOWM1MjQ0MzRjMDA5YWFmMGQ3ZmU5ZTJmZmU3MjJiMTcwY2Y4ZWIxYzhjMTU3NWU0ZTNiZDUxZTkyNmM3MWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjI4Y2EzYjZmM2Q1MjAxZDhjMjA3MjhjM2NkNjlkMWE4ZWJhMGVjMTE0NzU2MWYzNTk5MzVjMGIzYjVmZWI1MDgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijg2YjUyMzU2ZTRjMzdiODE2YjgyMGQ4MTUxMzhlMzM0NDZiZDUwODcyY2IzYTFkNjQ4ODg5MmI3NTJiYzgxYzgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_1af3a4b016ca409783406644b96c93a8",
+      "statement": "A native socket path exists as a placeholder: _dtls_socket is initialized to None with a \"Future: native DTLS implementation\" comment and _send_via_socket is implemented but unreachable because the socket is never assigned; _send_dtls_message raises ConnectionError when no transport is available.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/entertainment.py#L396-L422",
+          "version": "repo-lines-v1:sha256:129cc15ee0357fd4ef6e3da8dde3e153a45a56d4d607847d1c3527e49fe02a17:eyJzZWxlY3RlZExpbmVDb3VudCI6MjcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY1MmRhMzkzZTQ4MzllY2IyZGRhOTc4OTE1ZDM4NGFjYmY4M2UyNzVjNTI4YjExNzdhZWJjMjRjYTc4NjI2MmMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImIyOWM1MjQ0MzRjMDA5YWFmMGQ3ZmU5ZTJmZmU3MjJiMTcwY2Y4ZWIxYzhjMTU3NWU0ZTNiZDUxZTkyNmM3MWIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjI4Y2EzYjZmM2Q1MjAxZDhjMjA3MjhjM2NkNjlkMWE4ZWJhMGVjMTE0NzU2MWYzNTk5MzVjMGIzYjVmZWI1MDgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjA5ZjdlMjk1YjQyMjNjNDU2ZTJjMzRlOWI2MmIzNWEyNzJkM2MyNzJjM2Y0YzIzZDUzOWE2ZWU5MjZjNDRmNjYifQ"
+        },
+        {
+          "resource": "repo://src/lumux/entertainment.py#L84-L103",
+          "version": "repo-lines-v1:sha256:7035412355ab74051b509eb5f6b6ac3080d4fe8e24bcd5983712995ee2322ce8:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRkMDhkMzUxOTQ3NGUyYWU2ODgxYWI3N2IzMTUyY2RhZjhhNzdmNGU0MWI3Njc1Yzk3NWZiNjdiOTQxOGM2YTgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjRlMmM3ZTBjYmVkYjI1YjNiMGM0M2JiYWEyMDgzNWJiZTZlMTY4N2Y5YWMyMTMxMDcxNTYwMjkwODJjMjQ3N2EiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImJhNTA1YzNlYTJkNGU0NjdhNzI2MzQwNDNkMGFhMzc4OWIxNmI5NjJiYzBlZTI0MzljNThlZmNmMGJhODAyZjYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_658e9c5c86d84b2e80ce8757b188c48a",
+      "statement": "send_colors_xy packs each channel record as >BHHH: channel ID, x×65535, y×65535 (clamped to 0–1), and brightness clamped to 0–254 then ×257 (≈65278, the protocol max); channels present in the configuration but absent from the input dict are zeroed (black), and the 8-bit sequence wraps at 256 after each send.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/entertainment.py#L446-L466",
+          "version": "repo-lines-v1:sha256:31a26af02f0aade1a4ccaeb0fcf08679a177e0c30fdcf82fb18242253d91d4c5:eyJzZWxlY3RlZExpbmVDb3VudCI6MjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNkOGNhNjRhYjMxMjRiY2RiNGUyNTVlODMxZDI3MzJjYWYxZTE3NTlkZmIzNzA2Y2M2OWNkMmJjMTk1NmJmZTgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcyNzUyZjc2NTMzNTNjOTM3NGNlODMwOTVlNGZhOGE3M2YyNGFiYTI1YjBjY2JlZmU2OTcyZTY0ZmZjZjVjYmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjNkNzhlMjg3NTU3Zjg1YzEzYzEyYzY1ZTQyYTY0OTMwMzgwODA1NDIwODY4N2JjYTY5YjJhODc2MTc1MGQxZWMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjcyMTczMTgwZTVjMDUzYzA1MjU4ZWE5NDg5ZThkMWUzODVhMTIzMzBjNDhhMzEzNTliOTcxZWY0YWQ3N2YzYjcifQ"
+        },
+        {
+          "resource": "repo://src/lumux/entertainment.py#L477-L483",
+          "version": "repo-lines-v1:sha256:f252929ec3d2c8068a89077c10a99bd79059f47cdac2f1c43cda61ce72095685:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMzYxZTlhODg3ODM4MTJiM2MxOTJmNjYwZWExZjM1NjIxOTg3NDkzZDVhZTJiNTg3NTBmZjI3Y2U0YjUwMWY1NSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiODEwNWI2MTk4ZDFjZTFhMGFkYThjMmQ4ZWZjZDExYzA4MGQ4YWFhN2FkMTEzMGYzNTRiNjY2M2Y2M2M1ZjA0MiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzcxNjllZjU2MDVlYWRjMjE3YWQ5MmZhNjE5OTllOTZkNTU3MmYxNmQ0NDE4ZWM2Njk1MmNiYWIxM2VkMjcyMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMDI4OTNmZWVlMWYzMDQyZTI5NzdhZGQ4YzEzNDdjZTdlOTFhNGUxZjE0ZWE2ZDQwZDk1ZDhkNDc0N2Y4NmY0OSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_7c5afb2761b94e7bb7e9844233c48b12",
+      "statement": "send_colors (the RGB variant packing r,g,b (0–1) ×65535) is unused by the application — the sync engine's per-frame update path calls only send_colors_xy.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/entertainment.py#L356-L373",
+          "version": "repo-lines-v1:sha256:f66b9c3b40b7493b17fcc21f13a8cebfb612ae4d95682cbe8313e41a675a2dc6:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImMyYjlkMzk1MzgzOWY4ZTUxZTU1NDEwYzk2YzU3NzA1ODVkYWU0NjJmOWE3YjVjYWVlYjhjMGE4NjcyMjRmN2UiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ0MTM3NTVkNTE3MTcyNjAwNzQyYjVjZjllZDI3MTljZWYxMmMxNDMzYmUyZTBjY2RjZjU2OTg4ZjE1ODE1ZjciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjkyODFmY2ZiZDc3ZDM1ZjYzNmZiYmRmYmM2MDI5ZDRiNmVmZWJiZDE4NDZlY2U3ZjBhNjJhOGRhM2UyNGMwMjQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQ3MmZhNzdmMGIxMjdkZWNhOWNmYzA1ODk2NjQyM2M2ODE5MzM3ZDRmMWQ5NTU3ODYxZDFhNzRmODlhMDQ1MGQifQ"
+        },
+        {
+          "resource": "repo://src/lumux/sync.py#L339-L340",
+          "version": "repo-lines-v1:sha256:945e3a31c6fd893ead3ba6ab859f2fd293daced3be7723814628c7e13150c474:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYWQ4NTE2NjFiNjQzOTFmMzY3NDRhNTM0MDMwOGQ5ZjI2YzdlOGEwNzMzODNmZmM1ZDhmZWNlOWQ4OTBhODgzMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYTQ1MzAwMmNkNGMzYzliNmI1OTM3ZjA2YzVkN2NiY2E5YjRkODQ0YWQyODQzYjM0MTRhMjA5ZDg1ZjQ0NGNlMCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZjgxMWFmZjc3NTA5M2E0YTBkOGZmMzM5MzY4MDEwNWI3ZDMwMjA5NWRmYTY0YzcwYmY2NTRiOGFiYjA4NDdjYSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNGY3ZGE5MDU2N2QwNmQ2M2YwOTQwODRlODk1ZTNmNjU5MzgxMGYyOWQ4NTc1MTE4ZDc3OTJlOTAxODIzZGU3YSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_35a15357c6614b7db5c5686e8c63fc6b",
+      "statement": "Each entertainment configuration channel entry becomes a ChannelInfo (channel ID, 3D position, member list), and every member's service.rid is indexed into the light_to_channel dict as the reverse light→channel lookup.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/entertainment.py#L192-L253",
+          "version": "repo-lines-v1:sha256:21605196da81beac89a6ab3626951fa18cc337189f4df7a15113bbe7e8646a8d:eyJzZWxlY3RlZExpbmVDb3VudCI6NjIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY2NGJhMzM2OTIxZDIwNjU1NzQ0ZjkxOTA2NGVkMGIwYjQ0ZTNjZWIxMGM2MWQ5MThjNDAzZjdlMTYyOTM4ZGMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjM5MzkxM2NjYTdlYmRmYzJiNTU4YzVkZGQzNzU3ZmMyZThlYmUwNmZiMjRhYmMxMTY2ODdmNjY0YWVjMDg1MzMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjMyNGYxMjg3ZWQ5ZDljMzYyYzRhZjY5NDA5OGEyYTBlODQyOTg0YjgzNWQwYThmZTY4NjUwNDgwYjNiMGVlYzgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjI1Y2M0NDZmNjBkZWNlNzc1ZjlmMzgyMjJjMmI0M2IwMzJiZmY3ZDkxNTYxODVmNDkwZDhlODdlYTkyNmU4NDEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_fc00073e43144cbbb9d77e317a0587ae",
+      "statement": "get_channel_positions() exposes the configuration's per-channel normalized {x, y, z} positions, and SyncController consumes this mapping (sync.py) for its zone→channel mapping.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/entertainment.py#L485-L499",
+          "version": "repo-lines-v1:sha256:780c8c213d42328b84acf50f0e09a5c93e7cc3e12d97f59aa53cd0d9690f2c18:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk5ODIzY2IzODhmZWEzMTg0NDlkYmVlMDkxYjk3NmNiNTc2MzBkYTM0NTIyNWY0YzMyZGYxNDIxODhiNmQwYTIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU2YjA0NDkxNDY5NzIyZTgzNjNhOTRlNDA0NDUzOGUwMTNhMmEyMTdlMzZiMWU1NjhiYTYwYWNiN2I0YzhmMmUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQyNDM4NTgxZTVkMTg0MjU2NTAwZWExNDlkNWY0YjViNGI0Y2IwYmViOTJmNGZlMTA0OWQ2NDZlMGQyMTBhMTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImJiYzQ2NjgyODExMTQ4YjY5NjZiNTRmMTg3MjFhMDk4YWYyN2I2MWE0MGJkNGY4ODJkMzAzNWI4OTg4M2M0Y2EifQ"
+        },
+        {
+          "resource": "repo://src/lumux/sync.py#L91-L91",
+          "version": "repo-lines-v1:sha256:eb74f15f5f65d16576afa6b463b15bef70bf323af9cf3d95b9dd69c70f5ab55a:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZWI3NGYxNWY1ZjY1ZDE2NTc2YWZhNmI0NjNiMTViZWY3MGJmMzIzYWY5Y2YzZDk1YjlkZDY5YzcwZjVhYjU1YSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZWI3NGYxNWY1ZjY1ZDE2NTc2YWZhNmI0NjNiMTViZWY3MGJmMzIzYWY5Y2YzZDk1YjlkZDY5YzcwZjVhYjU1YSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNmE4MTA3YjRjMDA0ODU3NTE0NGJjNWNjMDIyMDJlMmY1ZGZhN2YyYzRmZmFiYWRlNTJjN2Y3Njg1NTE0ZjA4MyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYTRiYWJjYjJkMzJjODNhODQyOWI0YjQyMWFkMjZmOTQ3N2UzMTA1NmE0ZDdjYzgxNGVhMWIwZGUxODAxMWU1YiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_5abf1a5a6f3a4d42b1b998ea1f6417ac",
+      "statement": "map_zone_to_channel is a self-contained edge-based mapping — matching position ranges (top z∈[0.5,1], bottom z∈[−1,−0.5], left x∈[−1,−0.5], right x∈[0.5,1]), sorting candidates along the edge axis, and picking by clamped index — but as of this snapshot no caller outside the module invokes it; the sync engine implements its own nearest-position mapping instead.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/entertainment.py#L501-L540",
+          "version": "repo-lines-v1:sha256:9784a5b9de04a0f7603df3fcc0953e57e53211788fade9b19421efbd1b9091ea:eyJzZWxlY3RlZExpbmVDb3VudCI6NDAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJkMjVhNjVjNjlmYmQyYmU1ZjBlOGUyNjdkMmJkMGY5YzIxODI2YzQyNzdkZTFlZGYzNDc4YzkzNjUyYzFkNmUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU2YjA0NDkxNDY5NzIyZTgzNjNhOTRlNDA0NDUzOGUwMTNhMmEyMTdlMzZiMWU1NjhiYTYwYWNiN2I0YzhmMmUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjE3OWYzOGJjMjc4ZjE0MDJkZWUyM2MzODI0MzNhODM4MzMxYzc0ZjM4MzFlNDU3MWNiNjZiODJjNTU3ZjA2YWYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjI4MTg0N2RlYmQ5MWU3ZDkxMjEyMjkzOGMwMjk3ZjRmY2VlM2ZkMDBlZWI4YmUyYWVkOTkxMjRjYmYxODgzNGEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_00345a57a6d84f46b6abaec0a84806d5",
+      "statement": "disconnect(bridge) clears _connected, cleans up the subprocess (close stdin → terminate → wait(timeout=2) → kill on timeout), then issues the REST deactivation; AppContext.stop_entertainment only calls disconnect when is_connected() is true, and AppContext.start_entertainment requires bridge.test_connection() to pass before attempting connect.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/app_context.py#L82-L99",
+          "version": "repo-lines-v1:sha256:b7cb9bc715b600ff558fd62b525a634fee8ae72d22e054fee5e6d34fa1eb85a6:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFjZDM4M2VjNDdiNDZmMWRhYjVjYTJjYmJmZmIxODA2NzRjMTlmZTUwMmQwOTJhZTJmYmUyNDUyNzJjNmYyMWQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY3MThlZjMwMGIzMzIwMTRjZWY2MWZlZmYxZjFiZjQ5YTliNDcwYTk4NDc0YmVlYjQ2MDUxMWQ4ZTYzN2ZjNjIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImVhOTNkOTRlMzMwMzJkYzAyYmVmNmU4NTA3NWZhN2NjMThiYjg0N2FhYzZiNjdjYmNmNDEyOWJhYzgyNDFmM2EiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImMyM2Y0ZjI5MGRlY2QxZjQ0OTQ1OTI4MGFjODYzYzk1NTg4NmRhYzM0MGI0MTY3NjYwYjE2M2Y3YTZhNTE2NDIifQ"
+        },
+        {
+          "resource": "repo://src/lumux/entertainment.py#L326-L348",
+          "version": "repo-lines-v1:sha256:c73396c593671da15a5621f5a6568969782f25debffd0f6d3a3837d0bf553a1a:eyJzZWxlY3RlZExpbmVDb3VudCI6MjMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZmOTU3ZDY2YmRiYzE4MjU4ODRjMzdiNmJhZmI1OWU4ZTgwYTI0NWJkNWRkY2UwZjg0MjdjMzliMTdhNTFhMmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVlMjIyZDUxZDQ5MTcwMjY0ZTk2NmFjZjNjNTJjYTY5NzEzYzk3ODBmMzIxMTE2MjBkZmUzMWYzMjZiY2MxZjAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImEzMGFmZDAyMGFiYWQwMDJiM2VhZDE1ZWY1ODRjN2Q3MDA2NjFjOWY2YjU1NDA3YmI3NzY1NzcyZDhmYTY2ZDUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImIzZTExMzdkOTM4MjAzMWQyMzRlYjA2OWNmYmUzMzcyYzNiOTk0YmEyNDUxNDI3YjJhNDRkMzU0MWE3NjRhYzYifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-15T02:33:14.256Z"
+  }
+}

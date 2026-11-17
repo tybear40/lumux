@@ -1,0 +1,174 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:d9a15f8549c7339f6b51ac9620c9cb399b6c58747d35cf0de05fc56d142a446c",
+  "claims": [
+    {
+      "id": "claim_6e492105e6f84f83b0255c9cc2ec13cf",
+      "statement": "The lumux package declares version 0.6.2 by Engin Kırmacı and re-exports its eleven core components (AppContext, HueBridge, BridgeClient, ScreenCapture, ZoneProcessor, SyncController, ModeManager, EntertainmentStream, ReadingModeController, BlackBarDetector, ColorAnalyzer) as the public API.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/__init__.py#L17-L31",
+          "version": "repo-lines-v1:sha256:d03a1014046f4855e692f048b77450954f7c7a5e9653bee206319014861d8b26:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhjNTk1YmM0NDI0NTRiNDFiOGUwYjEzZWM5NzVkNTRiMDVjMDA4MGQ0OWZjZGM5ODBlNGU0NGRiNGZmNmNlOTciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYxYjE5ZjVjYTJhMzJhMjM4N2ExMTczZTU5MjIxMWY0MWVkY2NiODI0MzNiNDYwZGRmMjAwYTlhMWU2ZDk1NzAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjM2MDNjN2IzMTUwODM3M2E5MTgxOGI5NTNjOTE2OGE0ZTQ5ZjFkNTAyZGE5MDgwNzNmNDkwMWUyNTQ1ZjE5ZmUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_c3a1a2cc0ccc4472833fb32787c8cf97",
+      "statement": "AppContext is the composition root: constructed from a SettingsManager, it owns HueBridge, ScreenCapture, ZoneProcessor, ColorAnalyzer, the zone mapping, an optional EntertainmentStream, SyncController, and ModeManager, and wires the sync controller's stop callback to mode_manager.on_video_sync_stopped.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/app_context.py#L28-L76",
+          "version": "repo-lines-v1:sha256:22257f2313004539e11f40256b5462ba12a3f5939097c7aeee2342bd30cb8583:eyJzZWxlY3RlZExpbmVDb3VudCI6NDksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImViNDZiZGVmODA2OGVjNTEwNzAzMjg1NWY5ZTNiYzk0OGJhZDkzNzE0YmM1Mzk1MzlkNzI3OGZiY2U5OTVkMTQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI4MTRkNTI3NTE1ZGNjYzA4ODVlOTE3YjcwNDE2NGYzNjJlNzEwZWE5MzU5MjBjMjNjOTY0MDc0ZTBjYmM5YTgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjJlN2I0NjdiZjM3OTBhMjlhYjcwZThlOWJiM2ZiNjRjNjM4YzE5NWY2MWE5ZTcwNWVlYmE2NTJmYWI2NmY3ZWYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjViNGE3YTFhNjU0Y2Q4MTQ3N2Q5YzFiNjhlOTBhOTZjMDUwYjAyMzc4YTJjNGZiMmI0NzdkOWY1ZGE4NWQ4OTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_cdf8be3137a64c5ca52e7f56f81da52c",
+      "statement": "SyncController keeps its cross-thread shared state — a bounded queue.Queue(maxsize=100), a threading.Lock, a _stats dict (fps, frame_count, errors, last_update), and an optional stop callback — in its constructor.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/sync.py#L36-L53",
+          "version": "repo-lines-v1:sha256:87b16ceadd52f2a34a3b4ac9efb6b946dd75f1c1ce5a3d20b06a9e8bc39e8474:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRlM2Y2ZWZmNzIzMjc5ODczMTkxNTFhMzk5ZGE2MDZmMjkxZTU0ZmU5NzI5ZDEzZmVlMDU4N2I0N2M2MjY2NTQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI1OWMxYzczMTE4MDA0NjU2ODhmZTg5NmRkMTQ0NDIzOTk5OGY0Nzc5NWQ4YWVlMjhhZGI2NDBhODRkNThmOTciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjNhM2NhMWMyOGE1YWZkOWZhYjM5YTY4YTQ2ZTNjZjdkZDQwNGExNmQ2OGE0YWQwMDYyN2Y3ZDVhOWFkNTRkNDEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImJhMTAxNTgyMGU3ZDY5ZjFhMzcxMDUyMDRhMjQzMTY0NmZlMWU2Njc3NmQxNTg4NDY5NzYxNDAxNmQ3OWFiMjMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_9376f569431d4c0084808d3ae809c2d0",
+      "statement": "SyncController.start() builds the zone-to-channel mapping when an entertainment stream object exists and reports connected, then spawns the background SyncLoop as a daemon thread targeting _sync_loop.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/sync.py#L59-L83",
+          "version": "repo-lines-v1:sha256:9bbd4ade839547e90be5590d878354e5d34e0ad8d76045e033315f6a14b34e53:eyJzZWxlY3RlZExpbmVDb3VudCI6MjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMxYzk1M2Q2YjJjNWZhMzBhYzVhNTM5MGZlZjI1MDA3YzcwZGUzNTg4MWNkOGEzNDc4YjEzZWU1YzZlZmY0ZjMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcyODc1MTIxYjFhOWYzY2UzMDNhMjMxYmFmNmRjOTI4N2U0NGE1NTQ3Y2Y0NzE5M2IxZWYzOTdjMmZkZDAyYTkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjMwMjM4YzgzNjkxYjIwN2NjZmQ0YzUyMTdlZmQyMmI5MjRjNzg4NDBiZDNkNGFhY2JmOTRlODkyNGUwYWFkODYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjIwNjJlOTExZWNiYjdmNTIyMDkyZWEzMDRiMjEyZjIzYzQ0NWYxNGRmZDUwMDkyNWQzOTgwNGYwZTUxYWMwYjgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_c3a91c1b97764255939c097de3f0f137",
+      "statement": "Zone-to-channel mapping generates ambilight zone IDs (top/bottom use zone_processor.cols, left/right use rows // 2), then maps each zone to the nearest entertainment channel by computing a target (x, z) position in the -1..1 coordinate space and minimizing squared distance.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/sync.py#L85-L179",
+          "version": "repo-lines-v1:sha256:e00c1a3bb53d61bfaec8ddfa324fc13a1f60a20ed999b8d96dc80763c7f32140:eyJzZWxlY3RlZExpbmVDb3VudCI6OTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIwMTFlMzg2NTllZmQ5MmM3NGEzMzA0YmY4MDBiMTQ2NDFkOGM2YjIwN2Q0ZjVjZjIyNDM0MTI0YzY3OThmNjkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZmNjZmYmY3NDMzMWU0Y2IwMjk3ODZlYjgwYzVhNTlmMmU4YmVjZDgxZWEzM2RlYjUyMjUzZTY3NTViM2U1MGIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjJiZmMxODJjOTI5OGRmZTUxYmQ5MzJjMjRkMDhmYjIyN2FkMTQ0NDRmYmMwYjI5NmI4NmRkN2Y2ODcyN2QyM2MiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImEzYjNiN2MxNDNmNmExNGRhMDgxNDU1M2RjMGQyZTQyM2FjYWI4NTUzM2M1ZWRmNTA1MDU5NTVmNWVmMGE3OGMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_43ae1ca9cdf44898938803e05f912b81",
+      "statement": "The sync loop paces frames by clamping settings.fps to 1-60, sleeping the remainder of the target frame time, and computing reported fps as the inverse of a 30-frame rolling average; exceptions increment the error counter, queue an \"error\" status, and back off 1 second, and the loop queues a \"stopped\" status on exit.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/sync.py#L208-L253",
+          "version": "repo-lines-v1:sha256:8ac3de767e8e60918f1471a781f32c05ea6c91d75258eabc03b1875e0144f635:eyJzZWxlY3RlZExpbmVDb3VudCI6NDYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc5MGYyOGRhYTg5NTY1NmM5ZWY5NjdkOTdlOGZlZDFjZTM4MGY1ZWY4Mzg4ZjAzOWNlNTM1OTRhNGRjNTI3NWYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg1YmM0YmJlNjAyNzA2Nzg4MTBiMzM5YTdiNjQyZTgyZTAzYjljZGMyMmZkZmQ5YzJlNDQzYTJiOTgwMjczMmEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjkyOGFkOTk0NGI5YzU5M2NjMGU5NzEyZGU4Y2VkODZkZjM5ZTU2NDBiMzYwZGIzNjg3N2VkMTFkNzI5NzBiNjciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjkyNzNmY2NkNDlhODc2NWQ5YTgwNDAxYjIzYjJiOWQxZTgyNTdhYjY2M2M1OGRmMWQxODc4MzBmNzAxMWNkZTIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_b95f8a77c86544c0a799ceb5a4741331",
+      "statement": "Each frame is processed in the order capture.capture() -> zone_processor.process_image -> color_analyzer.analyze_zones_batch -> color_analyzer.apply_smoothing -> _update_lights, with per-stage wall-clock timings recorded under the stats lock and the latest per-zone RGB colors queued to the GUI for preview.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/sync.py#L255-L301",
+          "version": "repo-lines-v1:sha256:5cb1c72b354e990eea27b5130d6c3a8a1c339cd892209156d4b45caca3308fae:eyJzZWxlY3RlZExpbmVDb3VudCI6NDcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVhNDc3Mzg0ODY0OTkyYTRlOGFjMTEwNTM4NjM1OTg4YTI4OWM2Mzc2Nzg0MGY1ZjBhOTkzMjc2ZDAxZjc5Y2IiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZmM2MxMGE4ZDZjMDk5YTcwODFjODc0ZWQ1ZWI0YmRmODA0YTIyYTY4Njk1NjIxOWNmMTRlYjlmZjU3ODIwYmEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImM3MTU4N2Q5Mzk1MzNhZTlhYzYxNzMyMDFhMDdhMDVmMGJmMjhiZWJiYWQ3MGU0YjM4NWQxZGY1Y2YyYTAxNGQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImFmYjM3NDA0MDA5ZDk3NWQyZDNlNzIyODZhOGMwZWMyZjNmNGI1YzVmYTI5MDg2OGMwZmNlZGI2ODFjZjIzMzEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_17b961d7455b4167b77abd1da9f63778",
+      "statement": "_update_lights sends colors only when the entertainment stream exists and reports connected (otherwise it warns once per 300 frames), averages zones that map to the same channel, and ships per-channel (xy, brightness) values via entertainment_stream.send_colors_xy.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/sync.py#L303-L340",
+          "version": "repo-lines-v1:sha256:39c86cae064f0ee8471e8180b4f5f6b06eb3e5820c06362a57325da2daaedb19:eyJzZWxlY3RlZExpbmVDb3VudCI6MzgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI5YWI4YzIwNDU3YThkNmFkMGI2YzgxZWIxMjE2MTIyMzFkNjllZjliZTA2MGU5MGY3MjFlNzI0ZjExMzg5OGEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE0NTMwMDJjZDRjM2M5YjZiNTkzN2YwNmM1ZDdjYmNhOWI0ZDg0NGFkMjg0M2IzNDE0YTIwOWQ4NWY0NDRjZTAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQ0NzA5MDY3NTQ2MmUzNTViMTAwNzViMWFiZWZlZTM1YzFjMmQwM2M4MDRhODU4YTEzNGE3ZTdkYjRmOTZlNzciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjRmN2RhOTA1NjdkMDZkNjNmMDk0MDg0ZTg5NWUzZjY1OTM4MTBmMjlkODU3NTExOGQ3NzkyZTkwMTgyM2RlN2EifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_ae5d04062218444cb3f78b83d45e93ef",
+      "statement": "The GUI receives sync progress through a thread-safe handoff: _queue_status drops updates when the queue is full (put_nowait plus queue.Full caught silently), get_status drains with get_nowait, and MainWindow polls it every 100 ms via a GLib timeout.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/gui/main_window.py#L59-L59",
+          "version": "repo-lines-v1:sha256:72512ddfc4d40ac1851ef372c108c71d793d480d5a49372c16ed79c6493b13fe:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNzI1MTJkZGZjNGQ0MGFjMTg1MWVmMzcyYzEwOGM3MWQ3OTNkNDgwZDVhNDkzNzJjMTZlZDc5YzY0OTNiMTNmZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzI1MTJkZGZjNGQ0MGFjMTg1MWVmMzcyYzEwOGM3MWQ3OTNkNDgwZDVhNDkzNzJjMTZlZDc5YzY0OTNiMTNmZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNDhhYmI5YmUwYTIwZjdkYWFhMzQ0YTU4MjA0MDBhMDVhZTk4MDljMDcxMmZiZTFiNmYwMDljZDY1MzQ2MzFhMyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYjc5ZmM1YmU5Y2I5NGJlZmUzNTE1NzZkNTA4ZWJhYjhmMDU1MzM1MjM0NzQwNjA1YjA4M2YyYTI3MzE2NWNhMiJ9"
+        },
+        {
+          "resource": "repo://src/lumux/sync.py#L342-L354",
+          "version": "repo-lines-v1:sha256:7b6f3b72e8bdbfb3b1a40290c7a425fd87b5f9f4544ee2d9271877bf7c79e41d:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhiYjExOTk2YjQyNjY0MGM1Nzk0NGE3NjRiZTk0NTg3ZjEzYTc4MTEyMTZjMTgwYjBlNjZlZTY0NmRkMWMwZTAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQyMDc4MzkyZmZlOTM1MTNhNGNlYzA2MjQ2ODZhOTcyM2Y4MzgxYjM4YTNjNjBmYWQ0NmYzYjEwYTc2NjVlN2UiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE0MjQxMDEzNGZjOTg4MjZkZDZjOGY0ZjE3YWY4OTQyMWVjZjk2NDViMDkxOTk1OWZjNWE2YjRkMTMyY2Q5N2UiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQ2NGMxYjhlY2ViOTkyMjZkNDBlZWVkODM3ZmRkMTVjZTU2N2UxNGZhYjNmMzhmMzRjMmRjNWE1ZmNmYzc1YmIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_d87bb02e6c784f539f8673304be04711",
+      "statement": "ScreenCapture.capture() implements latest-wins frame retrieval: it returns the newest frame stored under _frame_lock, waits up to 2 seconds after a pipeline start/restart for the first frame, and if session setup fails while a cached restore token is in use, clears the token (persisting via on_restore_token_changed) and retries so the portal shows a fresh permission dialog.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/capture.py#L156-L202",
+          "version": "repo-lines-v1:sha256:d47e4c83c12a972a60bc54b5241557864723d9dc038c40674911182d6f5a4094:eyJzZWxlY3RlZExpbmVDb3VudCI6NDcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE1MTBhZjU4MGIxODRhODQ1MTRmNmI2NGMzNzNlNWQzYjI1ZjhmNTM0NGZlMjczY2ZjOTlmMjFiNTgwMWQxMDAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVlN2M5NTdiY2I0NGZiNjczYzk4YjAwNTBhNzVkMzgwODJkYjgxZDkxOGRlMzEzYTNmMDdjMTIzNTMwNmQ3ZWMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjU0N2RjYTBmN2Y1ODQwZjYzMzEwOTdiN2Y5NTQzNTRlZjY1YWY1YjViNzM5MzNhMGQzNGZjMjU5YTI0ZGFkOGEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjBlNDIwOWZiZGYwMDU1OTQxNjJiZjc0MDQ5YjdmYWRkNDhkNTE2ZDhjYWM1NDRmMjY4ZTJjZmFmYTI2M2I1ZDQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_525f311e7c814a3ebda924754f4d44fc",
+      "statement": "ScreenCapture._process_image applies the BlackBarDetector crop when the detected region passes is_valid, and rescales the frame with a PIL bilinear resize only when the pipeline itself is not doing the scaling (scale_factor < 1.0 and not _pipeline_scaled).",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/capture.py#L204-L237",
+          "version": "repo-lines-v1:sha256:a0531e9dca7febbac94003c4f48fd837b5c3fcae7f16825a5f54a08bc35df0c3:eyJzZWxlY3RlZExpbmVDb3VudCI6MzQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk4ZGI1MzRmZDQzODQ0NTUzZmFhOGIzNmMzZmUyNjk3ZDg0MzE2OTUwY2U1NWYzN2ZmNjM3N2UxN2JiZTkxZmMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNjZWJjYzQyZGUyN2JiNWJhOWM3NTNhYWYxMjZlOTIwMjhmYmY2MTc2MGVmYTYwZTRjMjQzM2FkZGJjOTdmZjQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImU5Y2ExNTQ5YjhkMjNhYWU2NGVkM2RlMzFkY2FlZTBiMjE2YjQ3MjM0NDA3YzM3ODcyMWZlZTBiYTBiYzM1YjciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImFhMGQ1MDhhMDNiNDkyODFhODdjYjFjZjFlOWQ0ODI2ZTEwYjgzN2VlY2EyMGM1YmE1YmUwZDkwN2FhOWM4NzcifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_d95365ad6a1f43beba2cccd9f5d9f048",
+      "statement": "The GStreamer pipeline is tried in priority order from three candidate chains: glupload + glcolorconvert + glcolorscale + gldownload, then v4l2convert + videoconvert, then videoconvert alone, each with an appsink configured name=sink emit-signals=true drop=true max-buffers=1 sync=false.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/capture.py#L393-L465",
+          "version": "repo-lines-v1:sha256:f998515377c8786df7cbf59af5d98442facf53fbe4bc67b90e5e85dfe1c69e26:eyJzZWxlY3RlZExpbmVDb3VudCI6NzMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImMxMTk0NmU3MDdhYjIzYTUzZWUzOGIzNWIxOTI1NTcwNWM1MDNmZjMzMDRmNGMyYzE1MDBiNzZkYTgxMWE0NWMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImM5NDVmZjQ1YzNmYWIwN2E3ZDE1NDhiN2M0MmQ1NTAwNmYwNGU3NzFkMDM5MmFmMzRkNmRhNGMzODk0NmE1MTMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE3YTgwNDEyM2ZlZDdmNzAzMGNmN2EyMzkwN2I0MjlhYTMwNTk3ZTQ0ZDdmNDUzMDM1MWQyODA5YjdlMWFlYWMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijg3ZjNkNWRiNjliYTk3MGYyOTgzYWUzZjNkNDI3MzZkZWIyOWVkYzcyNzVlMDNmZTEzY2Q3NjRmOWNhNmQ3YzIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_407bb56bd60d469395e3495e2d091a01",
+      "statement": "_start_pipeline skips converter configurations that previously failed at runtime (_runtime_failed_configs), sets each pipeline to PLAYING and records the first working converter, and on a final failure sets state to NULL and flags _needs_pipeline_restart for retry on the next capture.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/capture.py#L476-L550",
+          "version": "repo-lines-v1:sha256:8295f45e78e383a89f5bc00b00904f97b2333c0488d6c9bb7cb688839f5118ef:eyJzZWxlY3RlZExpbmVDb3VudCI6NzUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc5MmM4NmU1ZTRhZTBkYzM1M2I2N2JjNmIwZjU1ODI4YWM0MDhjZmE2M2UyNzQ3ZWFhM2I4MTE3NGIxYTQyZDIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI5N2M3MTI0N2FmM2NkMWVkZjU1NWE3ZDEwNzU5MzE1N2Y2ZGMyYTIyYWYwZGU4MmU3Nzc0YWJmMTBmOGFkZTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjIwNTgyNzIyNzI3ZTlmNDFjZDc0NDdhNDYxNjBmZDM4N2Q3MTVjYjEwM2I5NWRhNGVlZGFmYzQyMzdjMTUyYWQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImVmYjAyMjhhNmEzZjQyZGZhMWU0OTM1NmFhZTAxYmMwZTA1NzNjN2Y1NjVkNmZkZTA5YWQwMDhhOGYzZWY5MTIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_cea3d2c3b7ae43ee93c6b8f9a5b09a37",
+      "statement": "Captured frames are produced on GStreamer's streaming thread: _on_new_sample pulls the sample, maps the buffer read-only, strips row padding via _extract_pixel_rows, converts BGR/RGBA/BGRA/BGR15/RGB15 formats into RGB ndarrays, and stores the result in _latest_frame under _frame_lock for the sync thread to consume.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/capture.py#L630-L708",
+          "version": "repo-lines-v1:sha256:1ea90f60fab8d5167e21f74fcdf2621bb18a1c2d084832e1f15ab9d6535b3302:eyJzZWxlY3RlZExpbmVDb3VudCI6NzksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVmYmZhZjU4YWY0MmUzYjgwMjMzZWUzYWU1NjVlYmU3ZTFiYTliNjZhZjUwNDQ2NWUyOTRiMjhjY2I0MzMwYTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYxNTE4ZjdiOGE0Nzk3ZGJmZjUzZWQ5NGJkODkwNDNhMTEyNjI2YTk2OTliNjk0ZGZmYWJkNDJlYzAwNzZjMTUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjFiNTQ0MDdlNTZhNWQ5ZGJmOWNmMWFhZDM5OGI5NTU2NmQ1YzZkOTU0ZTI0ZjdmMTk2YjY3YjJlNzAwNDgyMmUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNkOWFlYzUzZWJkMzMwZmI4N2E5N2M0NGVkYzg2Zjg3NDBmMjk2MmM3YWJiMGQzMGU0OWUzY2M3ZTE2YWNlYzYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_43a47e6a6f1e4ba5abc198cba01033a6",
+      "statement": "BridgeClient is the REST transport: a requests.Session with a 5 second default request timeout and verify=False because the Hue bridge serves a self-signed certificate.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/bridge_client.py#L44-L57",
+          "version": "repo-lines-v1:sha256:d6c6d069ce8a3bcab033260006e1f81de14dd3b734e5f7e7c5bb580581789c06:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ4OTM1N2U5NGRiODFmY2I2MzQ5ODEzMjkyNWFmZmZlZDZjOTQzZjQwNzUxZmJhOTliNzA4OTEyMDI4MmQ1Y2QiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZhYTk2NzZhNjM2MWM2MzU0M2Q2NzRjMDVmODRlMTEyZmJmODhlYTI0N2VlOGQxNzg2OTQzYjZjZDQxMzY5ZDAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImIyYjlhOGNkYTRmZTZmMWFlOTExZGVjNjBkYzllYjUzMWVjOGQzN2I2ZTU4ZTgyYTMyNjkxOTk5ZDI5YzI2MjkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImY2NDk4N2QxYjdmYWIzY2UyYjgwZDY3MDE4YmJjZGVlZWE4NzU3ODE5YTA2NGQ3NWI5MGNjZGZjMTg5ODA4NzgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_f84f196d186c4fc2b3e8950937e09c15",
+      "statement": "EntertainmentStream is the DTLS transport: it launches an openssl s_client subprocess (DTLS 1.2, connected to the bridge's port 2100) with piped stdin/stdout/stderr and then waits for the handshake, with a _connected flag and lock guarding the stream.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/entertainment.py#L255-L271",
+          "version": "repo-lines-v1:sha256:9a0846a4a154db7ba34024ee39fdf68f3b7bf48a86b97e7f9e7827e809cad1d1:eyJzZWxlY3RlZExpbmVDb3VudCI6MTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg5NzFhZmMwOTAxNjI1YTY1NjNkNjI0MWU0Njk5ODVmMjcwZGY5YWM0YWJjMmRlYTc4YWZjZjg4NzUyMjcxOWIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgxMmY3YmRhNTczMTkyZTVlNTRhYTkzMzVmY2VlNzliZWYyNTJiNmY1NjkwNzIzNzUxOTVjMTlkNzY4MWZiZTYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjZiZTU5Yzk4MzU5N2NiZmIwOTgxOGU5NGYxOTBhNDk2NzNlYjVkYmYyNTg0NTA5NWZlMzNlNWE3NTIwNDlkOTgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjMwZDllMTU0MTEwNTBiMTQ0YmEwN2U3NDZhNGY3M2E3MTQ2YTFjNzkyODFmMjUyZWU5MzYwZWI0MWYzYWI5ZWEifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-15T02:33:14.256Z"
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:875023f8a511f0c5730e6e3ef7e4ec2db93c3d7bd1f199cfc1662dfabb2909ef",
+  "claims": [
+    {
+      "id": "claim_d30116e1337d466fb25f67b09ffa65a7",
+      "statement": "_setup_portal_session() talks to org.freedesktop.portal.Desktop / org.freedesktop.portal.ScreenCast over a pydbus SessionBus; each of CreateSession, SelectSources, and Start blocks a GLib.MainLoop that quits on the portal Request Response signal (with a 30-second timeout guard). CreateSession options include a timestamp-suffixed session_handle_token, persist_mode=2 (persist consent until explicitly revoked), and the saved restore_token only when non-empty. SelectSources uses types=1 for whole screen or 2 for a specific window with multiple=false; Start returns the PipeWire node id and possibly a fresh restore_token.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/capture.py#L239-L391",
+          "version": "repo-lines-v1:sha256:9d3b0f107e512c0e98b45bddb091ae35ac7841a91a7549e45947b4c11dbf1b5a:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUzLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiI3OThiZmVmOGUzYmQyOWM5ZWE3N2MxMDIwY2U1OGRmNmRlOGNmNmE3ODUzOGYyNWU0OWNiMWMyZjg4NjExMTJjIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiJiOTdjNzEyNDdhZjNjZDFlZGY1NTVhN2QxMDc1OTMxNTdmNmRjMmEyMmFmMGRlODJlNzc3NGFiZjEwZjhhZGUxIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiJkODhlNDgwN2FlMzk2OGI1ZjJhY2Q2NWYzNjU4N2I3NGY2YmZmMzcyMTIyMzY0MGU5NTczMjBlOTE2NjNiODM3IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiI0MmY0MDc4YmRkZjdhYmZlN2FmZTQwYWZhNzc2MWU1ZTM3ZTI1YmFiN2E4Y2NiZTBkMzYyYmY3YzQ4NTgwMDVmIn0"
+        }
+      ]
+    },
+    {
+      "id": "claim_161b996d40cb4971ae0d2fe036c26fb5",
+      "statement": "Portal restore tokens implement persistent screen-share consent: the class exposes set_on_restore_token_changed(callback) and AppContext wires it to settings.capture.restore_token plus save(), so a token issued after consent is persisted and replayed in CreateSession on later runs to skip the permission dialog. In capture(), if session setup fails while a cached token is in use, the token is cleared (callback fired with empty string, which AppContext persists) and session setup is retried once without it to force a fresh permission dialog; hosts that issue no token (pre-GNOME-47 / pre-Plasma-6) are told the prompt will recur each sync.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/app_context.py#L160-L165",
+          "version": "repo-lines-v1:sha256:3b3b28b3d3a1cc4283427a1bad1562b823175bbac6334ad59dfd75e3633a24cb:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYTQzN2QzZjhiYjdmOTNlMzdiMGU5ZGM2YzVmZjA3YjdlM2MyZjFmMDZhMTE3NzdjODEyZTJkODUxMjc1OWMwOCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYWNmNjAwZThmZTRmM2E4Nzg2MGFjMGQ4MDYwZDQ3MWRhZjJkY2JjZGEyYTFiOGU2YjE2NTkyMmJjZmM4MDg0ZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOGM5OThkNTNiZWM1NGZkMmU5NWY0Yzg3ODdkZGQzOWE0NGFlYTcyM2IwMTkwZGZmZDJjNWE2ZGY2OWQxNzI2MSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjEyYjQ2ZDYyMmFjM2RlODFjYjg1ODcxNzMwNDA1NjRkNWVmNjBjNjAzMDVhOWE3ZjQ5NmJiNzcwYTdkNTgyMyJ9"
+        },
+        {
+          "resource": "repo://src/lumux/app_context.py#L33-L38",
+          "version": "repo-lines-v1:sha256:b511518ae7b43fbf76f7cbc78bd8a7043b2461fc555be7095adcc0e12dcc98dd:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiN2Q3YjRjNmVlNThkN2NiZDExMGMyM2U1MTRlM2ZjY2YzNDQ5NDQ3ODNlZThjN2I4NzU0MmMwMmZjYmI3NDEyMCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNjQyNWZkOTQ2NDRjYTI4NmNkN2FlZTU1ODc1MjZhNDA5ZTUxOGIwZjc5ODBiNjBhMTdlODk1ZDIwZmRiZWU3NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYTgyZmNmOGVmZmU4ZWNiZjM4OGNjMmZkMGRlZTkyOGJmYWM2NjE1OTI5NGUzMDQyNzg0N2QxYzk3NTdmNzY3MiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTI2OTc2NjM5OTRkNzMwYjNiOTNjYzE1ZmU1MzdhYmE3ZjUyNTU2NTcyYjA2ZTMwODU4NjhhZGMwMzYxMTAwOSJ9"
+        },
+        {
+          "resource": "repo://src/lumux/capture.py#L145-L154",
+          "version": "repo-lines-v1:sha256:edc64c5261c6bc332351e8040ed4c94e94e473015a7e38b56038b6486cf7e28d:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVlNjNjZjI1NTI4NmIwZDIzZTE4NWYxNzFhYzY0MjYzYWVkNDgwYTE5N2RkMWJlZGNkMmNkYjQzYTRiNGRhNmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJkMDM4ZThkNjYyZTJmZWJjZjcxN2EzYzE0MjM3YzIxMjg3MWY3ZTY2NTNjM2JlNzk2OTAyNGJlMWZmYmMyNGUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUyN2MyOWJmZDg4MjFmYmNhODdjYmVhNmUwZmRlZWExNTU1YzNiZjgxNTliMWQ2OWVmMWJjODRhMTVjYjlmNjIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImNiZjRkODZiM2I1MmQyNDQ4M2QwZmRmODg1MTUyMzJlNmY3OGQ2MDFhMmJmZWU2YzZmMTlkODg4MGYxZjRjYWIifQ"
+        },
+        {
+          "resource": "repo://src/lumux/capture.py#L156-L202",
+          "version": "repo-lines-v1:sha256:d47e4c83c12a972a60bc54b5241557864723d9dc038c40674911182d6f5a4094:eyJzZWxlY3RlZExpbmVDb3VudCI6NDcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE1MTBhZjU4MGIxODRhODQ1MTRmNmI2NGMzNzNlNWQzYjI1ZjhmNTM0NGZlMjczY2ZjOTlmMjFiNTgwMWQxMDAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVlN2M5NTdiY2I0NGZiNjczYzk4YjAwNTBhNzVkMzgwODJkYjgxZDkxOGRlMzEzYTNmMDdjMTIzNTMwNmQ3ZWMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjU0N2RjYTBmN2Y1ODQwZjYzMzEwOTdiN2Y5NTQzNTRlZjY1YWY1YjViNzM5MzNhMGQzNGZjMjU5YTI0ZGFkOGEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjBlNDIwOWZiZGYwMDU1OTQxNjJiZjc0MDQ5YjdmYWRkNDhkNTE2ZDhjYWM1NDRmMjY4ZTJjZmFmYTI2M2I1ZDQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_68556eba0f3f4197ae046aa236134fed",
+      "statement": "_get_pipeline_configs(node_id) builds a ranked candidate list of 'pipewiresrc path=<node> do-timestamp=true ! ... ! appsink' strings gated by Gst.ElementFactory.find() probes: glupload+glcolorconvert+glcolorscale+gldownload+videoscale, glupload+glcolorconvert+gldownload+videoscale, v4l2convert+videoscale, videoconvert+videoscale, then unscaled gl / v4l2 / videoconvert variants ending in video/x-raw,format=RGB. With scale_factor < 1.0 the early candidates carry scaled caps whose dimensions are rounded down to a multiple of 4 (keeps RGB row strides 4-byte aligned and avoids odd-width caps some converters refuse to link); the appsink uses drop=true max-buffers=1 sync=false so it always serves the freshest frame.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/capture.py#L393-L466",
+          "version": "repo-lines-v1:sha256:abfee870c3f3ca51b595e86745550e89add6eacacbb33643fcdb6352016c3c81:eyJzZWxlY3RlZExpbmVDb3VudCI6NzQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImMxMTk0NmU3MDdhYjIzYTUzZWUzOGIzNWIxOTI1NTcwNWM1MDNmZjMzMDRmNGMyYzE1MDBiNzZkYTgxMWE0NWMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE3YTgwNDEyM2ZlZDdmNzAzMGNmN2EyMzkwN2I0MjlhYTMwNTk3ZTQ0ZDdmNDUzMDM1MWQyODA5YjdlMWFlYWMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImFlNmU1MjIyZGM3Njc5ZWE0Y2ZmZmY2YWQ3Yzc3M2U0YWRmYWMyODA1YWFmYjM3YmE1MTg4ZjY5NTlmYjU1NDMifQ"
+        },
+        {
+          "resource": "repo://src/lumux/capture.py#L73-L81",
+          "version": "repo-lines-v1:sha256:31c4f2b61839ef4ca603c2cf8952be31b9cb0c0c231394d2095a5622e4861caa:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYzM3MDQ0YjZiMWJiMmZiMTQyMWU0OWNhNjNhMjliMGM0YTBiNmQ2MGVmODc0MTRjMzkxZGFlMjBkNjc4ODQ5ZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNTZjOThkOTk2N2I0MDZiMzVmOTY1NTc1ZmY2NWQzZWRhMmRmYTI1ZTc4M2YxZTRmZmVkNTk3NDZiOWRjMWIxYyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYjQ4NTRkM2Q3MjE0Yzg1ZWViYmU0N2JjMmQ0YzI3ZWEzZTlhYmJhMmUyYjI1YzFjYjUyMzRhMzQ3YTJhMzA5ZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOWQ2NmJmNTEzMzIwNWVmYjk3YTA0YjdkZGY0NzYyNTg3NDBjMjUxZjYzNmNmZTExYTJjOTZhNGFkMzc4YTA3MSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_0ca7e5bd7ce34ee38c5eeecdb0a4cfeb",
+      "statement": "_start_pipeline() iterates the candidates, treating a set_state(PLAYING) FAILURE as 'mark config and try next'; when a running pipeline later emits a bus error, _on_pipeline_error adds the active config to _runtime_failed_configs (a set of keys produced by _config_key(), which strips path=/width=/height= values from the pipeline string so the key is stable across node ids and dimensions), stops the pipeline, and future starts skip remembered configs until stop_pipeline() clears the set. A scale-factor or frame-size change while running triggers _restart_pipeline(), which stops and re-runs the candidate loop.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/capture.py#L468-L564",
+          "version": "repo-lines-v1:sha256:bfc06facb88a7557111af154fc49a31155422dd79298094ca4c6d2d7b5780a44:eyJzZWxlY3RlZExpbmVDb3VudCI6OTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI3YmJkNTEzNmI5NjEwMDI4MmMwNDBkZjU0YTAyMmU4YWYxMjA5NGQwODhkYjU0ZmFmZDUwMTg0NjcyOWJmMWIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY3M2Y5ZGJlYzk1YWM1NGE2ODBhNmQzZDU4MzkwYjRkNzZjNzFjMTJiOTgzMThmZDQ1OWY4Mzk1ZmVjMDc4MmQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjVlMjkzYjRjYWEyZDY2YTAyYzhlODI0MTU2N2YyN2QxNDA4NmE0YmYzN2I3NzY4NGQ5YjZjOWRjNTUxNDUzOWEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjkwN2UxMTIxZWNkNmI0NTdlYWMyMDg4MmI5ZTYzZDNjZmM2YmQxZGY2NGQ5NjRhNGRkN2VjZDQ2ZWFmNWMyZjcifQ"
+        },
+        {
+          "resource": "repo://src/lumux/capture.py#L724-L736",
+          "version": "repo-lines-v1:sha256:d6e6c7eb408adaffcba6dfcc31370bfb0e21c37ad472f186f6478dbe97507697:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjkwMWE4MTNiZjA1OTZkOThkYTIwYmJhYzE5ZDBkY2JkNjAzMWZjZDI0ZjY2ZDRkMDg0NmI2NWJhYWEwMzJmN2UiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZmOWE0NzgzMzliZGNlZGRhNjc5YTI2ZTc1ODJmY2I2ZWMwNThjZDkzNDc1MDJmY2M3MjE4ZWQyNjMzMzgxODMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImEzZmE1OThkZWVlZWIxNzJmNjI3MDE4Nzk1YzJlOTQyMDQ5YmNkZDg3ZTUyMDFjMDliYzFhNWM4Y2FiMDZlOWQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        },
+        {
+          "resource": "repo://src/lumux/capture.py#L83-L112",
+          "version": "repo-lines-v1:sha256:49ad3f283f46c8f77403036f121d0832c134beb742aa69218fc0eb144dbf2ff5:eyJzZWxlY3RlZExpbmVDb3VudCI6MzAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI4MmU2ZTcxMWZlYjI4MGQ5YmQ1YTBlYjRmMjhlZDJjMjEyYTc0NDNiMjAxZDk0MmI4MGI0MjY2MmJiOTk2NGEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjM2NDM0MzNhY2I0MzhjNzYxNjhjNmYyNWZiNmJjMTlhNTNkNGZkYzc3YjZlNTA3ZmJhMjk3MTZhNWVmODdiN2IiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjI2ZDAxYWUwODI4YzE2ZjJmY2Y1OWU4OTE2NzVjMzBmMGRkZGQ1NzZmMzczZWEyY2YyZGFlMjJmOTY2ZDNjNTAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjRlY2NlM2VkMzgxOWYwYzhjNDJlNWQzZGVkZWNiYTY4YTNiNGQ5YzIwMWU2ZGIzZGRhZjAwYzA2ODhmMWNmZWQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_ca7dcbc9900943a08101a87576cfb597",
+      "statement": "Frame extraction takes the raw mapped buffer bytes plus a stride taken from GstVideo.buffer_get_video_meta(buffer).stride[0] when available (otherwise inferred from buffer size, since GStreamer pads rows to alignment boundaries); _extract_pixel_rows validates the buffer size and, when padded, builds a strided numpy view via np.lib.stride_tricks.as_strided and .copy() to detach from the mapped buffer. A failed buffer.map(READ) is logged as the DMA-BUF signature with the hint to install GStreamer GL plugins (gst-plugins-gl).",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/capture.py#L597-L660",
+          "version": "repo-lines-v1:sha256:8b886fa88cb0401d257d765e5ae55845186a597aadbebc88b55dff34366c7c5f:eyJzZWxlY3RlZExpbmVDb3VudCI6NjQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNjNmU1YjY1YjY3NDBmNjFmZTE0NmViYWU5NjgyNDM5OTIxZDYzZjU2Zjg5OGJmZjJkYzg5NTUyMjFjZDAyN2IiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU3MjQ0NTc1ZDdmZTllMDg3MGZkZTQ5NzhmNmQxNWRlMmI5NDg2YmVjMWU5OWY5YzZhYjY5NjFjM2MzODFmNzAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijg5NDVmNWQ3ZGE1YmJmZmEwMGUzNGM1ZjhmMjE0ZGRhOTQxYmI3YTkyNjUyMTgxM2JiMjQ3ZWYzY2U0ZWMwYTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImZhYWVhMTM3ODE3MjdjNDI4NzE5NWRmZmM2ZDQ4ZGJmNjM3Y2I2ZmY4MzM3OGRlZDYyMDhiNzY4ZjJlNmM2ZDgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_c46520e061f648608360702da60d6f3a",
+      "statement": "_on_new_sample converts each frame to an HxWx3 (or HxWx4) uint8 array per format: BGR is flipped and copied, RGBA/RGBx are kept as 4 channels, BGRA/BGRx have channel order rearranged to RGBA, 15-bit RGB15/BGR15 are unpacked from a uint16 view with 5-bit to 8-bit scaling, and anything else is assumed RGB; the result plus the raw bytes are stored under a frame lock.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/capture.py#L660-L708",
+          "version": "repo-lines-v1:sha256:226f998c201383e7fa58897d37d543c9580fe7e749ef20146d0222e51e52d814:eyJzZWxlY3RlZExpbmVDb3VudCI6NDksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU3MjQ0NTc1ZDdmZTllMDg3MGZkZTQ5NzhmNmQxNWRlMmI5NDg2YmVjMWU5OWY5YzZhYjY5NjFjM2MzODFmNzAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYxNTE4ZjdiOGE0Nzk3ZGJmZjUzZWQ5NGJkODkwNDNhMTEyNjI2YTk2OTliNjk0ZGZmYWJkNDJlYzAwNzZjMTUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjU2NzNjZjVhMjQzZDE3OTZjZjBmZDA0Y2I1ZWUwYTBmZDNiNjM5ODY0ODVkMTEyYjhmMGMyMzkwOWM1NWViYjUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNkOWFlYzUzZWJkMzMwZmI4N2E5N2M0NGVkYzg2Zjg3NDBmMjk2MmM3YWJiMGQzMGU0OWUzY2M3ZTE2YWNlYzYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_2a55c790168c42d887f23a2f283a6170",
+      "statement": "_process_image applies the black-bar crop region when a detector is attached, then scales with PIL bilinear only when the pipeline itself is not already emitting scaled frames (a C-contiguous copy is made first); update_scale_factor() clamps to [0.01, 1.0] and restarts the running pipeline when the computed target dimensions actually change, preferring pipeline-side scaling over a second full-frame CPU resize.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/capture.py#L204-L237",
+          "version": "repo-lines-v1:sha256:a0531e9dca7febbac94003c4f48fd837b5c3fcae7f16825a5f54a08bc35df0c3:eyJzZWxlY3RlZExpbmVDb3VudCI6MzQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk4ZGI1MzRmZDQzODQ0NTUzZmFhOGIzNmMzZmUyNjk3ZDg0MzE2OTUwY2U1NWYzN2ZmNjM3N2UxN2JiZTkxZmMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNjZWJjYzQyZGUyN2JiNWJhOWM3NTNhYWYxMjZlOTIwMjhmYmY2MTc2MGVmYTYwZTRjMjQzM2FkZGJjOTdmZjQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImU5Y2ExNTQ5YjhkMjNhYWU2NGVkM2RlMzFkY2FlZTBiMjE2YjQ3MjM0NDA3YzM3ODcyMWZlZTBiYTBiYzM1YjciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImFhMGQ1MDhhMDNiNDkyODFhODdjYjFjZjFlOWQ0ODI2ZTEwYjgzN2VlY2EyMGM1YmE1YmUwZDkwN2FhOWM4NzcifQ"
+        },
+        {
+          "resource": "repo://src/lumux/capture.py#L83-L93",
+          "version": "repo-lines-v1:sha256:f8b3944d2b6c6f726a07ef22b1dee0aa4ad3a917a072857189e66a9d03d43f70:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI4MmU2ZTcxMWZlYjI4MGQ5YmQ1YTBlYjRmMjhlZDJjMjEyYTc0NDNiMjAxZDk0MmI4MGI0MjY2MmJiOTk2NGEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhhMmZiZjZjMTNhNDRiZmYxYmY3NGU3YTI3NjNmZmIwNjkyYzg1YzI2MTA1ZjViZTMwMzA5YTE1M2UyOTZjZGUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjI2ZDAxYWUwODI4YzE2ZjJmY2Y1OWU4OTE2NzVjMzBmMGRkZGQ1NzZmMzczZWEyY2YyZGFlMjJmOTY2ZDNjNTAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjJiNzNjZGE4NTJjOWRmYzNiZDk1ZTI5OTA0MjU5MDczZTg1MjdhNjRlNmY2YjI2MzU2ZjI0NWZjNDljYTUyM2QifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_4669135345f3417d8cf272edbb33ddbd",
+      "statement": "BlackBarDetector computes BT.601 luma (0.299R + 0.587G + 0.114B) directly on the numpy array, reduces to row/column mean luminance, and walks in from each edge counting contiguous lines whose mean is at or below threshold (default 10, clamped 0-50); detection runs every detection_rate frames (default 30, clamped 1-120) and the returned crop lerps toward the target at smooth_factor (default 0.3, clamped 0.1-1.0). Guards: an axis is reset if cropping would leave less than 50% content, each edge is capped at dim//2-1, degenerate crops re-expand to the full frame, any exception resets to no-crop, and _should_crop suppresses cropping unless the crop differs from the full frame by more than 2% in either dimension.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/black_bar_detector.py#L159-L212",
+          "version": "repo-lines-v1:sha256:b0e0cacf571e1270b2b2bee66e7316f33c51aa34dac4caa84ce1c089f2af0f25:eyJzZWxlY3RlZExpbmVDb3VudCI6NTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU0NDFkNjc0NjY1MTdlZWRjZTgzNzYyZDVlNmUxMjgzNGIyZjQ2MGMyYzU3NmMwNGVlOTQzNjUwMGJjNGJmZWYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc1NWYxMGM3ZGY2NDJlOWNlNTc3ZDY4OGU2ODRiNmFlN2JhNTIzNWMwMThkZTFmYjhiNjk1MWI4ZDQ3OGZiN2IiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImIyYzIxNDk2ZTY5YzBlYjYxYjFhNGU0YjJlZDRlN2EyMDY0NzE4YzI5Yjg1MWMyOTA3MTNlYzViYWU1ZGYyZjEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjdkYTExNGU2YTU1MmMyYTE2ZWFmZTc5OTdlN2U1NGRhZmRhN2E5ZTYwNWQxMmM5YTY5OTgxZDZmY2YwMzAyODkifQ"
+        },
+        {
+          "resource": "repo://src/lumux/black_bar_detector.py#L214-L236",
+          "version": "repo-lines-v1:sha256:6e9b4f3c012fea0cdbf917d0b593f6b4bad59c49fee1a49e14551c5dea9de6ae:eyJzZWxlY3RlZExpbmVDb3VudCI6MjMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjkwM2I4MDcwNzdhYjk0YjllOGZlNWViZjJmZGM5YjI2N2I4ZjY0NzA2MDUzOTViMGUyZjA0MWU5OTMzM2Y4MWMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjM4NWE3YzExZWYyODBjNzdhYmQ3ZTI2YmIxMTVkMDRlNDhlNzJlZTdmZDM1OThhMTA3ZDExN2FkMTMwY2M3NDkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImRjYjczMmUyM2Q5MjVhMThkNDA0MDhmNThlODY2YjcxMDcxZTc5MWY3NDljMjY0YmVkNDQ2OTAwNDA1NzY1MDYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImU1NjA5MWQzYWJkNjRiMmY0ODM0MWYxZGI1YjQwOWJlZmNmZWNiNTMzNGUwZGM3Zjk1NTA2MGU0MDc1NzA3YjEifQ"
+        },
+        {
+          "resource": "repo://src/lumux/black_bar_detector.py#L238-L285",
+          "version": "repo-lines-v1:sha256:6c953839783df504a817f35afe6960da0e421b9de7742f21c0a14a6af5351150:eyJzZWxlY3RlZExpbmVDb3VudCI6NDgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU4ODQ4NjRlZjJjOTg3NGYyMWE3NWIxY2RlYzA2NGNiNmYxMTYwMmRmNTIzODhiNjZlNzM4MzM4MjU5ZTYyODUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI3ODI3YjA0NGFkMzgxYTExZjg1NWM0NjMxYjBjY2Q2OTU5YTkyNzMxN2JhNDYwYzkxNzI5YjIzODY1YzQwMTYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjAzMzk3Mjg3YjAwMDY5NTcyMWIyNjU5MWE5YjdjYTg2ZjRjMzM0ODNlODJiZDZlMWQ1OGYxNzEyYWFkNzE1ZDIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjVlMTUzYWRhZmFmYmJiNjcwZjZiMzdjNmNiOGY5YTJmYmJhMDVmZmE3ZDA4NDdiZTlhMTc1MmE4ZmFhYjVkNzEifQ"
+        },
+        {
+          "resource": "repo://src/lumux/black_bar_detector.py#L42-L75",
+          "version": "repo-lines-v1:sha256:52660b5a390ba9efc8c285d8f0c8e3894d7c928504585baf654d239bac8ef4ec:eyJzZWxlY3RlZExpbmVDb3VudCI6MzQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImUyMDE1OGQ2YzY1ZGZkMGYxMGQwZGNjOGZlMDUyMmU4OWZlZmRlNWYyOGRiNWEyZTQ2NWUzMTAzZTA0OWEyNzAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE1OWE1Y2ZmYmIyNjljYWU0OTA5NDc4NDQ0Y2Y5NjMwMDQ1NTAyNDJiZmY1ZThhY2E5YTljMTM2ZGNiNzIyMDMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjRmOTQxMDQwODM0MTUxYjg1ZWZhOWJiYzhiNWE4ZTA3MWU4Nzc5NGFiMzFiMTBmZDM5MDVmODVjOTBiNmQwZjEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImI0NjkzZGY4NGIxMjVmYWY4OGM2NGE2MDEyZDY1Yjk3Mzk0OTBjZmJhMTA0ZTRjOWQwYzBlMWNjMmM1Njk1NzQifQ"
+        },
+        {
+          "resource": "repo://src/lumux/black_bar_detector.py#L92-L137",
+          "version": "repo-lines-v1:sha256:cb4d05d789e636e2b1d50e5f282e3d0ba2bde05f61324d8fd0680f373873d5c6:eyJzZWxlY3RlZExpbmVDb3VudCI6NDYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJhMzY3ZjdhM2FlZjVkZWRmMDllMWVkMzYwMzM2NmMxY2M5MTc1MTNjYjk5ZGUyMzNjNzU4ZmMwZDY3MjNhMTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVlN2M5NTdiY2I0NGZiNjczYzk4YjAwNTBhNzVkMzgwODJkYjgxZDkxOGRlMzEzYTNmMDdjMTIzNTMwNmQ3ZWMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE2ZDNkZDRkNjRjZDEwZDg3ZjRmMDI1YjliMmJkZjQ0OWQxOTIyYmVmOWZhYmFjYzQ4Y2FhZGZkZjFkMzIyZjQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjcyNGQ4YTJmNTc4NjI4ZWQ0MWUxNmIwYmE5NTdhNmIzMGMxMmQzNzE2ZTQ4Njg5YzM1ODUwNjIyZmEyMzhiNzUifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-15T02:33:14.256Z"
+  }
+}

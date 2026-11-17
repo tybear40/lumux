@@ -1,0 +1,262 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:970495237e2ff57b90c58a2532993c8b18ebbbe820c466ab26b8c9c25ea3fb80",
+  "claims": [
+    {
+      "id": "claim_09240dd3f9b74b7690ef78a4b688b8d1",
+      "statement": "MainWindow is an Adw.ApplicationWindow composed of an Adw.ToolbarView with a strict-centering Adw.HeaderBar and an Adw.Clamp (max 800px) content area, with default window size adapting to mode (800x700 with preview or in reading mode, compact 500x500 otherwise).",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/gui/main_window.py#L14-L23",
+          "version": "repo-lines-v1:sha256:3ee224ea6019cc6dffef3008ddaf8db2ff46bda4560855d72ce5a8b67565dadf:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdjYmNlYmE4ZmVhNzk1Yjc4ZDc3M2FmMjgwNzI0ZThkNWJmYjljYzk4MzkwY2MxOTdjMTcxYTI3YTg4YjYzM2EiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRkMTI4ZmNkYmNhODYzNjQxMzAwYmUxNDg2NjBkNWM0YTU3YjE1M2Y0NzRiMjc4ODQ1YjhjOGJmOWU0YzFiYzgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjZhN2M0MmQyMzA5M2QwZGE1NzViZmRhYWIwOGQ4MTM2YTA1MTFkZWFiNDQ4ZTQxMjY0OGQxNmJmZmY4M2UzNDMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjllMzUwODdkZWMxYWI5MDI5NzQ1MTg0YzUzN2QxOGQxNjZkZWVlMzRlZDc3NTY2M2U3MjQ4YTg2NTRiMWM4MWEifQ"
+        },
+        {
+          "resource": "repo://src/lumux/gui/main_window.py#L189-L242",
+          "version": "repo-lines-v1:sha256:bbf672825351b6160f0ebcfaf86c57bd596dbcbb69bb75a05b0219d744bf4d16:eyJzZWxlY3RlZExpbmVDb3VudCI6NTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUxNTc3YTRlZmFlZDdlYjhmNzMzZjQ0NGJlODIwMWY2NjA4ZmZmZTI1Mzg3YjA2ZTIzNWE2M2MyZDY1Y2IyZTMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU1YjI2ODE1ZmQxYTBlY2RmMTZhZGMzODdlZGY2ZmY2OGJiZWNiY2I0YmFiYTM2ODE5ZTBkZjI3NjNiZTNhYWYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjgwMWMxYjJhZWJkMmRlZmYwY2M2NDQxODVhYzdmMjU4Yjc5N2YxMWZlNWZiN2QwMWJjZmQ1MDBhZDE1ZDBlMDEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjdjMTQwNWUyM2UxYzRkNWY0NDVlZjQ0M2VjOTMyOWU0NDcyYzhhYTkwNzZhNzQ5ZGQxYWQ2Njk3ZTQ3M2QyYjcifQ"
+        },
+        {
+          "resource": "repo://src/lumux/gui/main_window.py#L736-L744",
+          "version": "repo-lines-v1:sha256:49b38b03c06d9c9539aae7fbe2239b3a6aee956084a50afe44e437d3a59d5dc1:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZTc0NWRiN2ZlZDE3OTQyOWUyOWFlODE2NDc4MzRjNjE3ODFmMmFiNDEyN2QzZGFjYWUxMmZmMTU0NGM1ZDEyMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNWUwZmU1ZjdjYzM1NTJiMmM2Yjc2M2M4MTNiOWY0YTM2ODRlMmVjODA5NGQ2N2I3MGE5OTkxZGRiMjU2Nzk3YyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYWMyMmVhNjAzODNlYzQ0Yzk4MWRkMjgzZWRiYmRiOGIzODkxZTY5ZmNmMDU4NTlkMjQ0Yjg0YmQ5ZjcxYjYyNyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_85382f8d9ed34dafbacc72cb0d389cd4",
+      "statement": "The main window runs a 100 ms GLib timeout loop that drains the SyncController status queue and updates the status card, sync button, zone preview, and FPS display; there is no per-frame UI update path.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/gui/main_window.py#L53-L63",
+          "version": "repo-lines-v1:sha256:62bdd535bcedf80d34e3dc303a5e89250bb35e4a2f6f6cc73970346d13a660cb:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNkZjMwNjlhOTZjZDliNjEyMDIzYjhkMWJjNGFkMDdmMDVmNTZjNDMwMzJjMzYxOTQ3M2EzYTZjZWIwYTVjZjgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVkOWZiZDVlYjkzYWYyN2ZmODlkN2JkMGQxN2JhMGQ4OTU1ODg5ODA0ZTI2OTg3Zjc0MGI5NWVjYjA2OWJlZWMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjRlY2FmYTliYmFmMDM0ZGIyODQyNzQzMDY5NTYzNGNhMTI4NTdjM2ZkZjMxYzU4MzVmZmI5YzNlMjhhODg4ZTYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImIzZGI1NmVmOGQ4MjE1Yzc5OTBiOWViN2QzMDgxZWQ4ZjFmYWIwMGVhZWFiODVlMTcwYzBiMThlYTQwZmEwYzIifQ"
+        },
+        {
+          "resource": "repo://src/lumux/gui/main_window.py#L745-L791",
+          "version": "repo-lines-v1:sha256:e1c01d708f79bb4146e3774ba06836b3e4bf8a6ce8023137f080007ba8c5d562:eyJzZWxlY3RlZExpbmVDb3VudCI6NDcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRjYjY0NThiNTJlYjg4OWNmOTJkNzE1NTVkYmM2ZGFlOTRiMTdmNzFiZjNkODVhNTY3ZWEzNjE4NTIxMWY2ZmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImY5MzQ5YWFmOGE3NDkwYTdjNDhkYjdlZDQ0ZWEyOTU3YTdjNTU2MTc2ODgzM2RlNDA4ZDMzMDhkZjk5NGU4ZjMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjdmNjE3ZDA3MWZkYzAyMzJhOTdmZTNjNmQxYTVjNGY5MzFkOTRmOTViY2RhZDk1MTFjYzljYThiNDk2OTZlNzgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_ea8308e5372b41f7b36989a8d0b3b37a",
+      "statement": "The status card carries four CSS state classes (status-disconnected, status-connected, status-syncing, status-reading) each with a distinct background and icon, and bridge status fetched asynchronously from AppContext enables or disables the sync button and both mode toggles.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/gui/main_window.py#L109-L170",
+          "version": "repo-lines-v1:sha256:4c7eed929b585f38444155470e093a7e42931ac62ce3130a8c3237dbfb33097a:eyJzZWxlY3RlZExpbmVDb3VudCI6NjIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJhYzk2ZGM3ZDAwNjdhMTlkODE2MmMxMTY2MjNlNDc0NTliNTBlZGFiMDllOWUxMzFhZDg0Nzc2YjJjZWJjNTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjliNDVlODMwNGRhMDM3ODY2Y2VhYWY1ZGI2NGY0YjE5MmQ4NTM2MjkxOWE5ZmE2ZGExZmNmZTg2NDQyMTYzNjMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImJmMmVkMjc4YmIxZThiODk3MzJjYjA4NTU1MmU4Y2YzMmU1OTE5Njc1YWI4OGM2NjAyOTY3MjY0MmMzMDI3OTAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImNkMzZlNWQ5YTE4MDkyZWYxNWQxZGZkMGNmMmQyMmYyZjVhYTM0YTVjZmYwNTk5NDBlODhlMjFhNTdmYjg0NDQifQ"
+        },
+        {
+          "resource": "repo://src/lumux/gui/main_window.py#L685-L735",
+          "version": "repo-lines-v1:sha256:df3e084d050aaaf9c01b6a3e307c156eca3b44f858ffde579a9105daaff41397:eyJzZWxlY3RlZExpbmVDb3VudCI6NTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA5ZGZkODA5ODI2NGViNTIwYzJjMmQ5ZGUyYjIwMjk4NDYwNDRjMzAzODAzYmQyNGMyN2VkOTdiYjNiNDdmZTMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc3ZWY3ZjI5ZGYyM2ZlNDk0Y2I2YWNiZTFiNjI2YTQwOWI0Yzk5MzkxZmU1YmNjMzc4Y2Y1ZmUyMGRjMzdjNDUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjE1YjEzNzM0NzE4NTY4ZDNkYTk1ZjQ5NWIwOGU2YWE0YjhmYmIzNTFmZDI1YjA4MWNmMGY3YzgwZWM1Y2QzNTIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_a57d3a290d6e4160967246992008c358",
+      "statement": "Two grouped toggle buttons switch between video and reading UI configurations (video shows controls/preview/stats, reading shows reading controls without preview) and resizes the window, and the ModeManager mode-changed callback keeps the toggles and status in sync when the core changes mode programmatically.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/gui/main_window.py#L244-L356",
+          "version": "repo-lines-v1:sha256:7c91c7e14d02766992b187282737618183881191fd3512df1b10882bdc62ecfb:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEzLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiI5OWE0M2FmODhhMWZmMmYwMDM3MGNjMDg4ZDgzNzY4NzA4ZTBlNDQ0Yzk0NzZlNTJjYWM3Mjg3OTk5NmNjY2FmIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiJkM2Q3OGJiMGRmNDgyMTkxMzFmN2I1NWNmMmM0ZmUzZmJkYmRhNzNmMGY0YWEzMDRjNTMzNjY5ZTk2YWI2OWMxIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiIxMTVkMDRjYjRiMWRjM2YwMmIwZWU2NWQ1YWMzODU3Mjk2MTFmZjk2MmE1ZGVlNzBkNmJlNDgwMzI1N2ZlMzlmIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiI1ZmEwNjhhNDUwY2IyMDY4MWJmYzRlZThiYzExZTNmYzZmZGUxMmNjNjFkY2IwNGE5NmEzMTU0MmE2ZDc2NDI5In0"
+        },
+        {
+          "resource": "repo://src/lumux/gui/main_window.py#L550-L615",
+          "version": "repo-lines-v1:sha256:fd529260b4922533033b22eee893dc1e67a60b35e267598c9b87fcad7d1dbe16:eyJzZWxlY3RlZExpbmVDb3VudCI6NjYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImEwYWFkOTM4ODM0OTM3NWRlYTE5NGU1YTJlN2U4N2NlZjU4YzFmNmRjNjVhMTFlMGQ1ZmQyZmEzN2JlNGFiYWEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU5MDlhNTNhNjE4ZDAyOGUxZDMwMDBjMGE3YWJjZWVjYmU1ZmIzN2Y0ZTUxMWVmZTQ2NjQzZmFkNmU2Njg3MmYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQzODdkZDJmYzM0ZTA3MDJmMzNhZDU5ZTAxYzU0ODRlOGQ0MDYyZTRjMzE3ZWVhZWNiZDkyYWEwNzI3MDA3YTgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImY1MTQwNmQxNjgwMjFkNjEzY2E4NDExODEyMTE2NGI2ZDIzYWY0YjQwYmYxMjVkODA3MDI4NmI3NGIxZThmMDkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_4cb3917f5d7d4456aebbd949d5b8911c",
+      "statement": "Reading-mode controls consist of eight preset swatch buttons, a Gtk.ColorDialogButton seeded from the stored CIE xy via xy_to_rgb, and a 0-254 brightness scale debounced 150 ms; every change writes and saves SettingsManager then switches to or updates the ModeManager reading controller.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/gui/main_window.py#L416-L530",
+          "version": "repo-lines-v1:sha256:385dfb84041f2a3b8249973e1f0cb52a912babd8ad3a1453d6f76725ad2e8bdb:eyJzZWxlY3RlZExpbmVDb3VudCI6MTE1LCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiI3Y2M1M2E3YmQyMGQ5OWU3YjYxODYwMWQxMGViOWU5NjE3MDc4OTBmN2U4ZTUwODc4NDAwODE3NTRmNmRiYmVkIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiIzYThhNjZiMTRmNTA4Zjg0ZjI0NTk0OTFiYjE2YzU2YWFhMWM0NGJiMzAwZTU1NzlhNjU3OThiYmYwMTM4ODExIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiIwMTViNzk2NmEyZmU3MmQ0NzEyYTAzOWZhNTFmYjlmZWYxYjhmNGVmZTE2ZjE1OGI5MmM4MDgxMjBmN2NmMWI0IiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiI2MjQ1OWIxZGI1ZWU0ZTAyMWY0YjI1NzliMDQzOTg3N2EzZjM5NGJiZjUxMmZlMDlmMjZmMDRlMDdkMGI4MjYxIn0"
+        },
+        {
+          "resource": "repo://src/lumux/gui/main_window.py#L617-L658",
+          "version": "repo-lines-v1:sha256:dd706f34a1bc76b473ff088b885dee2384880830dedeccf1d05ac7f6935b189d:eyJzZWxlY3RlZExpbmVDb3VudCI6NDIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUzZmVlMzFmODI0ZGJmOTA4MTRmOTJjYjZkY2JlNzdiZmUzNWFhOTgwOWE2YTkyM2YwN2FiZjM0OWM4MGUwZTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU1MDMyZTk2NGQwOTMyMzUxZTVkMTg1MjY5MjgxYjE3MWEzYTA5YjA4YjI4NmU2NjFlYTQ3MDMyM2M4MmViNGQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImNkZDBjNzI1Zjc4ZTk3MDQ0MzgyMGUyYjU2N2ExYmQ4NWUxNGE5NDcyNTFmYzQyMDdiY2M4Y2ZjOTYwZjc0MDYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImU4MGJlNzZhYTZmNDFiYmZkNzRiOTI4NTQ1NWE5YWU0NGNlZDkxYTZlYjMwOTI4ODRkNzBiYjc4NjczNTE0NzgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_a0b2522fc37e49ceb20c9c25fde589c5",
+      "statement": "The window intercepts notify::minimized to hide to the tray instead of minimizing, and do_close_request hides the window when a tray exists, destroying the tray and turning lights off only on a real quit.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/gui/main_window.py#L86-L106",
+          "version": "repo-lines-v1:sha256:ca539fe47fa34c515ed3dd17a69f479f173aa35d10ce0e45a5267408fada143d:eyJzZWxlY3RlZExpbmVDb3VudCI6MjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdlNWI3MTg4NzdiZGNhZjljN2QyZTUzNTc3OGI5ZTAzMzljMWIyM2JkZDU1NjdlMDRlODgyNzJjN2VhNGZmOTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU5MDlhNTNhNjE4ZDAyOGUxZDMwMDBjMGE3YWJjZWVjYmU1ZmIzN2Y0ZTUxMWVmZTQ2NjQzZmFkNmU2Njg3MmYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjBmNWRmNDViOWJkNzBlOGQzYmZlYmI4ZTNjYzU2OTZmNjA2ODFlYWNjOTY1MGE2MDNiZTAwMDBlOGEzOWYxMGIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImZiODFkY2ZjMGQ5MDkwZGFlNWEwZTA5M2VlMTQ5NGQwZjA1OTRkYjMzOGIxZjEwZWQyZGY3NDUxMGM3NjQ5N2YifQ"
+        },
+        {
+          "resource": "repo://src/lumux/gui/main_window.py#L861-L884",
+          "version": "repo-lines-v1:sha256:0f29e99171542dacc3f3351dc1df4545a1c1253817f712b9bcb8d8ce3f4c6aef:eyJzZWxlY3RlZExpbmVDb3VudCI6MjQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjljN2M5ZjcyZmRhMzcxMmY3YmY1NTcyYTE3MjI5MTZmMzljMWQwM2IwNDg4ZWZkYTJiYWUyM2NhOTBkODBkZTQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI5N2M3MTI0N2FmM2NkMWVkZjU1NWE3ZDEwNzU5MzE1N2Y2ZGMyYTIyYWYwZGU4MmU3Nzc0YWJmMTBmOGFkZTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjdiMjUzMzdlNTcyNTBlNTNjZTg1NjhkMTFlMGQyMjE1NmQ0YWNjMTYwY2Q2YTAxMjUxNjdlZGEyY2UxMjI4MGEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_d66026d579394be7a56ec3741053b6ce",
+      "statement": "SettingsDialog is an Adw.PreferencesDialog with search enabled and six pages (Bridge, General, Capture, Zones, Sync, Reading); on close it writes every widget value back to SettingsManager and saves, after which the main window reapplies settings and re-checks the bridge.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/gui/settings_dialog.py#L14-L27",
+          "version": "repo-lines-v1:sha256:703ed9b6b5853bb41a3048db970aade76f524e1a15761d8048df72dc01104c39:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg3ZGIwNzFkMmM1YTZiNDhiMmJlMWVhMmY2NDk2YzJjMmIxMmM2NzQ1NzdlNjYzNTc1NDRiY2E3NWJmOGIzNTciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjhhMGE3NGUyZjhjNzA0NDdkZmZhM2JkNGNiYWZhZjA3MDVhN2YxNTBiYWYyNmYzNzkzNDM1ZWFlNzJiZTEwODIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjcxZmEwMWZmOTMwMTMxYjM4YjVlZGYzY2ExZGQyOTI5N2I4YmRmNTJhMjJjMTZkZWIzNzc2M2M1NzczNmNiYmEifQ"
+        },
+        {
+          "resource": "repo://src/lumux/gui/settings_dialog.py#L28-L380",
+          "version": "repo-lines-v1:sha256:c178b8f4779618b922cba9b77f37016492f7eaa34ddfe11feb6662a4ae9f12c6:eyJzZWxlY3RlZExpbmVDb3VudCI6MzUzLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiJlMmU1ZGUyM2RhMGZiNjYyNmMyMzJjNWM4MWU3NjgxNWU2ODkzYWIzYzFlMDJhYzk2ZTNjNWY2NTViYjU5ZTQwIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI3MDVlMjY3OWQwMWFkNTU4YjllZThlMGRhY2E4MDdkYzg0NDliNzI0MzNjNDJmZTgxNmFkMzA4ZjZlZGFiYWZhIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiI0NzM5NzljNmE1OWI1MTk1OWU1NDhiMDVhZGJiZjhhN2ZkNTQyMTUzMmZlMDRiMWY0YmE3NWU3MWRiNTFjODZhIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiI5MTllNjU4NzMwMjczNWNhYWMxZDAyOTljMWYwNWFkZTdkODZmN2JhN2U4YjUzNjNhNDEwOWVhMzFiNzk4YmJkIn0"
+        },
+        {
+          "resource": "repo://src/lumux/gui/settings_dialog.py#L565-L663",
+          "version": "repo-lines-v1:sha256:e5c4168d425252749e65bd32b8a8d0c89c5e9896c9c959968d219cc46d40edea:eyJzZWxlY3RlZExpbmVDb3VudCI6OTksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVhMTQ2M2IwZmNmM2UxZDhiZDZmYjdkNWQyMWQzNTgxNDVhYTkyMGZmNzJlNWMzOGVmODM1MmY1MWIxZmNkOWEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI2YTU5YTJmZDBkYTZjZGVmMjYyNDQwZjhjMmE3Y2Y3MzUzNTVjYzViZjVjZjZmYWM5N2Q1MDBlNGNmNDg0YTMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQyY2MyMTM1MzM2ZjEyY2EwNTI1MWEwN2E5NTlmNmY2Y2ZkZTRmYjZhNzU4ZjFkNTA5MGZiYmIxNWQxZjkyZjgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_5c178470a42d40179a6da8c447b98486",
+      "statement": "The Start at Login switch immediately calls SettingsManager.enable_autostart() or disable_autostart() on toggle, and a failure inside a sandbox shows a dialog with the flatpak override --user --filesystem=host command to grant host filesystem access.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/gui/settings_dialog.py#L132-L139",
+          "version": "repo-lines-v1:sha256:39ea9c76cff93ef0f91ace293894e730251ca3281abfcdf77200e7cbeb474f59:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTEwZjdjOTFkY2U0MzMzYmUyZGI0ZTljMzdjNTZjYjU0MjA0Mzk5MzIwMjkzNzkwMjk5MTJkNjFkMmUwMWI2YyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNTZlNTFlODJmYmUwYjg2MzdiYzJkNmZmNmM5ZmQxMzlmZDYwNWVlZmZhYjUwNDFkYjQxOTUyOWRmNGEyZTkwYSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTljOWZkYmFiODgxNmVjNmMyMjQzZDgzZTcyYzUzOGNmOThjYTYzMjdhMGYwY2M0NjgzYTc5ZTQ0NzQ1OTI2YSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYmZlYWYwMDdmNGEzMjFmN2E1OGJkZTc4ZGFhOGEwYjAwNTU0ZTc0YzcwYWJjMjRiNTFkZjJkMjIyODgxZTA5OSJ9"
+        },
+        {
+          "resource": "repo://src/lumux/gui/settings_dialog.py#L481-L564",
+          "version": "repo-lines-v1:sha256:0e078fa0bca34d8d406e29567c6359cafeead274e5bad568bf9d4236f8813b4b:eyJzZWxlY3RlZExpbmVDb3VudCI6ODQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYzOTQzODE1Zjk2YTk5NzJlMTI5NjA4Yzc5ODFkZjg5M2ZiNmUwMzAyZjhiNDI3OGRkZTYwNmQ3ZWZhNWZmODkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImI2YTdkYzcyNzAyODE0YTUyZmI1NzEwMGY5MGMzOGI1MzRlMjc3OTk0ZTI1OWUxNmZhZDMyNzgzZDQ1YTAxN2IiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNhNTY5MTdhNWQ4N2RiNTk3Zjg3MDc4MTU2NTBmNWJhYjcwZmUzNjJmMjUxNjVjZjZiYTA2YjhmNzIxMzQxMGEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_2175e273f6524511a879903459f690e8",
+      "statement": "The Bridge page hosts the BridgeWizard via a Setup Bridge button, and on wizard finish the dialog writes bridge_ip, app_key, client_key, and entertainment_config_id into SettingsManager and saves.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/gui/settings_dialog.py#L382-L416",
+          "version": "repo-lines-v1:sha256:d451dc40ca7e57e75cfe7735996f8368ef672d9d9e32420f676353628f2f8db6:eyJzZWxlY3RlZExpbmVDb3VudCI6MzUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYyM2U1MjZiNGYzNzMzOWMzMGQ5MzI5OTY3ZDY4NjMzZGZmY2RjMzRlM2JhYjk5M2E3NjE0MDNlZDQ0YmQzNGMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE5NDhlMjk5NmZjZTI5Njc4MzgyMDE2YzhjNWE4MDA0NTczMDdkMzFlZmE5NTk3MTBkNjg5NmExZWIxOWZjOTkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjU5OWU0NzgwMjRmNTFjZWNlYTJmMWMwYTMyY2MxZmVjNjliZjM3OTk4ZjQyZGJkNTFmNjBkNjJiZTMxMGNhNDMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjUzZDhjYjk3ZjFmNGMwYmZmYTU2OWY5MDY3ZTdkMjMzYTViNGFlZTNjMzZjMGZiMmYzMjIxNGUyNWY3YjY2MGUifQ"
+        },
+        {
+          "resource": "repo://src/lumux/gui/settings_dialog.py#L82-L88",
+          "version": "repo-lines-v1:sha256:13fb4f0677933ee2be1d3ba636c81712575453e3b54b0954cbe91513e2ff0507:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODdiODExMGQyNTJiNzZlM2FmYzk0YjQ0MDY1MTNmOTJjOWRiZGY5MDA2MWQ2Y2NkNjlkM2VkMmI0ZmNkNmVhMiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOTQ5MDI5OTFkNTYwNTM3ZjZhZjRjYTIzODgxZDNiNzVjNjM3MmRjOWMzMmViZGE2MDE1YzFmZWNiMDUzZWI5ZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNThjODFkNjhkYjIzZjkwNWY4ZTJkMzhjMjJiMTMxOWE5NmNiNjM0YjM1MDY5ZTFhNGI4MDA4YzkyNTkyYzA3MiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjBlMzEzNWU3NTBmM2JjYmM0N2ZkOGI1YWYxMTUwODliZGMwYTA4MDYwNjU1ZTNkYzI4MjRiODlkNWYzYWRkYiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_228c0688a2104fdcbe57c6e807a13994",
+      "statement": "BridgeWizard is an Adw.NavigationPage containing a Gtk.Stack (slide left/right) of three Adw.PreferencesPage steps (Find Bridge, Connect, Select Entertainment Zone) whose single header Next/Finish button is enabled only when the step precondition holds: IP set, app key present, zone selected.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/gui/bridge_wizard.py#L13-L45",
+          "version": "repo-lines-v1:sha256:3b352443c6e06c81f402b7f592df64f1f3bbe85c4116b1c5685e3b42da68301b:eyJzZWxlY3RlZExpbmVDb3VudCI6MzMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg3YWU4OGRjNDZkMTU4MTExOGFmZTkwYjMxZWU2NGNiN2E3NWM5NGY1ZDg3MjIxYmJhNmJhN2MwYWE3NGJiY2UiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjRkZTkyZWNlMTdlNmJiNjk3NjYwMzI5MzNkYjU5ZTgwZmVkNWM3YzZmNGQ4YjdjYjM2NTc0MzViYWI1YjNmYWYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImE5ZDMwYzk3NTVmMWExNGYwNjZlNzVmM2VhYjhmN2QwYmIyZjFhOWQyZGUxZWQ1NGE4ZTM1YTVmNmQ3OWMzY2MifQ"
+        },
+        {
+          "resource": "repo://src/lumux/gui/bridge_wizard.py#L275-L315",
+          "version": "repo-lines-v1:sha256:119f05584a59c02af5edceb3d2485c5230ce2861efa1f9be5e5c31ca73d225c4:eyJzZWxlY3RlZExpbmVDb3VudCI6NDEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFkZTJmOGExNzBiYTE4MmJmMDA1NmQ1NTIwMGQzN2M3ZjhiZTc2YWM1NTI2ZjFlM2E4NzhjNjI3ZTE1N2EyYzQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRmYjg2ZTc0MzMyYjhlNGI4ODI2MTZjNDU4OTMwYjY3MmI1OTNjZDFjODE5ODkwNzU4ZGQ0N2E4MTM2MjIzZjAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjBmYTIwNTBkODI0MmUxODU4ZDNlMTYyMGM1MjgxMjFjOWNjNTc5YzMxMTJhOGM4NGQwNjFjMDY4ZmIzM2I2NzMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImY4ZmJlNDdiYWRiNjZmZjE2ZjJhOGU5ZDVmMjlhMzg2NDhkNWVhNzAxYmFhMjVlMjEzOTUyY2VjZjMyMGQyNTMifQ"
+        },
+        {
+          "resource": "repo://src/lumux/gui/bridge_wizard.py#L46-L82",
+          "version": "repo-lines-v1:sha256:ade2c1ce9e6f9ba4a950566ad25462d90d00e13d307b30bc6c8f4cdeb713cf38:eyJzZWxlY3RlZExpbmVDb3VudCI6MzcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImUyZTVkZTIzZGEwZmI2NjI2YzIzMmM1YzgxZTc2ODE1ZTY4OTNhYjNjMWUwMmFjOTZlM2M1ZjY1NWJiNTllNDAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBlZWE3NTU3Y2I2N2I3ZWZkZTM5ODJkZmNkZWU1OTYwZjljOWFkNjdlNDRjMGNjYjdjZDMxODQ0OGM1N2M0ZjYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc0NTUxM2NiOTRlOWM3Y2M2ODY2NDM0MzEwZWJmNGZjYWI2NzEyNDI5NDYyODdkODNhNjFiYzg0ZDI3ZjExZmIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQ3YzE3ZjIzNDMwNzI1NDI0OGE5ODljN2ViM2UyOGNkMTI5YWNiOTYxZjA3YWM5M2RjNDM2NzQwZDc3NzNmMzYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_edc1d32fbf8d47eb923cc5300121e6c1",
+      "statement": "All wizard network work (bridge discovery, authentication via HueBridge.create_user with 3 retries and 10 s timeout, entertainment zone loading) runs in daemon threads with results marshaled to the GTK main loop via GLib.idle_add, and successful authentication displays the keys in read-only PasswordEntryRows.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/gui/bridge_wizard.py#L315-L457",
+          "version": "repo-lines-v1:sha256:4ea23d6d7c0360896aed49ebe801baf894b088fd6cac6a4452d90f1b1ad43350:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQzLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiJkZmI4NmU3NDMzMmI4ZTRiODgyNjE2YzQ1ODkzMGI2NzJiNTkzY2QxYzgxOTg5MDc1OGRkNDdhODEzNjIyM2YwIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiIwMWJhNDcxOWM4MGI2ZmU5MTFiMDkxYTdjMDUxMjRiNjRlZWVjZTk2NGUwOWMwNThlZjhmOTgwNWRhY2E1NDZiIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiI0Y2RhNmU4MGNhZGViZWZhNjUwYTJhMmFiNjg1N2ViZGIxNThhOTRlMTdhYjgwZTM5NzU2MTAwNmNhMDJlNDRhIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiI2N2Q5YWM0MzI1YTBmMzkzNzFmYmIzODhiMzZmMjc0ZDRmZDdjNWI4MzVjOGFjYWNmNmQ0YjNlZDMxMThkMzQzIn0"
+        },
+        {
+          "resource": "repo://src/lumux/gui/bridge_wizard.py#L458-L551",
+          "version": "repo-lines-v1:sha256:5c2097be24afb901804b14ee6edab5085aaa5d591f6decb3c479573946d0e48b:eyJzZWxlY3RlZExpbmVDb3VudCI6OTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAwYTIxMzRiM2M2NDNjYWVkNjIxM2ViNmMwMjg4MmRiOTA0MWI5ZmIzNDMyMDFkZjllYTUzNTA3NmY5MzJkNWEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjNlMDc5Zjk0NzE3ZWZmMjczMzkyYjUyMzE2YjMxNjdiMWYzM2NhNDgzNjU1YjEwMmRmM2I2YWUxYzYxOWY1NWYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImZkOGY2ZjhiOTZkNjFlZDEwYmVlYjk1ZjZmMjJlOTM0NDA3YWU4NWNmZjE5ODk4YTJjZWI4ZDM2MzJjNWUxYmYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_27f079dbe33d48b9be33c6d8556d30b2",
+      "statement": "The wizard exposes finished and cancelled gsignals plus get_bridge_settings()/set_bridge_settings() so the Settings dialog can pre-fill and persist configuration.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/gui/bridge_wizard.py#L21-L24",
+          "version": "repo-lines-v1:sha256:21234c40911fcad0bd34b10abf8cdb1124d969e885963d40f30962a654b7a743:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNGY4OGQzZmQxOWFlZjA0NDEyYmFlMDZkMDgwNmVmZTYxYWJjMzJkYzYxNzdhN2U4ZjM5ODcwNTY4NzVkNzc0MiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNDg5M2Y0MGUzNzgxZWI4OTZjODJkMDQ2YTA4MDY3YTExZTM1Y2RmMmYxZGZhZjI2ZmVhOTBiOGRiNjY3NjQxMyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNjE2YWM1NGFlMzdiN2FiNjY3NDNjYmUwNzAwZGRhOWQ2NmUxODI5NjgxMDhmYTZjYjE3ZDk5YTYwNjNhYzJiYyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZWYxOGUyMmM1MzhiNTkyYzZlMjczODNjMzc1YTQ3NDI4ZjI2Y2ZiMTIwNTg5MjE3N2ZiZDEzMjkxNTY4YjAxYSJ9"
+        },
+        {
+          "resource": "repo://src/lumux/gui/bridge_wizard.py#L552-L606",
+          "version": "repo-lines-v1:sha256:3692b81ad95e1dc468a6ef73dbee8c30af75ca52ea26c3d491c4f3932bb85c24:eyJzZWxlY3RlZExpbmVDb3VudCI6NTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYzODc4ZGI2MzkzZTllZTJjNzZiNWJhODc3Y2Q1M2Q4YzI1NWU5MjZlOWI0ODE2YWY4NjkyYjY2ZTY1ZjFiNTgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEzYzFiMDIzYTc3ZjU1ZjBkNjAzMDkxM2NlYmM0ODU5YWZmYmQ5YjFjM2IxMjU3MGYzMWE5YWNjZTA2OWFiNGYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImI0ZDk2MmQ5YzI0Y2M0MWJhZjViM2Q0YTAwYTMxZThiMGRjNjZiMmEyZWZiNDNmNzA4MTQzZTAxOWJlZjI1YjMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_1efd2c5d2ee44e7cb994ade4cdeb2ca1",
+      "statement": "The system tray runs in a separate Python process to avoid mixing GTK3 and GTK4 runtimes; a probe subprocess detects the backend in order StatusNotifierWatcher via pydbus, then sni inside Flatpak, then AyatanaAppIndicator3, then AppIndicator3, and the app continues tray-less when none is found.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/gui/tray_icon.py#L13-L33",
+          "version": "repo-lines-v1:sha256:a969612bd842a8b8ad1e3eb24d46d28c60f6b5b97ca36c79eb3446f21fc4e62c:eyJzZWxlY3RlZExpbmVDb3VudCI6MjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImEzMDNlY2RkNGE0ZDEwZjE5YzczZmQ0MmZkMTI0MzdmZDMzNTRhODI2ODE2MDVkYTUyNTVhOTdhMzkwNjhkYmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJlMzZhY2E4MDYyZDQ2MDU3NjgyNTI4NWJiYTAzNDE4YzMxNTI1NjZjNDI4MjU5MGQ3M2Y3MzMxMWIwM2VlYWUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjAxODg1Mzk5MTg2ZjkwMzFkMGIzZDVmN2IxYzQyYWIyYWZkMGE4NDFkZDc4ZDc3OTA3YmFiMDNkZjgxODIzYTciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQ1ZGZkNjY3MjIxZTE1ZGY2NDgyZGExMmI5NDAyMjUzNTQ2ZTJhNjQ2YzhlMmU1YjEwY2M2N2JlMjZkMWQ3YWMifQ"
+        },
+        {
+          "resource": "repo://src/lumux/gui/tray_icon.py#L35-L81",
+          "version": "repo-lines-v1:sha256:d7359c6af787be87cd36309d71bd04a20dfd94fa5006a08f48a4c2d352de1c3b:eyJzZWxlY3RlZExpbmVDb3VudCI6NDcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk0ZWU0MzVlNGEyNzgwOTE5N2Q4MDQ3NDM1N2RhNTU2YTAxNmQyNDU1NDY2NTY2ZmM1M2E3NzQ2MmE1ZGNmMTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcwMTdkOTI2Zjk0MTc5NDZlOTQ3MTYxNjcyMDEyY2ViNzhhNmNlOTU3YzU1YzdlZjkxZTgxNDRjYzU0OGEwZjQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjJkMDA3YTQxZjQzOGMxZjBhMDc4NGNhMTEyODY1ODA2MzZjNmU1YTljN2IyNDdlZjcxNTgwZGRiYzdhOGE4NjUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImM3YjI4YTUwZGM0MGUzNDRkMzljOGE2ZGU0YWI0ZmYyNjIyY2U0NGY1YTQwNGM0NDU2NzMyNGNhYzNmZDE4YjAifQ"
+        },
+        {
+          "resource": "repo://src/lumux/gui/tray_icon.py#L83-L122",
+          "version": "repo-lines-v1:sha256:7612a2a6b9eda6ad83c485f6a1d6ff428a8d1668aad4a224d2b18fdb4a457f8c:eyJzZWxlY3RlZExpbmVDb3VudCI6NDAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjNkMzkwM2NkNjIwYjZhNjEwYzcyNGM5ZGQyZDQwNzU0NDhjMjgxZmU0Mjk1OTU3Y2MzNzczZTgzM2FjYjgzN2QiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImVhYTkwNWE1YWMzMWRiYWI0YzRkYzU2NTcwMGViZDc5YjMxYzU2OTg4NjhmMTNjMjc2NTEyZTA3NDViN2ZjMDMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImI2MDVmMjhhODFlYTI2YzRjMWFiOGVmMTdiZGQ4NDZiMDQyNWM3MTY2YWRkNTY2ZGYxNTdhN2E5NjE4ZWMxMzQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_ef99b05009f94da8be45239e781d43d1",
+      "statement": "The SNI backend generates a pydbus script implementing StatusNotifierItem and com.canonical.dbusmenu under bus name io.github.enginkirmaci.lumux.Tray that registers with the StatusNotifierWatcher, and commands from the parent flow as JSON lines over the child's stdin with stdout results dispatched on the main loop via GLib.idle_add.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/gui/tray_icon.py#L124-L312",
+          "version": "repo-lines-v1:sha256:41b45a64b83e0189e5119c6541fbccf0560651bff1d448c72207de09ebf039cb:eyJzZWxlY3RlZExpbmVDb3VudCI6MTg5LCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiJhZDQzZGE1YzMyNTJhMmRkZGFlNThjODQzZTY0YjUxNTVkOGVmMGQ0ZDU5ZDkxZDZhYmUyYmJjYWIyODc4MDQ4IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiJmNDU0MjUwZmVkYTJmMGVhOTU5MzIzMjZlZmZlMzE3Yzk0NTdmZjNkOGUwYzAzNDQ3ZGM1MGFiM2FjYmYzYzM2IiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiI3ZWYxMjA4YzNkZmVjYjEwYzZmMDYxNmYwMjg1MDgxNTdjYzEyYzgzYzYyZGQ4OGE1ZjhhYTc0YzMzZjFkMDRkIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiI0ZTlmZmEwZGRmYjM1MjYxN2Y5ZGJiNDMzNTExZjFmMTM1OWMzY2EwOGVlNjE3N2FlYzJkOTM2ODkxMjU3YTIzIn0"
+        },
+        {
+          "resource": "repo://src/lumux/gui/tray_icon.py#L361-L427",
+          "version": "repo-lines-v1:sha256:906324ce63c3c165be08e970b4b004669d10343ee979f1d375db86f9ab7639d0:eyJzZWxlY3RlZExpbmVDb3VudCI6NjcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg0M2ZlMTQ2NTE2NTc1ZmJmOGQ2ZWM4OWQxOGY5NWViNDgxZWEwOGJlN2I2ZjU3OWJhMDhlNDA2ZWI3OTQ1MmEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc4NGZmMjc1YTcyNTBhNDEyMjgyZWRmYzA1Y2NiYzNkNjA4YzM2OGVhNTc0NGU4NTA4YTcxMGMwZmU5YTJmMjYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImYxNGYzNDE3NDQ1ZDgxMDEwNmZjY2Q0OTUwNGVmYWE0OWMxZDlmM2MyMjk5MjY4NzBiMWI2YTExMmU0NDU1NDgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjBhNWY1YjZmNDA5MzlmYjlkMDZkYjkyMzZmZjQ3Njc4MTliOTA4YzRmMzhkMWZhMmViY2U3NmZjZTVkNzI1MzYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_94c4c095c8394d628fcd9fbd7fe2b9c8",
+      "statement": "ZonePreviewWidget is a Gtk.DrawingArea that paints a central screen rectangle with bezel and sheen surrounded by top/bottom/left/right edge cells using vertical gradients, skips redraws when rounded colors are unchanged, and derives the grid from set_layout rows/cols.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/gui/zone_preview_widget.py#L107-L175",
+          "version": "repo-lines-v1:sha256:043de350cfe41bb17a98c58533f353e0fd788472a5d0684c2093fd2808cf0464:eyJzZWxlY3RlZExpbmVDb3VudCI6NjksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ4OWJjZTc5NTE5ZDE5ODJhNTVlZmJhNGIxMTAyZjE2YmIzN2ZkYWIxZDczOTU5ZWYxZjQyNTQwZTA4ODE4YzAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjlmN2YwZTU5MmNmMmE4NmRlNmYzZjUxNzRhZGZhMDNjM2Y0NmY0M2E3NTMxZmNlMWFkY2I0ZThmY2QyNzg1ZjYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        },
+        {
+          "resource": "repo://src/lumux/gui/zone_preview_widget.py#L31-L105",
+          "version": "repo-lines-v1:sha256:79552226467bdd093e7ff22aae5548c720132d1d8d6c624558e425265c7fe4d1:eyJzZWxlY3RlZExpbmVDb3VudCI6NzUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFkNjUyY2U3NzNlODZhMWYwZTk3MWVlZjMwODg3ZmI1MTE4YmU5Mzg4MmI0NzBiZTlmZmNjZmM0MGM3YWQxZjciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA3M2U5OWM3MTlkMjNiMDEyMDZjMjJlNjJhZDUyZWEzMWVhYThhNjk2YWM0OWViNWMzM2QxNjE1NzVhYTM3OGMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImU0YjEwMDkxZDRhNTNkYTk5MjZlNTU4MDM0NWMwOGYzMDNlYWE0YjQ0MGI2ZjIxNTllZGUwMzdmMDNmZWM5YWYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjE4Yzk5NjU3OGJiNDZlZGJlZWYyYTVkOTI0NmJhMTE3OGI4ODJiNmMxYzhkYzFlODcxOGU0ZTM0ZjA5YzU1ZTAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_f2728f664e05432a8fe765638abd91d7",
+      "statement": "The GUI layer depends on the core only through AppContext, the Mode and BridgeStatus types, and the rgb_to_xy/xy_to_rgb color utilities (plus HueBridge inside the wizard); no GUI file imports ScreenCapture or EntertainmentStream.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/gui/bridge_wizard.py#L1-L11",
+          "version": "repo-lines-v1:sha256:d7480fe624b881df8c7b5a974c4ea0bc5647ba3eca57ee48b4ec561e0bcfcbc4:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZhNmU1Y2Q2OTYyNWNiMDdkMjkyMTVhMjgzMWFiZDc4Mzk2MGVkNjc2ODQ0MDE2YzBlMDA5NWYxYjZhMTAzMTkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImRhOGY2YjA5N2RkYTIxN2U5OTRmODJjNjVjOGMwZWI5NWMxM2VjNzRjYzI2OWE0ZGQyZjEzMWU2NWE0NjM3Y2MifQ"
+        },
+        {
+          "resource": "repo://src/lumux/gui/main_window.py#L1-L12",
+          "version": "repo-lines-v1:sha256:6f9162e4797b89a80575997c2423f74689218f3d8f66bf937d88bf83aa4ee26c:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU1ODllYzlmZDEwMDQxNGY1MGIyODFiNTI2OTA2M2E0Y2NmM2QwM2NlOGJiMGVmMjAxYTgzOTM3M2I1MTJhZDMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc4Nzg4YzA0MTEyZjg1YmM3ZmMxNGNlY2Q4NzViNzc2MmY0Mjk5NTAxYTgwOTUzYWI1ODVjNjhmMTgzYWVjNWEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjUxZWJlMzhkZTRhZTBiZDViOGNiYzZhMjAxZDZkNDIzNGUxODA5NmIzMjQ1ZGJlYmFhYTM0YjdiNjZjYTg2NmEifQ"
+        },
+        {
+          "resource": "repo://src/lumux/gui/settings_dialog.py#L1-L12",
+          "version": "repo-lines-v1:sha256:d6a2ca498b449674a0b47178d4ca59cc4abb09e94cbfc51e70de6f9ff8ffb2ed:eyJzZWxlY3RlZExpbmVDb3VudCI6MTIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY3YTc0NzU0NzcyZWJhZjUxNzcxYmZlMjlkNGY3NDMwZTNlZTlhMDliNWVmN2RkMzJlMDU2NGU2MTBjOWYzMmMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQ4NjU3ZjYwNTA2ODE1NmQxYTlmOWUzMTM4NjgyYTEzYjE2M2M0ZDA1YTY5NmJhZjFiMGMwZmVlMjI1Y2M0YzYifQ"
+        },
+        {
+          "resource": "repo://src/lumux/gui/tray_icon.py#L1-L11",
+          "version": "repo-lines-v1:sha256:1b690fd298a52990b339820205d1ad82cb134875a4318989e872b0e1a8cbced9:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQxZmUzMWE3MGY2YWU1Y2RhZjU5ZDJjMzk3YzY2MDQ3NTkwZTY2NjA2MjY2OWQ3NTJlNzYyN2QyNjhiNzgwNjciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk2N2U0YjEzNDZmNWNkMDAyMTYzYTM3MDRjMTg0NmZhMjkzYmYzYjM5YTA3NzhjYTk4NThiZTU0YjJkODIwZjMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjkwNTk0ZDFkZjA2YzViNDA1MWVhY2Y2MDVjYjQ0ZDFhOGZjNjZlNzVhNmVlZTMxYzljMDM3OWUyNjNhMmY2NDkifQ"
+        },
+        {
+          "resource": "repo://src/lumux/gui/zone_preview_widget.py#L1-L29",
+          "version": "repo-lines-v1:sha256:1a87c4f2961206ae52a0f655ac538bcfa70c6ad783e80d3b807ac2eb5168491f:eyJzZWxlY3RlZExpbmVDb3VudCI6MjksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc4M2ZjODljNGYwNDBjYmU2Nzg5YTdjZTMyYTEwZjQ2MTFiNWUxNzY3Nzg2NDkyNzMxYjI4NTJjMzE1OTllMzQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRiZDgxZGYwMmRjZmMxMjViY2Q0OWY2ODk4YjI0YzQzOTM5OGEwYWU1MWIxMWNkYmMwY2Y4NGI4YTc4MjhkNTciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjM3ZDA0YjFhNGE5MDQ5NTdlZGM3YzczYzNhMjk1OTg4YWE4MzNmNTA0NGY0YzY1M2Y4YjE1ZTM2NjBmYWQxNjkifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-15T02:33:14.256Z"
+  }
+}

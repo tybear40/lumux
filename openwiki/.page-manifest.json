@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "pages": {
+    "/openwiki/architecture/application-shell.md": {
+      "pageVersion": "sha256:a36df93acef58136ea00c15e5fcb74b96116f123830c5c03ff323cd7aefb3ba6",
+      "completedBy": "pi",
+      "completedRunId": "937d9ade-797c-46ad-b145-f02d3c553a69",
+      "gitHead": "ca17067e8dee64405bf75258fdab3758c837411b",
+      "sourceFingerprint": "sha256:35c8fe18a3810ec7fefb4696db88f42387433a47a91df30a48910debc07efec4"
+    },
+    "/openwiki/architecture/overview.md": {
+      "pageVersion": "sha256:d9a15f8549c7339f6b51ac9620c9cb399b6c58747d35cf0de05fc56d142a446c",
+      "completedBy": "pi",
+      "completedRunId": "937d9ade-797c-46ad-b145-f02d3c553a69",
+      "gitHead": "ca17067e8dee64405bf75258fdab3758c837411b",
+      "sourceFingerprint": "sha256:35c8fe18a3810ec7fefb4696db88f42387433a47a91df30a48910debc07efec4"
+    },
+    "/openwiki/bridge/entertainment-streaming.md": {
+      "pageVersion": "sha256:0c34f0907f4bfc86eb4a0b5db8b43bdbf210d4bf1cf43c5c59dacfd2e92a53b3",
+      "completedBy": "pi",
+      "completedRunId": "937d9ade-797c-46ad-b145-f02d3c553a69",
+      "gitHead": "ca17067e8dee64405bf75258fdab3758c837411b",
+      "sourceFingerprint": "sha256:35c8fe18a3810ec7fefb4696db88f42387433a47a91df30a48910debc07efec4"
+    },
+    "/openwiki/bridge/rest-client.md": {
+      "pageVersion": "sha256:7938c4407aa7fd0ee49f81fe4c885e08cc98a472a5b8e8b18807c40218c48a43",
+      "completedBy": "pi",
+      "completedRunId": "937d9ade-797c-46ad-b145-f02d3c553a69",
+      "gitHead": "ca17067e8dee64405bf75258fdab3758c837411b",
+      "sourceFingerprint": "sha256:35c8fe18a3810ec7fefb4696db88f42387433a47a91df30a48910debc07efec4"
+    },
+    "/openwiki/configuration/settings-and-state.md": {
+      "pageVersion": "sha256:c2099cf35a4ef4b9ed28a54e0b1246cf778ec8deda570c07fc230d25edbad94b",
+      "completedBy": "pi",
+      "completedRunId": "937d9ade-797c-46ad-b145-f02d3c553a69",
+      "gitHead": "ca17067e8dee64405bf75258fdab3758c837411b",
+      "sourceFingerprint": "sha256:35c8fe18a3810ec7fefb4696db88f42387433a47a91df30a48910debc07efec4"
+    },
+    "/openwiki/gui/gtk4-interface.md": {
+      "pageVersion": "sha256:970495237e2ff57b90c58a2532993c8b18ebbbe820c466ab26b8c9c25ea3fb80",
+      "completedBy": "pi",
+      "completedRunId": "937d9ade-797c-46ad-b145-f02d3c553a69",
+      "gitHead": "ca17067e8dee64405bf75258fdab3758c837411b",
+      "sourceFingerprint": "sha256:35c8fe18a3810ec7fefb4696db88f42387433a47a91df30a48910debc07efec4"
+    },
+    "/openwiki/modes/video-reading-modes.md": {
+      "pageVersion": "sha256:780fd6789141e22928142fa8ea6fac2ab8c826ec7d591f929b36f9ff6e02591e",
+      "completedBy": "pi",
+      "completedRunId": "937d9ade-797c-46ad-b145-f02d3c553a69",
+      "gitHead": "ca17067e8dee64405bf75258fdab3758c837411b",
+      "sourceFingerprint": "sha256:35c8fe18a3810ec7fefb4696db88f42387433a47a91df30a48910debc07efec4"
+    },
+    "/openwiki/operations/stability-and-troubleshooting.md": {
+      "pageVersion": "sha256:2885ea2ec938e811a55ca46d2c181ff9c63d812a00b42e964f5b61a5234ff75c",
+      "completedBy": "pi",
+      "completedRunId": "937d9ade-797c-46ad-b145-f02d3c553a69",
+      "gitHead": "ca17067e8dee64405bf75258fdab3758c837411b",
+      "sourceFingerprint": "sha256:35c8fe18a3810ec7fefb4696db88f42387433a47a91df30a48910debc07efec4"
+    },
+    "/openwiki/packaging/distribution.md": {
+      "pageVersion": "sha256:62a80bb0be5c6995ffb9fc6ecf1f938083668a0bffce4158e2afda5d3d898723",
+      "completedBy": "pi",
+      "completedRunId": "937d9ade-797c-46ad-b145-f02d3c553a69",
+      "gitHead": "ca17067e8dee64405bf75258fdab3758c837411b",
+      "sourceFingerprint": "sha256:35c8fe18a3810ec7fefb4696db88f42387433a47a91df30a48910debc07efec4"
+    },
+    "/openwiki/pipeline/screen-capture.md": {
+      "pageVersion": "sha256:875023f8a511f0c5730e6e3ef7e4ec2db93c3d7bd1f199cfc1662dfabb2909ef",
+      "completedBy": "pi",
+      "completedRunId": "937d9ade-797c-46ad-b145-f02d3c553a69",
+      "gitHead": "ca17067e8dee64405bf75258fdab3758c837411b",
+      "sourceFingerprint": "sha256:35c8fe18a3810ec7fefb4696db88f42387433a47a91df30a48910debc07efec4"
+    },
+    "/openwiki/pipeline/sync-engine.md": {
+      "pageVersion": "sha256:253b7890e41a8c4338f649b98a8f3a2cd44610871168bbb6635aa69aa424df67",
+      "completedBy": "pi",
+      "completedRunId": "937d9ade-797c-46ad-b145-f02d3c553a69",
+      "gitHead": "ca17067e8dee64405bf75258fdab3758c837411b",
+      "sourceFingerprint": "sha256:35c8fe18a3810ec7fefb4696db88f42387433a47a91df30a48910debc07efec4"
+    },
+    "/openwiki/pipeline/zone-color-pipeline.md": {
+      "pageVersion": "sha256:7967eb31a3145b42043d7107bafbcaa92b0e202286c1156db9509aaefe645c13",
+      "completedBy": "pi",
+      "completedRunId": "937d9ade-797c-46ad-b145-f02d3c553a69",
+      "gitHead": "ca17067e8dee64405bf75258fdab3758c837411b",
+      "sourceFingerprint": "sha256:35c8fe18a3810ec7fefb4696db88f42387433a47a91df30a48910debc07efec4"
+    },
+    "/openwiki/quickstart.md": {
+      "pageVersion": "sha256:789026588414de96017eaa0bc16362fbb493c6443c2053226f89cde1595801fa",
+      "completedBy": "pi",
+      "completedRunId": "937d9ade-797c-46ad-b145-f02d3c553a69",
+      "gitHead": "ca17067e8dee64405bf75258fdab3758c837411b",
+      "sourceFingerprint": "sha256:35c8fe18a3810ec7fefb4696db88f42387433a47a91df30a48910debc07efec4"
+    }
+  }
+}

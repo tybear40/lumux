@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:c2099cf35a4ef4b9ed28a54e0b1246cf778ec8deda570c07fc230d25edbad94b",
+  "claims": [
+    {
+      "id": "claim_e0e18d1885354c93b4edcc85c79d453e",
+      "statement": "SettingsManager is a hand-rolled singleton (__new__ creates the instance once and runs _init, which builds a fresh Settings aggregate, resolves the config directory, and loads settings.json); is_running_in_flatpak detects the sandbox via /.flatpak-info or FLATPAK_ID, and inside Flatpak the config dir is $XDG_CONFIG_HOME/lumux (portable to ~/.var/app/io.github.enginkirmaci.lumux/config/lumux), otherwise ~/.config/lumux.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/config/settings_manager.py#L15-L117",
+          "version": "repo-lines-v1:sha256:2524847f62632080d3e524d4dcf948ca96047a5916f331288c3b6e98f4f2973a:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAzLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiIzMzQyMWIzOTJkMTJjZjEyY2Y4MGIxNDRjNDg2NWJlNTkwZjU3NjEzNjgzNWJlZmM1OWQzMjRkMTA1OWNiZTk4IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI4MjBiNDUzZjVlMGM5MmQ1ZjZjMjUxYTVlYTE5NjBkNzJmM2JkMDc5NTZhZTg1N2RhMjBlMzFhODhjNTU5NjlmIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiJjZmRmZmFiYjEwNWUyODgxODc2ZDQxYWY4Yjg4MjBlMjlhZjJkZWUzODA0ODhkMDBiZDE3MzE3ZDRkNTk1MTFjIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiI5OWY1Y2ZlZGI1Y2RlZWFjNTlhY2VkMmY1N2E4Y2Y0N2U2MjY3NDU3NTdlOWMzOGU1ZmU3YTgzZGZkMGEwZDJkIn0"
+        }
+      ]
+    },
+    {
+      "id": "claim_71322c1ce58846eeb66423db801be2e7",
+      "statement": "The Settings aggregate holds seven typed sections with these defaults: hue (empty bridge_ip/app_key/client_key/entertainment_config_id, auto_discover true), capture (scale_factor 0.125, source_type 'screen', empty restore_token), zones (show_preview true, 16 rows, 16 cols), sync (fps 30, transition 50 ms, brightness_scale 1.0, gamma 1.0, smoothing 0.3), ui (all false), black_bar (disabled, threshold 10, rate 30, smooth 0.3), reading_mode (color_xy (0.5, 0.4), brightness 150, auto_activate true, auto_activate_on_startup false, empty light_ids).",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/config/settings_manager.py#L20-L89",
+          "version": "repo-lines-v1:sha256:9a0e1c2f04350efd88fc16d5896a96f5595cebd43a1d2c216cca17312cd05083:eyJzZWxlY3RlZExpbmVDb3VudCI6NzAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI2ZmJhZTBiOTFkNDRmYzBkNDlmNWRlNjkxZGE2ZmM0MzFmMjYwMTM0YmY3MzFlMGUyMWY3NjQ4MDk0MzM0Y2IiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjY0NmIyNzc2OGQyNGZmZWFjNWRmZTI5YTE0MDAzZDJjMGMzZWM3NDQ4NmI5NzM5ZDhiNDc2MjA5MGJjZDBkMjAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjcwNzdkZmIwYWEyODcwMWY2MzE3MmJlNWNlMWNhMWRmNDAzZDNlOWY3NzdiNjA4Yjg1Y2Q4NTc5MTYwNmIyZDAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_7418c9f25aa2444ba1577c520fd7919c",
+      "statement": "data/default_settings.json mirrors the dataclass defaults and is installed to share/lumux/data per pyproject, but no Python module reads it at runtime — the dataclasses are the live source of defaults.",
+      "evidence": [
+        {
+          "resource": "repo://data/default_settings.json",
+          "version": "repo-file-v1:sha256:f0c047370e709791f4f86702bc7e5e07018b2fd1d1546f8edf0d472d6e4fe373"
+        },
+        {
+          "resource": "repo://pyproject.toml#L59-L61",
+          "version": "repo-lines-v1:sha256:f2727135070325c5d49368ef3ab54cbe7acbbb9c341343b80656f1e8c5075a16:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYjkwMzQ4NzIzMTZmZWQxMmJjYjdmZDI1Mjg5ZWUxNzYyMDY2OTU3YzJlMDdjNzVhNTNhN2U5ZDFmMGEwNzc1MCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMTZjYmVjMTQ0NjNkMmRhNzk1YzZkMTk4ZGRlNWJmNjEyMmMwYTNmZGVmNjc3ODNkNWNmZDc0MTE0MmFkZDAyOCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMmMzMTM3ODgzYmY5YzZmZWI3MmE5OWFlNTg1MDEyNDJhZDI2NDkyMjBjODlhYTE2NTM2YmNiNTUyMmRlZWJmZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMWJlYTVmNmQyMGMzNTAxYjliOGI0MGZhYTlkZDhjMmM3NjdmYTJhNWRlMTkzODY1ZDYzMjQ3YjcyODg3M2Q0MiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_1e9d367ebe96424e9f3ddfc8200359f1",
+      "statement": "_load_settings parses settings.json when present, reconstructs each section with its dataclass (converting a list-typed color_xy to a tuple and resetting a non-list light_ids to []), falls back to defaults plus logging on a JSON decode/type error, and runs validation and config-dir creation either way before the manager is usable.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/config/settings_manager.py#L161-L195",
+          "version": "repo-lines-v1:sha256:dd6768d8d69181412f6a2f733dadb81e84e34680cdad629898bf74115842d6b9:eyJzZWxlY3RlZExpbmVDb3VudCI6MzUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEyYmZhMWE2MDY4MjI0ZjJhMmZlNzhkMGFlYmVjN2JiMTgwMGFiOGE5Y2I1ZDMzNWY5ZmZjZmVkMGMxMDBiODIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYzZDI5NWJhNTY4YzZiNTI4YmIwNTZmZjBiMDdkNjdkZGZhMTE1M2MxM2VjMGJmMTg5ZDdiNjdjZGU3NjZjOWQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImNiOTI2NDc0ZWRmYmE0NDJhNmNjMDI4ODEzNjQxOTQ1YmE5YzY1YTExMzJjOTJjZjI0NDRkZjY0NjAwOWRiOTIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjVmMzhjZTk2MTMwYWFkNDYxNzk5OGIzMTlhYmEzNDI2YmY5MTE0YTI0MDliZDc1ODViMTUyZGZjMTQ2ZDg3MjAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_60e7ba020c8a416783249b15213539f6",
+      "statement": "save() validates first, then writes all seven sections via dataclasses.asdict (tuples serialize back to JSON arrays) with 2-space indent.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/config/settings_manager.py#L197-L213",
+          "version": "repo-lines-v1:sha256:fda838531d5f9f08df937ee89fc1d4078960f799727a7cbaae7f3f099d4e97e8:eyJzZWxlY3RlZExpbmVDb3VudCI6MTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgyODcxZWRkMWRiMTg0ODhiN2VmZmExM2I0NzFjM2EzMWQ5YTQ3MzA5NThlODNhYTAzOTQ4NDNkY2M2OTQ4ZmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFjZDRlYzMwZWU1NTFjZDk0ZWU4ZDM5ZTY5ODUyNzc2NjdiNjZiNTAxYjZlZTc0YWQzYTUyZDdlYzZmZDAwY2YiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImJhZjhhYzdkZTdmMDFhMTQzMjgwNTljOWJhM2Q4NGJjNjQ5Mjc5MzhhN2NjNzk1NjRkNzA4YzU4OTQ4MDhmNGEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQ0OWRmZTM0NzgzNzk3MmJkYjBhMjU4NTJkZWU0ODE5Y2NhZWRiZDA2NzYzZmY5ODEwNjVjMDQ0MzA4OTM3ZTAifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_6cb62cc825b143e0be84936acd78ab67",
+      "statement": "_validate_settings clamps every numeric field on each load and save: scale_factor [0.01, 1], source_type restricted to 'screen'/'window', fps [1, 60], transition_time_ms [0, 1000], brightness_scale [0, 2], gamma [0.1, 3], smoothing_factor [0.1, 1], zone rows/cols [1, 64], black-bar threshold [0, 50], detection_rate [1, 120], smooth_factor [0.1, 1], reading color_xy clamped to [0, 1] per coordinate or reset to (0.5, 0.4), and reading brightness [0, 254].",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/config/settings_manager.py#L215-L281",
+          "version": "repo-lines-v1:sha256:108f1b50cb84f66c725cd0e7a9eb8836445bfdcd78ba97ff1ac1c2fd39877501:eyJzZWxlY3RlZExpbmVDb3VudCI6NjcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU2Zjk0NGY1NGFlYzYwZmM1MmRkZmFhOGVjYTE0YzVmOGZiMjUzZmIxOTgxZGEyYTNkNjc5NzgyZjFiNzFlOGIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZkODBmNDNkZGMyMjFiMWE1MzZjMGQ2ZDlmNTE1NjlkNmEwYmFjYmZiOTA3MTVmMjdiZWRmNmIwYWY1NWYxNmEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImZmMzIzMGE0NDgxNjdkOWUxNWRlYTUyYWQwYzVjMzdiMmYwMDEwMWNlMjk5MTlhZGYyYWE0MzlhYWFjZTUzZGMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijg0NGQyODY5MDA3MTE3OGNlZGQ3MzBlMmY0YWQ5ZDc4NTVlZTc5NjUxZDMzODY0ZTU5NDI0OTY0MmQ2NGU2YjcifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_eab955865600407d9e7031f457543205",
+      "statement": "The screen-cast consent restore token round-trips through settings: ScreenCapture fires on_restore_token_changed when the GNOME portal issues or refreshes a token, AppContext._on_restore_token_changed stores it in capture.restore_token and calls settings.save(), so consent persists across restarts and the portal prompt is skipped on next launch.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/app_context.py#L160-L166",
+          "version": "repo-lines-v1:sha256:d8c2844f0c20abe9df32c78b3807e126490a26dd2368ea469f5348520cd56aaa:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYTQzN2QzZjhiYjdmOTNlMzdiMGU5ZGM2YzVmZjA3YjdlM2MyZjFmMDZhMTE3NzdjODEyZTJkODUxMjc1OWMwOCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYjU2OWNiMDkyODBlZTA3ODE5NDVlNDhkNDA0MWJkMmRmYWFlNjkxYWQyZWFiZjVkM2NiYTA4NDZjNzIxNmNhYSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOGM5OThkNTNiZWM1NGZkMmU5NWY0Yzg3ODdkZGQzOWE0NGFlYTcyM2IwMTkwZGZmZDJjNWE2ZGY2OWQxNzI2MSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNWZhYTQ1NDcyZjlmYzI0NDgwOWI3ZjdkMjA1MjI1ODA5MGYzNzczNGI4NzdjODhmMDMxNGRjN2JkMjU3OWI2YyJ9"
+        },
+        {
+          "resource": "repo://src/lumux/config/settings_manager.py#L29-L33",
+          "version": "repo-lines-v1:sha256:ab307815b7be98c8277a32c6fcd96e28dc1ba701b57abcec1660cf9ffac5b547:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYjZmYmFlMGI5MWQ0NGZjMGQ0OWY1ZGU2OTFkYTZmYzQzMWYyNjAxMzRiZjczMWUwZTIxZjc2NDgwOTQzMzRjYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzgwZDYyOGQ3Zjk1MmM0MGE3MDE0ZDkwMjAxODY0M2IyYzIzYTAyOGQ1OWUxMzc0MzdhMDgwYzJmOGViZDg4ZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTI0Nzk3MmUyMjhhMjI4NjIzOWY0MGE1ZjZhMTkwYTZiNzk3OWY0NzU3NTM0NDZlNGJhNTJkZjhlYTA3ZjExYSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNmMxZjAyZmQ3ZWMxZDQ2MmMwY2I4MThiOTQ4ZmZlNGY3MTViMmMyYzQzMjYzMGMyMzJkZmUzNGQ0Mjc0M2ZhOSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_ca57e58b3752421180161016cc922395",
+      "statement": "Autostart is managed by writing/removing io.github.enginkirmaci.lumux.desktop in the session autostart directory ($XDG_CONFIG_HOME/autostart under Flatpak, ~/.config/autostart otherwise): native builds exec the current Python interpreter plus the absolute script path, Flatpak builds exec `flatpak run io.github.enginkirmaci.lumux`, and a post-write existence check raises PermissionError advising filesystem=host when a sandboxed Flatpak cannot reach the host directory.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/config/settings_manager.py#L291-L355",
+          "version": "repo-lines-v1:sha256:7a7bc67ef3c471441e5e1c51fe88c1f3dd23b8140957a878b9637b1c6712929e:eyJzZWxlY3RlZExpbmVDb3VudCI6NjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVkOTRmOTc5MjhhNDQ2ODhlNDMzNGZkOGU3MGFhMzFhYTEyMzg2ZmUxMWQxYjg4ZWZmYWU5NTU5YmE4ODRlYWIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjlmMTFlYTExZWYwMWUyZTk2OWU1ZjRjNjI3MmYzZGI2NmRlNWY4ZTU0ZDFjYWFhNGFmZWYyZDIwYmJhMmVmMjYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImI5NGUyNGJiNDYyZDJlZTNkNGVjOTVhZGM5MjZhYTEyNjhiMTA2OWY2OTgwYWNjZjljMmIwNjRjNGFhMjU0ZmQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjUzZmM0ZDhlODFkN2Q3OTdjMzQzMTg4ZDQzYTVmZjVjYzgwMzNkYzQ1OGNmNDc4MmZjMDVlMTE5OGI5OWYxY2YifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_1f84b07826284d86863626e5bdae4d4a",
+      "statement": "get_zone_mapping returns a fresh, empty ZoneMapping on every call — zone mappings are intentionally never persisted and are regenerated on each sync start.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/config/settings_manager.py#L153-L159",
+          "version": "repo-lines-v1:sha256:e8981b573a226796eff07249b228a64ef3ee377b4ed42eb75f2f41dffbfbca4b:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjY5ODdlNzNiYTc1ZmUzNThiNjVmNmUzMjY1NjMzNGQxOTBhNWIwNTkzMDYxZDZlYzc3NzA4YzlmNTQxMzMyOSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiM2ZmMGM3YjIxMmQwZGFlMDU3NDVhZmZkMTI3ZDIxMzExODQ5ZThjMWIzZDA4MDM3ZmQzMGUwNTc4YWI0NjRiYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNjQxMTJhY2YxMGJjODJiNjZiZjZjMDI5OWY3OGNhZDFhNmE2NjE4MDJjYjIwYmI2NmZmMWI5ZjcyZDA1NmNhZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMWJjMDRhODIzYjNhNjA0NTQwZTk4YmI4ZmY4YzcwNDllODk1MWQ3YTIxYTJiNDc2MmM5MjBiZDM0YWVlZjdlMSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_7a4c280b255f4584adc6af15cf5466b9",
+      "statement": "ZoneMapping defaults to a ten-zone ambilight grid — top_0..2, bottom_0..2, left_0..1, right_0..1 — with empty light lists.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/config/zone_mapping.py#L8-L27",
+          "version": "repo-lines-v1:sha256:226bcff2d3e4790fde603d0b1697ed7dc1dfc1d929ae737cb899dae5e95f5be1:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU1MWUzMGRmMWRlMDg3MDUzM2IzY2RlYjdiNmY5Y2ZlMDY5NDJjN2I5MGQ2YmQ3Njc3YzA1OWQ2ODc5NmQzMDUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU2YjA0NDkxNDY5NzIyZTgzNjNhOTRlNDA0NDUzOGUwMTNhMmEyMTdlMzZiMWU1NjhiYTYwYWNiN2I0YzhmMmUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImIwZmVmOWJjMGE3MGJjNDhlZTQyYTEzODQxNzU0MjY1NDExYjdjOGI2NmNmNTY4ZDIzZmZmMTM4ZTQyZDM1YzEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijk0OTY5ZTQ5MjMzYTM5YmZiN2RlN2QwMDRmNGJiNDNiZmRlMjJlNDkxZWNkMzUxZGMyMDJiOTAwZDgzYjQ4ZjMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_5ac3a10ff837497fb89ba6a17775fc1a",
+      "statement": "generate_ambilight_mapping bins each positioned light by thresholds (z > 0.4 top, z < -0.3 bottom, x < -0.4 left, x > 0.4 right, otherwise top); a gradient-capable strip (name/archetype containing 'strip' with z > -0.2) is additionally added to the left, top, and right bins; non-gradient lights map to a zone index by normalizing the along-edge coordinate (x for top/bottom, z for left/right) into [0, count-1] with clamping while gradient lights join every zone on their edge; without any hardware info lights fall back to round-robin over the four edges.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/config/zone_mapping.py#L41-L154",
+          "version": "repo-lines-v1:sha256:9625bcf0d5018e3bcbd00b708263348710e6a138b4565c9c2295c4a5ac0602b3:eyJzZWxlY3RlZExpbmVDb3VudCI6MTE0LCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiIzNDNjYzVjYzQxYzg1M2Y1MjVjNDdmZWRhNTgzMWJmMmU0ZTQ5YzhhYWU3MTk2YjUyYTJkNTEwNDVkY2M0YWJlIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiI1MjZiNTE5MDcxOTEzMWYwMjI2NWMzOWEyNzI0ZDNiYmM5NzczNmUyM2E0YTg0OGUyZTY3N2ZhMDY1MzU1MDY3IiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiIyNzY1NDk4NWM4OWEwNTI1MDNkMDRhZGJhNzcwOGEwZTkwZjdlMWVkOWU4NTVkMjJhNzEzZTRiZGE2NTFmN2ZhIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiI2ODgzYTZiYzdjZDViM2EyOTBlNzgxM2QyN2NiODk2Y2FlMTM3ODllMjlhMjM2YWJjYmQ3NzExNDQwMzI0ZDVkIn0"
+        }
+      ]
+    },
+    {
+      "id": "claim_91ce96e14c63412cbd6d6cc33215283f",
+      "statement": "validate_mapping(available_lights) returns the mapped light IDs that no longer exist on the bridge, allowing stale mapping entries to be pruned.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/config/zone_mapping.py#L156-L173",
+          "version": "repo-lines-v1:sha256:d56664c3f62ca4ab24420515ca1d5498516ca7384a6aab866d0742a1d186c62d:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjEzNjY2MTZhMDNkMGNhYWE1NGNmZTA0ZDA4NjFjNzlhODI0NjVkOWZkZmQ4YjVmYTJkMjU1Y2Q3YWQzMDZhNDgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRlZTU5ZTU3ZDQxMTJkZmUzMmQ0ZTVhMTE3M2EyOTZhMDM2YWVjNzIwZDJjMWM5YWM0ZjU2ZGU0M2JmODg4MjQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjYyZGU0OTc2ZmMyZjgxZmZhNWM5NDYyYWVhNzlkYTg3MTgzMGJlMTBmNWViMjIxYjI1Y2Q1ZDc0OThjYmU5OGMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-15T02:33:14.256Z"
+  }
+}

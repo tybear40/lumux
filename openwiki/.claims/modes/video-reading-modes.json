@@ -1,0 +1,150 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:780fd6789141e22928142fa8ea6fac2ab8c826ec7d591f929b36f9ff6e02591e",
+  "claims": [
+    {
+      "id": "claim_1e1aca63880941bbbb157c62afa05aaa",
+      "statement": "Mode is a plain Enum with OFF, VIDEO, READING; the module docstring states the two active modes are mutually exclusive because DTLS entertainment streaming must be stopped before REST API control works, and ModeManager exists to enforce the proper shutdown order.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/mode_manager.py#L1-L9",
+          "version": "repo-lines-v1:sha256:45b1b911cb634c16c2d262866f3c52fbc525ccaff0842982d738ae872b93bca2:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNWQ0ZDIyODE1ZjUwZjZkNDhlNzQyYjg0NWMwZTZhM2E1NjcyZDE1YmQzNzhhNWVmYTZhZTBiMzQwOWJkMmQ1ZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiYTMwM2VjZGQ0YTRkMTBmMTljNzNmZDQyZmQxMjQzN2ZkMzM1NGE4MjY4MTYwNWRhNTI1NWE5N2EzOTA2OGRiYiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiY2RjY2NlMmYyZGJmOTI0NGMwMGRlZDQzNDZlNzJmNzAxNTE3ZmNkZTAyM2ZkNGI1NzM4YTUwM2E5MmVmNjNjNCJ9"
+        },
+        {
+          "resource": "repo://src/lumux/mode_manager.py#L29-L33",
+          "version": "repo-lines-v1:sha256:0116f1e817ff113b35d0dfc9c4426eb4009010404a557feba8416eb5287b5c2e:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODFjMGY2NGQ3OGE4Y2E4ZjhmMDVmNzc2ZmJhZTJlMGVhY2I1NWJhZTk4M2E2N2I0MzgyNWM1ZjAyZjBiZTk2ZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNGYxYzM2ZWYzZTBlYjkxNzk2NjViYzRiNmY0YjQ0ZDg1MDY2NTc4M2U5YjM1ZjdlYjA1OGI4NGMzNmE4ZmUxYyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiY2ZkZmZhYmIxMDVlMjg4MTg3NmQ0MWFmOGI4ODIwZTI5YWYyZGVlMzgwNDg4ZDAwYmQxNzMxN2Q0ZDU5NTExYyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNTNjMTJjZjJmNjFlNzIzM2U1NjkyNGFhODZjNWE5OWNmNTE3YzNiOTg3OTVjYTFiZjJjZjMyZjY0Mjg4MDlhYyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_c8e055642e50499b8b2f5c2f1a970c94",
+      "statement": "AppContext constructs ModeManager with HueBridge, SyncController, EntertainmentStream, the ReadingModeSettings section, and the stored entertainment_config_id, and wires mode_manager.on_video_sync_stopped as the sync controller's set_on_stop_callback, which is the hook that auto-activates reading mode when a video session ends.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/app_context.py#L64-L74",
+          "version": "repo-lines-v1:sha256:18e4050ff0e27957885aa5d9c1ad0a4c40fe876e4ff46a86ad2a2d517dd9a18e:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdhODJhODIzMmY0YWIyYzYwZWM4ZjIxZWM5ODUyYmY2MTIzODcxYjcxMjA3M2NhM2Q3MzViZWJiMjAzMzE0ZmUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU5MDlhNTNhNjE4ZDAyOGUxZDMwMDBjMGE3YWJjZWVjYmU1ZmIzN2Y0ZTUxMWVmZTQ2NjQzZmFkNmU2Njg3MmYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjczYmI4MjY4Yzc2NWZiNjhiMGU1MzIwNTNlM2IyZDY0ODIzZDg0MjBiMDhhYzI3NWU0ZThiMDNjZjU2MWIyMDEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQxMWYwOTUwMzJjZjdkYTFkYjdmZjIwNDJmNmQ4YmVhZDJmOTdmZDMwNTBiNWVmY2Q1ZjM0NDdmNGQ5MWEzODkifQ"
+        },
+        {
+          "resource": "repo://src/lumux/mode_manager.py#L42-L59",
+          "version": "repo-lines-v1:sha256:c6ecca53b2964afd7b7bd0faa7a3ef1d89b92e997bf6a7fdc0866805b680fe4b:eyJzZWxlY3RlZExpbmVDb3VudCI6MTgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUyYjYzYmMyMWNlOWVmODUzMzYwOThiM2RhMTg1MGE1Mzk2YzZhZmVkZTRjNDMzMDFiYzdlNWI3NGMxMjZkODYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU1MmI4YjFiNDk4NzM1ZWMwYjZhZjBjNTAwYzg0M2MyYjEwNDk3Yjg4ZWE0OTRiMzM5Yjk2MDhjOWJkMTg5OTMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjI2NGJkYTYxYzgxMzY5MjM1NDdhZmE1MDhlNDljZTNhOWQ1ZDI4ZTQ0ZTE3Y2FhOTU0NTQ5YzEwZTIyOTVjMGYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjlhOGIzMzZiNjEzODI5NTI1YzVlZjkwMTY2NzdkMDg2Y2U0M2MyYzAzYjcyYzQyY2EzM2FjY2YzMDA3ZmJmMWUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_8b5069c693d54ea4a4cd1e151bf95428",
+      "statement": "switch_to_video runs five ordered steps: deactivate reading with turn_off=False to leave lights at their current state, safety-stop a still-running sync, fail out if no entertainment stream is configured, activate the entertainment configuration and connect DTLS (a failed DTLS connect rolls back via deactivate_entertainment_streaming), then start the sync controller and flip the mode to VIDEO.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/mode_manager.py#L78-L131",
+          "version": "repo-lines-v1:sha256:b3229f30e1632c5c1bb18f4cfaf2b671dc50a26e53fbe9bd91784a2220061ea3:eyJzZWxlY3RlZExpbmVDb3VudCI6NTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVhYWVlODAwMmQ2ZWQzZjJiYzFlZDQ0NjViMzQ3MjkyODBkODlhNTYxMzVmYWI0NjE3ZmJjN2QzYzhjN2RjYWUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQxMDQyNGJkZTNhZDkxZmY4ZGFlYTgxYTRhYTUwNGIyZmU5ZDM3OTIzZjU5Mzc5MTUyZDU0M2Q3YjRkZWFmNzEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImRjNWVmYTQxN2YzMDM2YzIyODJkMWYxZDBmY2VmZDdiZjA5ZjU5Y2UwODkzMWE0YjNkOTUwNzk2NWQ3ZjI3ZGMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImYyMzM0NTVjNjE1OWY0NzVhY2YzODUzZjg1ZmVjZjU1MGEyODQyNGJhODAyNWNiNWM3NjZmYmE3OGRjOGZjMzQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_a69ec06ee6484e56aa9fc37c529cdbb8",
+      "statement": "switch_to_reading first rejects duplicate calls while _reading_activation_pending is set (returning True as a no-op), fills None xy/brightness from ReadingModeSettings, stops video sync, and—if a connected entertainment stream was just disconnected—sets _reading_activation_pending and schedules _finish_switch_to_reading with GLib.timeout_add(1000, ...) so the bridge finishes deactivating the zone before REST commands; without a stream to disconnect it proceeds synchronously, using time.sleep(0.3) in non-GLIB contexts.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/mode_manager.py#L133-L186",
+          "version": "repo-lines-v1:sha256:77f6301ad5a500489dc777f6071ffe679155db201da353c50c591ca2a1d5d518:eyJzZWxlY3RlZExpbmVDb3VudCI6NTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImEyMTA2ZWJiMjA2NTY1NmJmNmM3NGY3YTYzZWVlNGVkMjQ1YjlkYWU5NDlmNWNiYWYzZWFkODJjZTliZjM0ZDgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMwYzI5ZWFmN2I1YjI0YWViNzRiOGJlOWU4ZjRiNzQyZTQ1ZmExYTExMDFjZDEyZDAzNGZhZjQzODdkZjc0YjciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjU3Zjc2MTQ3OThhNWUxMWFiODAyZTlhYzc2YWQxMDIzYWMxZjk2ODRjMGI1MDQ3YTkxY2YzNTQ3NTRhOWM0MWYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjUyODU2Mzg1ZjJiMWExMTYzNGU4ZWVmNmViNzJhMjU1NGUwMzcyMWZmZTYxZjcyZTY1NDZhNDMzNzNiMWUwMTIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_8a190479540149f08e844953c421ea18",
+      "statement": "_finish_switch_to_reading clears the pending flag and then checks for interruption: if current_mode is no longer OFF (e.g., turn_off ran during the delay), it cancels the activation, invokes the callback with False, and stops the GLib timeout; otherwise it calls the reading controller's activate and flips the mode to READING on success.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/mode_manager.py#L188-L223",
+          "version": "repo-lines-v1:sha256:727c21a5d6ffd54d9aef905d951345757c84022ee2fc7cf5ee1d1d253c9fc41e:eyJzZWxlY3RlZExpbmVDb3VudCI6MzYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk3NDc2OGQzNjU5MDI3NzY0MDVlYWIzM2MzYjQzOGIyMTFmOWNjOWMyY2RhYTk5ODg3NDEzNjMzZmIzZGQ4NWEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc3MmY5Njk1Yzc0NjdjNzQ3NzNjOWNlN2ZjNDI5YzVkMGQwZTQ4N2YzYzUxZDE1ZDY2NjhhM2QyNDA3MmJiOTUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImNhYjQwODc2MjIzMzUxNzUxNDBhZDA5NTE1NmNmYzczZDYyMDVjOWM0NzlhNzExN2UxYjBlNTgwODhlZTE1YWEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjdkZGVhYzI5YzE5YzEwZmFkYWEyYzVkN2FiZjBiMjRjYjg3MDI5MDYwOTY0MzcxYWEwOTU2YzAwODg1ZmYwNTYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_bc936349300a4ae786bc295367956e59",
+      "statement": "turn_off cancels any pending reading activation before stopping sync, and because sync_controller.stop() synchronously fires on_video_sync_stopped, it then special-cases the mode transition VIDEO→READING (auto-activation happened) by returning True without touching the lights; only in the non-auto case does it disconnect the stream, deactivate reading, and notify OFF.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/mode_manager.py#L225-L265",
+          "version": "repo-lines-v1:sha256:dcf982621401be65c9a4f7a969fafff61fe27fcfb0138df1221767a91fe8d155:eyJzZWxlY3RlZExpbmVDb3VudCI6NDEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdlOGIwMzM3NWFmYTFmMDkyMzQyMmJhNTZlYzQ5YTc4MTZjYzI1NTk3ZWU5OThhMjczYmUzNWY5YTQ1NWFiMTEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI3NDFjZDgwOTBiZmI5MWY5OTVjYzhlZGU4YjMwNWU3NzU1NThjYjQ4ZDkyNDU2NTcxODdkZjFhMzI2OThmMTMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE1MzY3NTIxMDE3MGRlNWRlNWE1NzkxYjUxNzQwZTFlOGNlYzQ5NjczNTQyZTYyZThmOWNhZjJhOTBmZmZmOGMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQ0NWEwZjY0YTRjOTFlODVlZDQwMzkxN2NhNjlhODU1YzBmYjJjZjE1YjMxZjMzMzNkNmM2ZDNkMTVkOTJiNzkifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_f1d1b77189794831986cba93972c3a9e",
+      "statement": "on_video_sync_stopped acts only when current_mode is VIDEO: it sets the mode to OFF and, if ReadingModeSettings.auto_activate is true, calls switch_to_reading with stored defaults so the lights fade to the reading color; otherwise it merely notifies the mode change to OFF.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/app_context.py#L64-L74",
+          "version": "repo-lines-v1:sha256:18e4050ff0e27957885aa5d9c1ad0a4c40fe876e4ff46a86ad2a2d517dd9a18e:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdhODJhODIzMmY0YWIyYzYwZWM4ZjIxZWM5ODUyYmY2MTIzODcxYjcxMjA3M2NhM2Q3MzViZWJiMjAzMzE0ZmUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU5MDlhNTNhNjE4ZDAyOGUxZDMwMDBjMGE3YWJjZWVjYmU1ZmIzN2Y0ZTUxMWVmZTQ2NjQzZmFkNmU2Njg3MmYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjczYmI4MjY4Yzc2NWZiNjhiMGU1MzIwNTNlM2IyZDY0ODIzZDg0MjBiMDhhYzI3NWU0ZThiMDNjZjU2MWIyMDEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQxMWYwOTUwMzJjZjdkYTFkYjdmZjIwNDJmNmQ4YmVhZDJmOTdmZDMwNTBiNWVmY2Q1ZjM0NDdmNGQ5MWEzODkifQ"
+        },
+        {
+          "resource": "repo://src/lumux/mode_manager.py#L282-L301",
+          "version": "repo-lines-v1:sha256:5bf4d868ca1cc5d1f4fff00165c59657c6bf344fd5e969795bac229c3b56587f:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI5YWMzMzViYmY2ODcwZWRmMDMzMDA2MTI1ZDdiMzcwOTllYzdhMTBjNjA5YmVjMjM4ZDVkNmVkNTc2MjNiNWUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI5N2M3MTI0N2FmM2NkMWVkZjU1NWE3ZDEwNzU5MzE1N2Y2ZGMyYTIyYWYwZGU4MmU3Nzc0YWJmMTBmOGFkZTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjdjNGUyMDQ1NjZhZmNiMzM2YmYzNTA4NmRiYTIxN2UxYzQzNmFjOGMwZmFiNTczMDRmNWNkNWZhMTQzNDJkMTgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_592f346feec646e48a69201f088a23b0",
+      "statement": "ReadingModeController.activate uses one-time REST puts — it refreshes bridge devices, resolves target lights, and calls bridge.set_light_color per light with the stored xy/brightness and a 400 ms transition; the bridge maintains the state with no further traffic, is_active is set when at least one light succeeds, and a partial success still returns True while total failure returns False.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/reading_mode.py#L1-L7",
+          "version": "repo-lines-v1:sha256:4f7cf6620ab21e580b5f1c87ca6f297e91ef5afe92f788a46c11d0e2791f66ad:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMzNlYWE3Y2EwMWY1MDI2YmI4YWJjOWFjYTNhZmQxYjgwYzdhOTlhNjIxZDJlYzUwMDc4N2E5Yjc5YjE3YmQ5NSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjAsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTNiMGM0NDI5OGZjMWMxNDlhZmJmNGM4OTk2ZmI5MjQyN2FlNDFlNDY0OWI5MzRjYTQ5NTk5MWI3ODUyYjg1NSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMjYyZTc2N2QyZGU5ODZhNTczYzBjZjlkM2UxZDc0MGQzMDBiMzY0ZWVmNTM0M2MzMDMwNmQ0N2EyNDNiODg4MyJ9"
+        },
+        {
+          "resource": "repo://src/lumux/reading_mode.py#L43-L102",
+          "version": "repo-lines-v1:sha256:dece98580c9143a18eb43351a310be39f29afa76d5b85984ec0494d75b2a6cfe:eyJzZWxlY3RlZExpbmVDb3VudCI6NjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE5MTU0ZTFiZTVmMDdiNTdhZTE1ZDc1NGRhNWIwNDZjODZjNDc3NzczYTM1OTYzNzU0OTdjMWY0OTU2NDZiODEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBmNDUzNGUyNTU2OTQ0MjgxNDMzZmI0MWNjYzU2N2NkN2E2ZGZhM2JmZGZlZjgyYTE0OGI0YzBjNjU3YmMwOWUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjUxZWNiYmZjMGU5MTE0YzBmNDBjNDI3ZWU4Njc1YTM0NmQxMzViOTBkYzUyOGFlMzdhNzE1MjAyMDRjY2FhNGMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjE0NTIyMjExMjlhN2FhYjdlNmMwYjgzMDljMTM2MjE3Y2VkOTQ1YzlkMTI3OWZhOTQ4NTFkOWUwNGQ4NWY5N2UifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_9a635ef7ca9b4e14b5a1772ed100fdf4",
+      "statement": "_get_target_light_ids resolves targets as: explicit _target_light_ids if non-empty, otherwise the entertainment zone membership via bridge.get_entertainment_light_ids(config_id) when a config id is stored; an empty zone, missing config, or failed query all yield an empty list — the controller never falls back to all bridge lights.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/reading_mode.py#L168-L197",
+          "version": "repo-lines-v1:sha256:4a862a7e0ae3024183e3bb32f938cfc00c4967fb0fe3b9c29d454eb5f787f8f6:eyJzZWxlY3RlZExpbmVDb3VudCI6MzAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE1YzE0YjAyY2MwZWM3NmFhZGQ3YjliY2E2OWJkZDk5MGM3ZDVlZTFhNDE5OTlmMzRjYjhiYzFjOTNkY2Y3YTYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZiMWJmOTJmNWMwNDFkN2FkNzcxNGUwMDM5ZGI5NzBjMmU4ZDViY2ZmZjFmN2RiMTIwY2YzNDkzODJmNWNlY2IiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjRkZTRjNDJiYzYyYzJhN2RiMzczMGJkYmI1MTIwOGMxMjlmMDIyMGZiMGJjMGE4OTc0Nzg4ZGVjZTBjMjY5MDQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_042e2974f90742f5b6eb841964d4500d",
+      "statement": "get_reading_controller lazily creates the ReadingModeController bound to the stored entertainment_config_id on first use, and if ReadingModeSettings.light_ids is non-empty seeds it via set_target_lights.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/mode_manager.py#L70-L76",
+          "version": "repo-lines-v1:sha256:336a0ad570f8fb790c2877bc116e21e469745185b4fad1f856ed7079a0201606:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMWYwYmEyZGMwOTUwMGJiNGJjODA1OWEzMWEyMTI1NjAzMzJmMWQ0ZWFmMmI2OWRhYWM3NmY0MzRlODc0N2RjYiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZDk4NGI0OTdmZDg4MDY1YzQxYThiZmJkYTYzNzMxM2VhNDE5MmJlNzU5OGUxMjY4MGVjNjQ3OTI1OTNlZWM1NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNzU5ZmI4ZTI3NmJhZTI2NWIwOTg4YmE2MzZjZmM0ZmUwZGUwNzA5Y2RkNDVkODIyMzlkODE5NzEzOTcxM2E4ZiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYTZlZjQwMTliMmIwOGEzYzgxYmQ0ZGQ3ZDFkZGVkNzRjYzAxNTAxODY0YjNjYWVhMDE0Yzg5NTE0YjgxNzdhOCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_82b94c547d7d416395ee66b6f891cb1b",
+      "statement": "deactivate(turn_off=False) simply clears the active flag leaving lights at their current state (the smooth video handover case), while turn_off=True sends {'on': {'on': False}} to every target light; update_color, the steady-state GUI path, re-runs activate with a 200 ms transition when active and only updates stored state without sending when inactive.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/reading_mode.py#L105-L153",
+          "version": "repo-lines-v1:sha256:e39d939ccb075e10e5e66faadfa83bb71e63f0718249e122be79c372a68cf44b:eyJzZWxlY3RlZExpbmVDb3VudCI6NDksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVhZmFiYTJhODdlMzk1YWRlZjdlOWJkMTRjZWVkOGQ0ZjVlNTZjY2I0YmY3ZjY5OTkwZjc5YzIzMTZkMmU0YjgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk0MzFlZTBiY2EyMjUwYjc3NjM0NzI1YTg0M2U3Y2ZjZDA4ODE1NGYxOTM1MGYxYzc5YWUzZGUwNjVhNDA1MGIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImVkOWFmZmIwNGJiY2Y4YmIxZTI5NzZiZjc3YTQ4MDliN2IzYjI5ZGQwYmJhM2JmZTlmYzUyYjc3ZmRlMDQ1ZTQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijg3MjhkOGU5YjE4Y2I5MDhiZDk0NGZmZTE1M2Y1NzZiMzVjYjczOTNkNmUzY2FjOGM4YmI1YzA2NmI0NzcwMWIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_d1477d7e781e4fed8adf31ba4cde8441",
+      "statement": "Mode changes are broadcast through set_mode_changed_callback/_notify_mode_changed to the GUI toggles, and AppContext.shutdown calls mode_manager.turn_off(turn_off_lights=True) so quitting the app turns the lights off rather than leaving a stale state.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/app_context.py#L100-L112",
+          "version": "repo-lines-v1:sha256:00229f078b91631025b98e6fe99307f9a435a3361426740fb2d26028632c2abc:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAyNzAyYTI5YjFkODFmOGYwNWM0ZWQyYzc2ZGY2NDY4MDIwMTBlMDg1ZmVmODUxZTllMzNkYmNmMzU1M2U0ZmUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImI1YWVhZTdlNjAwOGY3ZjZhNDU4OWRlNmM1YjQ4NDg5MjBlNjU0MzIyYTgyMDUwZDVhMGM4YzkwZWIxZmRiZjIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjBkYTc0YWU5YjA3ZWNjNmNkZWY4NmNhZDVjNjBiZGQ5MDRmZDJkMzFlY2Q3MGY2YWYwNDIyNzZlMzdjYTUwZWYifQ"
+        },
+        {
+          "resource": "repo://src/lumux/mode_manager.py#L61-L68",
+          "version": "repo-lines-v1:sha256:6ea623d9f62ff0b168bd711ea5dcc3cfa2ad038df4d9eba1aa3e096b0d9fa013:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNDk4ZTRiYmQyYjBhNDdjMWM3ZTdhZmZhNDJjMjM1NWJlOWFhMjBiN2Q4MGU0Mzk4ZWU0ZDU1MjE0MjE1ZDk1MyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOGYxZTM2ZmQ0ZjJiOTUyNGQxMjE5YzVmMWZhOTU1OGY2ZDhhYjcwYzQwYjAxY2EyMzYwYzA3OWI1OTY4MTQxMiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYmI2N2YzMDhlMzU3ODEyNDEyZWE4ZGZlZjEyOGI3ZWQ2NGEyNTg1NDZlODczNTI2NzhhNjBmOGFmNTVjYTViNiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYzUzNzQ4ZDhkMjhlZThhZjkxYmIxNzA0Y2M5MDE0YjIyNjNhMDZjYzgxY2UzNzYxZjQzOTkwYWRmNmJlYWZmNSJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-15T02:33:14.256Z"
+  }
+}

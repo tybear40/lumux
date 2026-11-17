@@ -1,0 +1,114 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:7967eb31a3145b42043d7107bafbcaa92b0e202286c1156db9509aaefe645c13",
+  "claims": [
+    {
+      "id": "claim_7bf3f28cbea04232936f1c4b55d72ea0",
+      "statement": "ZoneProcessor is configured with rows and cols (from ZoneSettings when provided by AppContext, else constructor defaults of 16/16); its self.zones dict and _rebuild_zone_ids() are vestigial — process_image() simply delegates to _process_ambilight() and returns a fresh dict each call.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/zones.py#L11-L34",
+          "version": "repo-lines-v1:sha256:c837d1fdb17d9b2a61e73a9d574df558f5c55cc916c9c6ffc8d748f9e1859137:eyJzZWxlY3RlZExpbmVDb3VudCI6MjQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjlmZDdhMDdhODNkZDE5OTZmYjUxNjg0YjQyYWVjYWY0ZTkwZmI3OGJhNzIzMGU1NDJlZDdiZDAxZDQyMzAxYmUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNkMmVjZmQzODJlNmJlNjRmNDk5NDZhMGFlNjg1ZjA4MTRiMGVlM2QwYzY3MzU2NzkzZWRlNjc0ZDFhMGFhNGYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjljNDhmM2VhYzVlMjA5ZmFiMjhjNzg0YzMyNDM0ZTM0MjI5NGNjZDJhYzBlZGEwMmRlOTgzNzBjZDA0OGRjNDAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjRhYmE3YzM4NjVlNWIxZjhjZWZjM2MxYWQxN2ZiOTYyODM1OWExMDk2YTc2NTQ1NmMyOTg5ZWM5MTUzMjQ3YzYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_640784a5f85644d08a042e9aa682d287",
+      "statement": "_process_ambilight() samples edge strips of width min(width // cols, height // 8) floored at 5 px: top and bottom edges are split into cols equal vertical strips, left and right edges into rows equal horizontal bands (64 zones at the 16x16 default), each zone being the np.mean of its strip cast to an int RGB tuple. Grayscale inputs are stacked to 3 channels, 4-channel inputs drop alpha, frames under 2x2 px return {}, and any exception is swallowed with a print plus {}. The sync loop's channel map covers only rows//2 left/right zones, so the lower-half left/right zones have no channel target and are dropped at update time.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/sync.py#L100-L106",
+          "version": "repo-lines-v1:sha256:f7af4120f83d1ee3e0e1b4d73068a469fc70a068759d6305c7d2991d2d6cf986:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTZmNjI3OTU1YzBmNDE3OGJkZjE2YmVlNTU2NGVjY2ZjNTkwOWIxMGFlMjkyNmEyNDE1YjlkN2MwZTU3YzgzMyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMjRhMGM1ZTUxYjNkMzEzY2MzZjI0YTBhNDJiOWM5ZDg0OTFlNjhkN2JlZmViMWU1OTI0OWFiZDlhYWU2NDdmYSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOWRhYzc5YzYyZTkyYjJjZDJhMGViNTYyMGQ1NTA1ZThmM2Q2Mjc1ZmJlNTExNWYwNWQwZWQ0M2RmMmRiYTAzMCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNTk4NTVjNjI0ZTczMWNjYjIwMmU2NTZjZTBjNmI4NTUxZjFiMDAwNTQ5ZjkwYWFjNTg0YzE5ZTZlOTNjYTgzNSJ9"
+        },
+        {
+          "resource": "repo://src/lumux/zones.py#L36-L114",
+          "version": "repo-lines-v1:sha256:3000f2ef8e5edeabd2e2cef45182789024ada71749324433888dee49507a5a97:eyJzZWxlY3RlZExpbmVDb3VudCI6NzksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRlZWZhMzE5NjFhNWQ2NGRhYzEzNGNlMTY2OGMyZDIyODFlMmU5ZmYzMmIzMzFhOTlkOWYxOWY3MzYzOWJlNGQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRiZjVjOWUyYTc2ZDZjMmE2YTJjZTAyYTFiOWZjOTAxYTBiNTAyNTBhMjZjMGVkZjhhMTEzNjVkM2MyMzU0NTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjFjMmMyNzA3NDY4ZGJiMWM4OWQzMDBiYmJhZmE4M2MyZDU3M2YzNjViODZhYTNiZDQ2MjM3OTI0NmU4ZjU1MTYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_b1334d733f7e4d5cbeb1c7b443ba0920",
+      "statement": "ColorAnalyzer is constructed in AppContext with brightness_scale and gamma taken from settings.sync. analyze_zone() first applies per-channel gamma (normalize to 0-1, raise to gamma with non-positive values falling back to 1.0, rescale to 0-255 ints), then computes brightness as max(r,g,b)/255*254*brightness_scale clamped to 1-254 — a max-component model chosen so blue/purple hues are not dimmer than green, since a luminance formula would weight green ~71.5% and blue ~7.2% — and finally converts via rgb_to_xy with the optional per-zone light_info.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/app_context.py#L40-L42",
+          "version": "repo-lines-v1:sha256:a91975edea2e52bdb1e6bbce1d4522abe46144e61b1042c03f1e862736475c84:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjdjNjM0YTQ3NmI1MzkzZjNhN2UyNzcxNGJhMzIwMzM0ZWM2MjliNjg5Yzk2YTA4N2UzNjhjNjg2MzhlYmY3YyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNTkwOWE1M2E2MThkMDI4ZTFkMzAwMGMwYTdhYmNlZWNiZTVmYjM3ZjRlNTExZWZlNDY2NDNmYWQ2ZTY2ODcyZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMTYxOGNlMTg0NDM0ODhkNjkyZTljZGQyNmNiMWM3YTZhYzVkYmIwNDQwMTYzYjk1OGI2ZjNkNzhmOTRmZGRmZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMGVkMzRlMWNjMTNlZjY0MDAzMmU4YTE0NjYxNjQyZTBkODJlYjFmMGY5MThiZjIzNzA0ZmQ5MDU1NzRjZTlhNSJ9"
+        },
+        {
+          "resource": "repo://src/lumux/colors.py#L10-L57",
+          "version": "repo-lines-v1:sha256:7873b3d0abd312a97eb4e998a16d5cc338d397f7dcb9acbd52b5108845ffc8be:eyJzZWxlY3RlZExpbmVDb3VudCI6NDgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI0MDk5ODRhYWQwMjAyMjE4YTRhYzUxMjQ3YzRmMzZkNjdhMTQxYTAyOTYwZTg1YmUyOWQ2MjE4YWY3MWExMjciLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcwMzcwODdhZTY5OTMzOWZhMzAyMmI1NzRhNTVkNDE0NDUwMWVkMzJlOWFkNGI0OTA1NGI0OWE4NWZlNDExMzgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijk3OWNmMTE4ZGFjYzhhNDIzMzMwODIxZWM1ZDgxNGQ0YWRmMDU2ODhhZGUxMzJiOTQzM2VjYTI4ZjFiZWUwMTQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjFjYmI3M2M0ODBkYWRkMjBhMWZkOGVkMTI1M2YyOGFlNjhkYmJlMGFiOWY5ZmNiY2FmNGZmMzBjYjRkZTEyYTEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_10973f5b89ca49efb76041b59ef72844",
+      "statement": "apply_smoothing(current, factor) blends each zone with its previous value using an exponential moving average in xy space (smoothed = prev + factor*(current-prev) per xy component) and an int lerp for brightness; zones seen for the first time pass through unsmoothed, an empty current dict returns empty without touching previous_colors, and the smoothed dict replaces previous_colors each call. The sync loop passes settings.sync.smoothing_factor.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/colors.py#L59-L96",
+          "version": "repo-lines-v1:sha256:21e6d4662fd540572f448293c8b7f267984476f59568c08e01ecf3930ba614a8:eyJzZWxlY3RlZExpbmVDb3VudCI6MzgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE0NDM4OTFmNDlhNTg3NjBhMjUyY2M1ODBlNmE4NDBiNzcxN2IwYTI3ODgzYjY1OGQwMjFjOWVjYmEyOWE3MmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjYyZjNkZjg0YmE1YTk5ODE3NTY1NDdlMzI3NDgxOGRmNWJlNjE1ZWI1ZjdiNmQ5MDNlMjAxYzI4YzhkODA4YjkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImMzYWJiZjMwYTY1MjkwMzdjNjhmOTEwYzAyMjA3NDhhZjc0ZGUzMDA3NGU0M2UxOGVlZGM2NzY2YTExODA3YTEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImFkNTY5NzkzODYzNjIyNzdjZGYzZTRjZTRmOTNkZWYyYTc2OTZlOWUyODEzYmQ0ZDdhYTJiNmU1NWNkNTFjNGQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_662c6a66b1504dc8833c943282461234",
+      "statement": "analyze_zones_batch() converts each zone RGB to (xy, brightness), consulting an optional light_info_map per zone to obtain light gamut data; the map is populated by HueBridge.refresh_devices() from the Hue API's per-light 'gamut' field, but the sync loop calls it without a map, so phosphor-gamut clamping is dormant in the shipped sync path — the mechanism exists in the public converter API but no call site wires light info into the pipeline.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/colors.py#L98-L121",
+          "version": "repo-lines-v1:sha256:217de10dd7d73d4f4ccc4bd8dafbd791645f4999f0f5f34154ac810a177daea7:eyJzZWxlY3RlZExpbmVDb3VudCI6MjQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAzM2M1Zjc1ZjM2YzcxMjAxOGIyMzgzNjk3MTAyZWFhYTc3OWJiZjZhNDZiMDc1NzhhYjdhOWYxYjQxYWM3NGMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVjMDBhMjA2YjczOGMyYWQ1ZmE2Njg1ODM3YzE4YjUxMmEyYjI3YjdhMTZhZTA3OGZmNmFkMzBlMjMwZjNjMjQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijc1OTE3NzYyYTBkM2MyZjczNjlhMDI0NjAyNmU3OTFjYTk5OGM4NDExZDVkYzA4NTE4NDlkYzg3YmIyNGVmMGUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        },
+        {
+          "resource": "repo://src/lumux/hue_bridge.py#L103-L113",
+          "version": "repo-lines-v1:sha256:d28cadf2316c96b754486cb4965ca0f938d8161db3e32679204e145b1f372ff7:eyJzZWxlY3RlZExpbmVDb3VudCI6MTEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVjYTBhZGEyZDZhZjhlNjJlN2NjZWQ5ZDU3ZDg2NDdjMzM1YmY0MTA3MjFlZGFiYzk2NzdiYzUyOGY3YjY1OWMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRiYjE5YTM3MDBjNmMxNmY1Mjk4OWE3ZGViZjM1MTMyOWE5MWRkMTQzNGNjODkxMzgxOTkwZDAzNzhlNjEzOWUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjNiNjkzNmJlMTdkYWUwMDIwN2U0OTkwZTAzZTBjYmQ1YTljZTEwNTQxNDJmZGI2NmU3NzU2YzBlZjk4NTQ2Y2IiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjlkMjUwODg5NjcxODQwZTQ2YWY4YmI2NWY5MzQwN2U1N2I0OTJlNjY1OTViMzlmODJkMzQzNjk4NWQ5OTgwNDkifQ"
+        },
+        {
+          "resource": "repo://src/lumux/sync.py#L272-L278",
+          "version": "repo-lines-v1:sha256:fd2c95b820402905c8db00d5cb2f9c3c63a7eaa87c1168e20602661fc8bd07a2:eyJzZWxlY3RlZExpbmVDb3VudCI6NywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMmVmY2QyM2UwYjQ1ZTQ0ODBmN2IzOTY3Mzk2Mjk3MWU1MWM1OGQ4MjIzY2Q2ZTE1ODY3ZjAyMGRlMDJiMTNkZCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzA0MTBkZDQ1NGU1NzhiNThlNTc5NDMzYTAyOWZhYjQwOGFjZmZjNGY3ZTMyZTg2Nzk1OTBhZDQwMzBiZmQ2ZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYjk3MDY3MTY1NDIyZTJiOTYxYzJhMjZhNjg5MDM4NTM2YzNlMmU2OGE3OWE1M2YwOGJmYTE4ZmM3ZjRlOTE0MCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMDc5YjAyOWEwMzdiYWIzNzljNDhiNDQxNWI1ZmY5NTY0ZTI3OTM2ZWM5NDU5MGMyMjQ2YzA4ZGQ2NzBiMzZjOCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_f7a61cdddf914d94bafdc81c5653f6e4",
+      "statement": "rgb_to_xy() linearizes each sRGB channel with the standard piecewise transfer function (v <= 0.04045 -> v/12.92, else ((v+0.055)/1.055)^2.4), multiplies by the sRGB-to-XYZ D65 matrix, and returns x=X/(X+Y+Z), y=Y/(X+Y+Z); an all-black input (zero total) returns the fallback white point (0.3227, 0.3290).",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/utils/rgb_xy_converter.py#L4-L49",
+          "version": "repo-lines-v1:sha256:6b22ab161a2c50aa7887fa1acfdc389614cb53025c9f4a119e82458a03c3eb58:eyJzZWxlY3RlZExpbmVDb3VudCI6NDYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY5MGQyMGMyNGYyYjEwZmRjOWIzNmU2ZGEyNDQyZmYyMWIwNjA2MGFlMzAxYmEzNDc0NjFlODQ0NmQxZDE2MDYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjAxMDgyYjRjZmFmMmQ4MGM1ODlkNzAzYmM4YjgyNWUzZDdmNmMxY2E2NzcwOGNmY2NlN2UyNDQ1NzU3YTY2MzEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImU0YzI2OWNkMWRjYWJmMzU4MGExMmQ4YTBlOWRhZTdhYzJhYjk2OTEwOTcxZTA2NmYzY2ZjYmNlMzA3MWQ1YTgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_439dffdc48d141c4b36007bbb79fe097",
+      "statement": "When a gamut dict with red/green/blue phosphor {x,y} points is supplied (directly or via light_info['gamut'], each validated for x and y keys), _constrain_to_gamut() returns an in-triangle point unchanged (sign-test point-in-triangle), otherwise it projects to the nearest of the three triangle edges by computing the closest point on each segment (parameter clamped to 0..1) and taking the minimum-distance one.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/utils/rgb_xy_converter.py#L87-L153",
+          "version": "repo-lines-v1:sha256:502875134f2ffb80b218174bd152373a0b86ef664f1acf7f782036c5cd59177e:eyJzZWxlY3RlZExpbmVDb3VudCI6NjcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ4M2ZkMmQ0MTkzYTMzYjVkNGRmOGNjYmUxZDQzNWQ4ZDIyZjAyNTUxNDk5ZDAxODAzNzY1MzZlMDg5M2NhMWYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIxNDY0YmVmNTM1M2JhMzRiODMyZjA4MTA2NDJiZjg4ZWE4ZWJkZThhZGI3ZWRjMGY1YTAyMTZmYWY5M2MxNzIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA0OWYwNTY4ZWQ2NzBiNWE0ZWQ5ZDcyYzRmYzkzZWJiNWVjNzdkZGQxMzI0YWU5YjIyM2Y0MjgxNzZhYzg5YjgiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImMxNGRiYTkyZDJjMGFlZjY3NDAwMGQ0MDFmZTc1MzYxNzA4ODc2ZjQ1OTM4N2Q0MWYxNDc3NmRlYTBhYjBmYWIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_517689a58cb54698a616c8412cab1968",
+      "statement": "xy_to_rgb() inverts the conversion (Y=1, XYZ-to-sRGB linear matrix, piecewise inverse transfer, clamp to 0-1, optional int scaling) and is used only by the GUI: the main window and settings dialog convert reading-mode preset xy values to RGB for swatch rendering, while the GUI color pickers use rgb_to_xy in the opposite direction.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/gui/main_window.py#L467-L467",
+          "version": "repo-lines-v1:sha256:82b20ba56af8ffb5d30fd21e40f7648cf98d1cdfd48399dbbe40565a29109064:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODJiMjBiYTU2YWY4ZmZiNWQzMGZkMjFlNDBmNzY0OGNmOThkMWNkZmQ0ODM5OWRiYmU0MDU2NWEyOTEwOTA2NCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiODJiMjBiYTU2YWY4ZmZiNWQzMGZkMjFlNDBmNzY0OGNmOThkMWNkZmQ0ODM5OWRiYmU0MDU2NWEyOTEwOTA2NCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNTExM2Y3MGE0NmU4NTJhNWQzM2M2MGQwNmJkZTMzOGU0NzVkN2JhN2NmMDZiM2Y2ODQ2ZGJkYjAwMzAyYjVhMiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiN2ZlOTFiZGI0NTE5OTJmNjExYzY4OGM3ODhiZmVkNjQ1MDA5MTFjMTE0ZWNhOTlkOWUyOWU0OGRlNTBiNTZjNSJ9"
+        },
+        {
+          "resource": "repo://src/lumux/gui/settings_dialog.py#L339-L339",
+          "version": "repo-lines-v1:sha256:8ba38cf76010afb404bac6332ab849c365bfd472715fcc01f262b65234670fe6:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOGJhMzhjZjc2MDEwYWZiNDA0YmFjNjMzMmFiODQ5YzM2NWJmZDQ3MjcxNWZjYzAxZjI2MmI2NTIzNDY3MGZlNiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOGJhMzhjZjc2MDEwYWZiNDA0YmFjNjMzMmFiODQ5YzM2NWJmZDQ3MjcxNWZjYzAxZjI2MmI2NTIzNDY3MGZlNiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNjYxMDBiNzkxZTBhNzI1MzYxNjBiZTI2MDMwZWQ3NWZhNjQ4YWU4MGFlMjNlYzhiYWQ2YzgxZmY5MWYxYzc5ZCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMzI2ZTE2OWJiODUyOGUxYzkyNTQ1M2Y5Mjg4YjU5NTA4Y2E2ZGQwZTFmMDRlNmNhZTZkOWJhNWNmNjBkMTM5ZCJ9"
+        },
+        {
+          "resource": "repo://src/lumux/utils/rgb_xy_converter.py#L51-L85",
+          "version": "repo-lines-v1:sha256:0691c8adea26158e37b06c6615570c7aec2876a58a5d92732b9769a8226b63cd:eyJzZWxlY3RlZExpbmVDb3VudCI6MzUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk5NDJkMzg1ZWIwNWVkYzAyMGZhZDY0YTczY2VhNGMzMGMxNGM3YTNjNDExNWRiZWY3NjY3Mjc3MDI0OTA5ZmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjEyOWU3MTdiMDY5YWM3MzBjMzM1MjA5YTQzMDUwZjk3NWU4MDgwNmZjM2M0ODg4OTI5MWVlZWVjM2VhZDc0ODEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQzYWM3NWE5OWU4ZTIxYjFlMDkzZTI2NGFhMTYwZWRhYTVmZDFiN2JkMDQ2NzFmNDZjZGUwMmE5YjM0MGQ3NGUifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-15T02:33:14.256Z"
+  }
+}

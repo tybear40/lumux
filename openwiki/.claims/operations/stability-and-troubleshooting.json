@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:2885ea2ec938e811a55ca46d2c181ff9c63d812a00b42e964f5b61a5234ff75c",
+  "claims": [
+    {
+      "id": "claim_1f10d23ab027450b855dc5ad2b9a0cd5",
+      "statement": "STABILITY_TODOS.md is a 550-line stability investigation dated 2026-11-14 at v0.6.2 covering all 25 Python files in src/lumux/, written against a user report of instability on a CachyOS (Arch-based) Wayland desktop; its stated big picture is that the app mixes a sync thread, GStreamer streaming threads, a portal D-Bus connection, a requests session, an openssl subprocess, and GTK's main loop, and almost every instability class comes from blocking or thread-affine work done on the wrong thread.",
+      "evidence": [
+        {
+          "resource": "repo://STABILITY_TODOS.md#L1-L23",
+          "version": "repo-lines-v1:sha256:f9f731e91fc69f38ef09b1c0fe9e00fd7f2d546575d33ec25574084d1c9a546c:eyJzZWxlY3RlZExpbmVDb3VudCI6MjMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ3ODdhMzU1ODUzN2Q5MGUwM2FhMDdkYjYyOWM4YTc5YzgzMjIzZWNjODJiMjI0NzQ4OWRhODk0NDYwMWQyNGQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjJjNDg3ZGI1YzViNmMzZTEyNjA4NzI1NjA4M2U4MmM2ZDg3ZDMxMzdjNDkyNGQxZDIzODRmZGFhMmMxNWQ0M2IifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_17efb4121f4843f092885bbaafd44eb5",
+      "statement": "P0 item 1: BridgeClient's 5 s per-request timeout combined with synchronous call sites on the GTK main thread (startup reading-mode auto-activation, switch_to_video's REST activate + DTLS connect, the 1 s-delayed _finish_switch_to_reading with one PUT per light, opening Settings, wizard post-auth connect) produces 20-30 s main-loop freezes on a dead bridge, long enough for the Gio.Application D-Bus name to be marked unresponsive or lost; the proposed fix generalizes the existing get_bridge_status_async worker-thread + GLib.idle_add pattern to all bridge/DTLS operations.",
+      "evidence": [
+        {
+          "resource": "repo://STABILITY_TODOS.md#L26-L61",
+          "version": "repo-lines-v1:sha256:6c9922eaaf00d00607f3f6a83144b1caac98e5ed288e657933dca85578481015:eyJzZWxlY3RlZExpbmVDb3VudCI6MzYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI1YjE0YmI4YjE2ODViM2U5MGY3YTViOTEzNjdjNmJiMTUxMTEwYTM4NDNkY2Y1YzA3MWViNzZlYjAzNDBiN2QiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImNiZGQxOWIxNDE4MWFiNDljNzEzZDlkYzllMDRmOTE5YWFiMzY0MTE2NDQ4OWU2NWY5MTM5NTFlODIzOTIyZmMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImViODgxMTkwOGQ5NzNjM2ZkMDc4NTcwMDBjM2Q1NDE2NmFhZGZhZDllZWRjY2RhMTU5MmI0ZjdhMWMwNTJjZjUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_7926aed7876147b082d67f6805e5ffbe",
+      "statement": "P0 item 2: pydbus is explicitly not thread-safe, yet the portal SessionBus is created on the Sync worker thread (capture._setup_portal_session) while session.Close() runs on the main thread during Stop/close/quit, causing a ~25 s D-Bus hang or undefined behavior and possibly leaving the session open; the proposed fix is a dedicated portal worker thread with a running GLib.MainLoop where all session operations are enqueued via queue.Queue.",
+      "evidence": [
+        {
+          "resource": "repo://STABILITY_TODOS.md#L62-L93",
+          "version": "repo-lines-v1:sha256:411315c87b3225e5cf263280fc5590cbae1c53ad3c308902306c8ecc107d43b2:eyJzZWxlY3RlZExpbmVDb3VudCI6MzIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjllYTE0YzU2Y2MwOGVmZTVhMjc0MjcxNzhhMzg3YTY1ODliYmJlNDY4ODliMGI4NjllMTJhMTExYjA3NzJkODIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjkyMzNkNGRjYjI5OTlmYjg0M2E1ZDRkZGZhYTQxOTNhMzBlYTA5MmVjNDdmMjRhZTM5MDY2MmVhYzlhZGM0MmEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjRkODBiY2Q1YWVlZjA0YzJiNWRmOTJkNzdlNGIwN2Y4NmI1Y2IwMThkMDMzNzM3ZjUzOGU3MGI4NDBhNmE2NGEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_be83b35f4b684960a3b9594a5ff58bf2",
+      "statement": "P0 item 3: GStreamer bus.add_signal_watch() is called from the sync thread, whose while/time.sleep loop never iterates a GLib context, so _on_pipeline_error never fires and the converter-fallback machinery is dead code; when the portal kills the stream (permission revocation, monitor sleep/wake, resolution change) capture() keeps returning the last frame forever — lights freeze, UI shows Syncing, nothing recovers until app restart.",
+      "evidence": [
+        {
+          "resource": "repo://STABILITY_TODOS.md#L94-L124",
+          "version": "repo-lines-v1:sha256:9b59314133e5a1899998d67deed3913fef899f4eacdc4c0c94b18224bf7190a3:eyJzZWxlY3RlZExpbmVDb3VudCI6MzEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA5ZTM1MTVlNDI3NmIyMDg2ZmI3MGI1MDdkMzdjNGYzZTI1NGQzZWQwZGUzOTA4MTkzNWVhYTk4NGY0NjIzYzAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQzMjQyMGFjMzZmODg2Y2Q5MzM1ZTIxZWJjMzk3ZWU1MWUxNTM2Yjg5ZGE1ZTFhMjMzNjM0OGJkOGMwZTdjZTAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjM3YzIzZjE5M2ZlZjAxYTQ0MWJhN2Y5YzUyZjlhMjgwMzg1ZDQyODMwYjM3MGM1YjExMThmYmVmZjIzMTY3MzYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_72abd61cf56a4960a7c63d20224d1f64",
+      "statement": "P0 item 4: pipeline lifecycle is unsynchronized between threads — app_context.apply_settings (main thread) can call _restart_pipeline while the sync thread is inside _start_pipeline, both mutating _pipeline/_appsink/_pipeline_running with no lock and calling Gst.Pipeline.set_state() from two threads, which GStreamer does not support (intermittent crashes/segfaults); the stop path also drops _latest_frame without taking the frame lock. The fix serializes all lifecycle operations on one thread with the sync loop only setting a flag.",
+      "evidence": [
+        {
+          "resource": "repo://STABILITY_TODOS.md#L125-L145",
+          "version": "repo-lines-v1:sha256:ee1020884e19572b1ecbf7943b49480123d20e52211ca914399803ffc9130495:eyJzZWxlY3RlZExpbmVDb3VudCI6MjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjllODFhNWQwODQ3NzI5ODc3ZTQyYWJiNDQwZTA0MmY1ODY0NzMzMTgzNmQ0NWRkOTE2OWY2ZjdjZTAxODA2YWYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjViNzM3MzgxY2ExYTZhYzBkYzI1ZTQxZWM0ZGI5ZTM4ZDA4N2U1MzgzNjFlMjUzMWNlODMwMzJiMWMxMzdiNjYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImNhOTgwNzAxM2JiMThhYmU1MGU2ZGFkNGVhZGQxZWVhNWRhYWM0ODBhN2VlMmRhMjU4Y2I1ZGE1MzFiOWNlZWMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_699aca64be494339b01c7c2c5442c262",
+      "statement": "P0 item 5 (reproduced headlessly): turn_off() within 1 s of switch_to_reading() re-lights the room — turn_off clears the _reading_activation_pending flag but cannot cancel the already-scheduled GLib timeout, and _finish_switch_to_reading's interruption check passes because turn_off has set the mode to OFF, so reading mode activates ~1 s after an explicit off; the repro shows mode OFF immediately after turn_off and READING 1.5 s later, and the proposed fix stores the GLib source id and calls source_remove() in turn_off/switch_to_video.",
+      "evidence": [
+        {
+          "resource": "repo://STABILITY_TODOS.md#L146-L177",
+          "version": "repo-lines-v1:sha256:e2d02d5e5433216e1f8c57c052fc59c70096782a235ca91045bc99521fee98f5:eyJzZWxlY3RlZExpbmVDb3VudCI6MzIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRhYmQxOTI3ODljMWNhZWY1ZDU0NjI3YTQ1NTdmODhmZDMyMGE4Zjk5MDRjMjI3NjYxOWI4N2U5NzZkZjJhZjgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImY0MThkNTRkZjJjYjYwNmI1OGJlMzQ4MzYyZDY5MjNjMDU0OTQ2MGZlZGY0NDVhY2JmNGYzMWRmY2JhNGIzOWIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQyZmI0N2Y0NTRmOWUyYjRmYjQyZDYyM2NiYmM4NGFkNzRhOTBjNmU0YTQ2N2EwM2IyNzgzOTQ5YWM4ZGE4NmUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_f5119ed086894e7e93fb081fa14f779f",
+      "statement": "P0 item 6 (reproduced headlessly): settings save() writes settings.json in place (non-atomic) and load is strict all-or-nothing — a SIGKILL mid-write persists a partly-defaults config (save runs on every sync start via the restore-token callback), and a file containing one unknown key fails HueSettings(**data) unpacking so the entire file is dropped (bridge_ip reverted to ''); the proposed fix is an os.replace atomic write with a .bak fallback plus tolerant per-field filtering via dataclass fields.",
+      "evidence": [
+        {
+          "resource": "repo://STABILITY_TODOS.md#L178-L205",
+          "version": "repo-lines-v1:sha256:289a744ce4b3d625b77889e8f2b581eb3e55830cffe1e3e1e980a1a05178d728:eyJzZWxlY3RlZExpbmVDb3VudCI6MjgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ5YzMwMTBkN2Y1ZmEzMGE4NTRmYTMyYjRkYjg5OTFjZWNjZjc1NmIyZDAyNzgxYTg1MDBhZGNiNDBlYWM0YTMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjkzMWU0YTRhNjAxZWMzYTk3NGE4NGU1ZTNhOGRhMzYzMDA4N2U0YjhkOTA1M2QyZTQ5M2U1NWY0Njc1YWYzNmQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjI0YzI0OWE4OWU5ZGY4N2I5ODVmYmY0ZTE1NWFlYzdkY2Q5NGM4MzAxNWIzNDhmM2E5ZDBiYjAzNjdmMzhlYTQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_451f5f0ae2424bf19f617ab30f15a82e",
+      "statement": "P1 items include: the EntertainmentStream message buffer assumes a 36-char config ID so a non-UUID zone ID misaligns channel packing and a caught struct.error is printed 30x/s with sync silently dead (reproduced); HueBridge.create_user() ignores its max_retries/timeout parameters despite a docstring promising backoff; app/tray icon paths point at files that do not exist; DTLS via openssl s_client has undrained stdout/stderr pipes (64 KB fill stalls DTLS), a zombie process, and no reconnection; one requests.Session is shared across main/async/wizard threads and is not thread-safe; apply_settings() leaves a stale EntertainmentStream in both consumers when streaming is disabled; 'ready' is a dead status-card state; refresh_devices() re-runs on every brightness slider release; and the sync loop's error handler swallows tracebacks.",
+      "evidence": [
+        {
+          "resource": "repo://STABILITY_TODOS.md#L206-L370",
+          "version": "repo-lines-v1:sha256:5e94e0a59f4789337b7efa2cf309f8ce057aa23dd8860612fb49c3d6cda4b26b:eyJzZWxlY3RlZExpbmVDb3VudCI6MTY1LCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiIyOGM5NDA2YWQyOGY1NmY3NjQ2MzNmZGRiOTQyNDVkM2FkOWNlMGY1ZjI0MzBhOTk5ODE2YjY3NzIxYTVkYTU1IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiIwMWJhNDcxOWM4MGI2ZmU5MTFiMDkxYTdjMDUxMjRiNjRlZWVjZTk2NGUwOWMwNThlZjhmOTgwNWRhY2E1NDZiIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiIwMDFmMmVjMTc1OTNjMTA1NGViNDYzNjdkODQ1M2VmMjRhMTczY2U5NmI3MTE3ZDkxZjlhNjhkNDRmZWY4YjAxIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiJmMzIzMDQ1NDc0ZjVlZWQ0YzhlMzg3MzVlMzE5NDA2ZDY2ZjU3OWYyOTU2Y2E3NGZkODJmYTgyNjEzY2ExY2I3In0"
+        }
+      ]
+    },
+    {
+      "id": "claim_46f84f4599124d9c9d05399523c22545",
+      "statement": "P2 items include: SyncController.stop() is not idempotent (a double stop can double-run the on-stop callback); portal SelectSources/Start GLib loops have no timeout and can block the sync thread forever; dead code (ZoneMapping, data/default_settings.json, HueBridge.set_zone_color, superseded entertainment channel-mapping helpers); no real logging beyond print; and packaging notes (no wheels for PyGObject/pycairo, unpinned zeroconf with a leaked close() on the exception path, unguarded pydbus import, verify the Flatpak runtime ships pipewiresrc).",
+      "evidence": [
+        {
+          "resource": "repo://STABILITY_TODOS.md#L371-L501",
+          "version": "repo-lines-v1:sha256:70661cb00838e9c25f49b674e9c8074f59ca8708b29c574e09885c508deb922c:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMxLCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiJkZmM2YjM2YjIxNGMyODFmNTIxYzRkN2I0MmViMDdlNzFhYzM5N2IyNzFkOTdkNDZmYTI4OGI1ZjUwODM5M2NmIiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiIwMWJhNDcxOWM4MGI2ZmU5MTFiMDkxYTdjMDUxMjRiNjRlZWVjZTk2NGUwOWMwNThlZjhmOTgwNWRhY2E1NDZiIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiIwMDFmMmVjMTc1OTNjMTA1NGViNDYzNjdkODQ1M2VmMjRhMTczY2U5NmI3MTE3ZDkxZjlhNjhkNDRmZWY4YjAxIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiJmMGNiNTI3YzgyNmUyYWUzYTNjZjgyNDhjZThiZjI5YmM0ZWNkYjliNzY5OGQ2ZDg2NWQ2MDJmOWE1MzkyMTliIn0"
+        }
+      ]
+    },
+    {
+      "id": "claim_9ee3e3023a8343e8bd95b9a2be076958",
+      "statement": "The file closes with a suggested implementation order (item 1 async bridge I/O first for biggest UX win; the portal worker thread as prerequisite for the bus-dispatch and lifecycle-race fixes; items 5 and 6 small and independent) and a 10-point on-desktop verification plan covering startup with bridge unreachable, Stop within 1 s of a mode switch, portal permission revocation mid-sync, scale change while syncing, repeated SIGKILL mid-save, quit with bridge unreachable, DTLS loss, late link-button press, the new log file, and a normal regression pass.",
+      "evidence": [
+        {
+          "resource": "repo://STABILITY_TODOS.md#L502-L550",
+          "version": "repo-lines-v1:sha256:b7c29350ebf3715a89141fa36c4d2e1e330eefdc24cfe135caf9eaa4f6170f49:eyJzZWxlY3RlZExpbmVDb3VudCI6NDksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk4NGY1NjdkZTc1ZTU0YmU5YzAwM2JjZmUwYjVkNDc5ZTZkYjk2NTQ4YzRiMmQzMWY3MTY3Nzk0ZjgzZGNhNTgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMxODU4ZGVlMWUyNzRhYjE5Zjk4MmQxM2U1MzM0ZWEwMTM4NjBkYTAyODcyMTkxNGVlOGJhMjA1MDQwMTg2MWYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjAwMWYyZWMxNzU5M2MxMDU0ZWI0NjM2N2Q4NDUzZWYyNGExNzNjZTk2YjcxMTdkOTFmOWE2OGQ0NGZlZjhiMDEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_aac58f9657384ed0b9da7de24ea68c04",
+      "statement": "The performance knobs are: CaptureSettings.scale_factor (default 0.125, clamped 0.01-1.0) which scales the GStreamer pipeline target dimensions and triggers a pipeline restart on change; SyncSettings.fps (default 30, clamped 1-60) which the sync loop re-reads every frame and sleeps against as 1/fps - elapsed so changes apply live; and SyncSettings.smoothing_factor (default 0.3, clamped 0.1-1.0) which drives ColorAnalyzer.apply_smoothing lerp before each light update — matching the README's performance tips (lower scale, 15-30 fps, more smoothing) and troubleshooting section (portal config, bridge network, CPU knobs).",
+      "evidence": [
+        {
+          "resource": "repo://README.md#L111-L130",
+          "version": "repo-lines-v1:sha256:cb39f65fdb33aebc28250a8a96421376b011278a3e1d070ee6e9d99b93ad419b:eyJzZWxlY3RlZExpbmVDb3VudCI6MjAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNhMjk3Y2EwNDFiZjY5ZWI2ZjVjN2JmYTMxYWI2YmFlMjZkOGUzMmMyOWVhZGZjZGU1ZGE0NjhhZWNhOWVhNWIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjkzNjkxODBkMDYyMDRiMDYwNWVkZjExNGI0YzJiNjY2ZDE0YTliMDljYjhhNjA2Mzk2ZjNjMjhlOWNkMmYxN2EiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImU3MWJkNTdjYTFiZmUxODk3Nzk5OGQ5NGZmODM2OTJlNmU4MmYyYmE2ZGE3N2I5YjQ1MmI1ZGUxZDdhYTRlMWIifQ"
+        },
+        {
+          "resource": "repo://src/lumux/capture.py#L73-L93",
+          "version": "repo-lines-v1:sha256:d6f0c397241c81b6949941050fdb71b15b21535cd29c3468c1477c43da254592:eyJzZWxlY3RlZExpbmVDb3VudCI6MjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImMzNzA0NGI2YjFiYjJmYjE0MjFlNDljYTYzYTI5YjBjNGEwYjZkNjBlZjg3NDE0YzM5MWRhZTIwZDY3ODg0OWQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhhMmZiZjZjMTNhNDRiZmYxYmY3NGU3YTI3NjNmZmIwNjkyYzg1YzI2MTA1ZjViZTMwMzA5YTE1M2UyOTZjZGUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImI0ODU0ZDNkNzIxNGM4NWVlYmJlNDdiYzJkNGMyN2VhM2U5YWJiYTJlMmIyNWMxY2I1MjM0YTM0N2EyYTMwOWQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjJiNzNjZGE4NTJjOWRmYzNiZDk1ZTI5OTA0MjU5MDczZTg1MjdhNjRlNmY2YjI2MzU2ZjI0NWZjNDljYTUyM2QifQ"
+        },
+        {
+          "resource": "repo://src/lumux/config/settings_manager.py#L217-L231",
+          "version": "repo-lines-v1:sha256:86d866993650b9fee75d47e253e6f0288c58134339219c5043eb6390aa2d089a:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImYxYTg0NzQwODZhZDhiNjZkMzE5M2Q5N2IyMjlhMTRmZWE5NDg2N2ViNGNiYWNlNTExMzFkZjc0Mzk5ZWNmNGUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImFiYzNmNjRiNjAzNjYwZjFmMmVjZTg2NzY1MTZlYTE3N2Q4OGE2NmJmNGJhNWI3ZmM1NWE5MmQzY2EzMjY5M2YiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQ0OWRmZTM0NzgzNzk3MmJkYjBhMjU4NTJkZWU0ODE5Y2NhZWRiZDA2NzYzZmY5ODEwNjVjMDQ0MzA4OTM3ZTAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjJjNDQ5YTc0NjM1MDU2NzQ5YzhiODVmMDRhOGUzNDQ4YjllZWE2YmI1MjkwZjZlZDA4Y2JhOTQ0ZDUyNGQyOWEifQ"
+        },
+        {
+          "resource": "repo://src/lumux/sync.py#L223-L232",
+          "version": "repo-lines-v1:sha256:4d08ce3ec85d7a2f6c0ca7d49dbf76fbb185a340199ec85ab3f7e3b35f0d3cb3:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk3ZTM5ZDlmODc1ODUyZWIyNTFiMzVmMjQ0NTE4NGRmYjQwMzc5ZGIxOThjY2E1ZGNhOTk4NDU1NTJlNzEzNjIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ4NWYzNDEzNWQ1ZmYyZDQzNzQ1M2UzNzMxYjRiNWM3ZTI5NmExZTA2ZThkZjlmY2M5ZmYwYzQ4MDk5ZGZiMGYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjdmYmQ5YTUxMDM5YTBmMzMzMTM4YjNlNmVjYmNiMmUwZThiMWFiNTI1NDFlNWJjYmYwZDZkZWU2YTE4MDM4MWIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImQzMmU4OTc3NWNmNzk2MGQxYWU3NTFlNGEwNGQyNGRkNGUyYjFjZjNiM2ExMzExZDA4MGE4NzM1NGVmMDU3ODUifQ"
+        },
+        {
+          "resource": "repo://src/lumux/sync.py#L277-L281",
+          "version": "repo-lines-v1:sha256:0f6571dfffc4869ea87238dd41f7627fc50ab37149a93d3f38a096bceeab54db:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNzVlYmJmNDA2YWM5MjNiZGRjZjlkNTEyYjRkYWEyNjI2MGYyMmY5NGM4NzhhNjE1ODk3YjI4ZjUzNjdmN2NjNSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMzJkODA1OGZkZjU4Y2ZlZmJhMGU0OGEzY2RjNGRmYjNjNDEzMzBkMWM5NTRmOTc2MjZmZGZiMDY5MWFhZTQ3NyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZmJlNWYwMGY1ZjI0OGI0MjNjM2NmYTc4NjUzN2U4OGU2ZWI2NGZhMzFmNmRiZmNkNmM0MGMyY2M4MzZiYTNlOSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNDExZWM0ZmRmMDJkOWU5OTNmY2FlYjZmMDc1MGY5YmY1ODZhMzI2NDg5OWU3ZGVlZDJmNzkxYWRiYmE4NjZiOSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_c5cbf60aaf304228908714b04e805d38",
+      "statement": "pyproject.toml declares testpaths = [\"tests\"] and pythonpath = [\"src\"] under [tool.pytest.ini_options] and lists pytest/pytest-asyncio in dev extras, but the repository ships no tests/ directory — verification is manual plus the items STABILITY_TODOS.md reproduced headlessly, and no automated regression coverage exists for the sync pipeline, mode transitions, or settings I/O.",
+      "evidence": [
+        {
+          "resource": "repo://pyproject.toml#L38-L39",
+          "version": "repo-lines-v1:sha256:4c2123228a1410a79426001aa93aa6cb969a0640b2b3331e49f47881bec8a883:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMzcyNzFmN2UyMTc0ZWI4NTcwODUwYmM1YWE4OTQ0Mjg0OTFkMDQ2YjMwZDRlMzZiMGJkMTgxODllYWRlMmI5NCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiN2RlN2EzZGNiZDE3NTE5ZmM3NjdiOTExYzY0NWVjZmI1NDk1YjhkNmI2MWEwYWY1MWJjODI0MjcyZTFjOGU4ZCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiY2FiZjE4ZTk0OTUzMzJiNzM5ZmY0MWJiNDFjOGM4YTFiOGJmYTJlYzgwZjRiZGNhZTlmZTZhYjkwYjk2YmQ4MCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjVlMWVhNzY0NjJhNjZkYzE3NjM5MzQ3NzUzZDhkYTlkMzEyNWVhODk4MTExYzMzYzFkYzkyMjMyMTg0OTRmOCJ9"
+        },
+        {
+          "resource": "repo://pyproject.toml#L64-L66",
+          "version": "repo-lines-v1:sha256:52716a0d06c430176d97458a64db575c85c3b3f1b3c5703d1c2c26f40430676c:eyJzZWxlY3RlZExpbmVDb3VudCI6MywiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODY3NmU2NDE0NjVhNjU1MWU5ZTljZmZkN2ZhYTFlNmE0MmY5YjcyNDgwOTgxM2M5MDNkN2VkY2I1MmYzMDA2ZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNTdjZDQ4YzFmYzhkZDI3OTE0ZjMwZDczYjNjNTI1NmUzNzk0ODc3NzhkYTYwZmFmNDZkZmNmMjEyZTJlMTlhMSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNDZlOWEyOTU2NTczZThhMmU2YzE1YTY3YmQ4YTI1OGI5OTUxNWZhNjYzMjM1ZTUyZmJjNmZkYjUwNmZhMjY2NiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNTNkNjBjMDhjNzg2MzBmNzEyZDBkNGMyMzAyY2IzNTEzMTYzNmM3MTA0ZWQ4NjE0NTQ3OTc1NDdmNGNmYzNiMSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_08accf0497fe444aac3071e3b0ec9bcb",
+      "statement": "Runtime diagnostics are minimal: utils/logging.py is a 14-line module whose only export is timed_print, a timestamped print to stdout — there is no file logging, no threading.excepthook, and no faulthandler, so worker-thread exceptions and segfaults leave no persistent trace (STABILITY_TODOS item 19 proposes a rotating log file, an excepthook, faulthandler.enable(), and startup environment logging).",
+      "evidence": [
+        {
+          "resource": "repo://STABILITY_TODOS.md#L415-L427",
+          "version": "repo-lines-v1:sha256:c4efc97a40f9d0f6aee8f4f559c7df1b74dccd2a0f73065b89f6af2c975ed27e:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA2M2MxNGYwNmY5N2U5NzMwYzBkMmUxMGJjNjA3MzYxMzRhMGQyNjdhZGNmMDhmY2ZkZTdlZDBmMjk2NWMyMzMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjUzMjQ5MjlkNmU4YjBjMjhjN2NiODc2N2VjMzkzNDY5MzVmMjBiMDA5YTA5ZGM3MDFmYTUxZTg4NmUyZTlkODkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjYyNDZjNjg0NzFkNDJhZDhkMTY0NzU4MjUwYmUxZGE0YTM3ZjZhMDhlZDg2ODdmZmI2YTUxNjE1MDhmMGFjOTcifQ"
+        },
+        {
+          "resource": "repo://src/lumux/utils/logging.py#L1-L14",
+          "version": "repo-lines-v1:sha256:34bf850ed54ee3c41c1bbebad3ca39217736e693a66ee31d4e5223ba733f7b88:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU2M2Q0NWQxOWExZmUwYmJmZmNkYjAwYzA5NzUxMGMxMDkxNzBkNmMyOThlZjZiNmRiNDU1M2RmODI2ZWI1MTUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImU3NDg1OGNiOGM2ZDM0OTQwN2EwMzYyYzJhN2QzNDE1OTk0YzNmNzJiYzlkZjgxZWU2N2NhZTEzN2UxMGIwNGYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-15T02:33:14.256Z"
+  }
+}

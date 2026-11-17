@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:253b7890e41a8c4338f649b98a8f3a2cd44610871168bbb6635aa69aa424df67",
+  "claims": [
+    {
+      "id": "claim_f4c3b995758241448c3d02983be9b552",
+      "statement": "SyncController is a thin orchestrator holding references to HueBridge, ScreenCapture, ZoneProcessor, ColorAnalyzer, ZoneMapping, settings, and an optional EntertainmentStream. Its thread state is a running flag, a daemon threading.Thread named SyncLoop, a previous-colors dict, a queue.Queue(maxsize=100) status channel, a threading.Lock, a zone-to-channel map, and a stats dict seeded with fps=0, frame_count=0, errors=0, last_update.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/sync.py#L18-L55",
+          "version": "repo-lines-v1:sha256:c10315719a23240ded683f309d1f4037ed55f14d28a8a681060efc58f6eb524c:eyJzZWxlY3RlZExpbmVDb3VudCI6MzgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjlmZDdhMDdhODNkZDE5OTZmYjUxNjg0YjQyYWVjYWY0ZTkwZmI3OGJhNzIzMGU1NDJlZDdiZDAxZDQyMzAxYmUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUxODZhMzY4OTlhMzM1NDgzYjVmZThjMTNkMTkyOWI5MWVkNWYxZGEzODg2NGMzZmQ4YjYyM2EzMDRiOTE5M2EiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjA4OGUyNzZiNDQ4YzdkNjEzMDRkY2RhZjZlMDMwMWMzODUwZGYxMmE2ZjExODQ2MzFlZjkyZDc2MDYyZWNhZDYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjMwMjM4YzgzNjkxYjIwN2NjZmQ0YzUyMTdlZmQyMmI5MjRjNzg4NDBiZDNkNGFhY2JmOTRlODkyNGUwYWFkODYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_1340ef2b1dbd4e168752c066230b8962",
+      "statement": "start() is a no-op if already running; it logs whether an EntertainmentStream exists and is connected, builds the zone-to-channel mapping only when the stream is connected (an unconnected stream leaves an empty map with a warning), then sets running=True and spawns the daemon SyncLoop thread.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/sync.py#L59-L83",
+          "version": "repo-lines-v1:sha256:9bbd4ade839547e90be5590d878354e5d34e0ad8d76045e033315f6a14b34e53:eyJzZWxlY3RlZExpbmVDb3VudCI6MjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjMxYzk1M2Q2YjJjNWZhMzBhYzVhNTM5MGZlZjI1MDA3YzcwZGUzNTg4MWNkOGEzNDc4YjEzZWU1YzZlZmY0ZjMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjcyODc1MTIxYjFhOWYzY2UzMDNhMjMxYmFmNmRjOTI4N2U0NGE1NTQ3Y2Y0NzE5M2IxZWYzOTdjMmZkZDAyYTkiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjMwMjM4YzgzNjkxYjIwN2NjZmQ0YzUyMTdlZmQyMmI5MjRjNzg4NDBiZDNkNGFhY2JmOTRlODkyNGUwYWFkODYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjIwNjJlOTExZWNiYjdmNTIyMDkyZWEzMDRiMjEyZjIzYzQ0NWYxNGRmZDUwMDkyNWQzOTgwNGYwZTUxYWMwYjgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_a733e3c30ee84d3ba18f8c6856b24e73",
+      "statement": "_build_zone_channel_mapping() generates ambilight zone ids (top_0..top_{cols-1} and bottom_0..bottom_{cols-1} using the zone grid column count; left_0..left_{rows//2-1} and right_0..right_{rows//2-1} using half the row count) and maps each to the entertainment channel with the nearest reported position: _find_best_channel_for_zone() converts the zone edge and index to a target point in the entertainment coordinate space (x: -1 left to +1 right; z: -1 bottom to +1 top) and picks the channel minimizing squared distance.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/sync.py#L85-L179",
+          "version": "repo-lines-v1:sha256:e00c1a3bb53d61bfaec8ddfa324fc13a1f60a20ed999b8d96dc80763c7f32140:eyJzZWxlY3RlZExpbmVDb3VudCI6OTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjIwMTFlMzg2NTllZmQ5MmM3NGEzMzA0YmY4MDBiMTQ2NDFkOGM2YjIwN2Q0ZjVjZjIyNDM0MTI0YzY3OThmNjkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZmNjZmYmY3NDMzMWU0Y2IwMjk3ODZlYjgwYzVhNTlmMmU4YmVjZDgxZWEzM2RlYjUyMjUzZTY3NTViM2U1MGIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjJiZmMxODJjOTI5OGRmZTUxYmQ5MzJjMjRkMDhmYjIyN2FkMTQ0NDRmYmMwYjI5NmI4NmRkN2Y2ODcyN2QyM2MiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImEzYjNiN2MxNDNmNmExNGRhMDgxNDU1M2RjMGQyZTQyM2FjYWI4NTUzM2M1ZWRmNTA1MDU5NTVmNWVmMGE3OGMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_5a512bc1487c413a8f99ad6a4de641f7",
+      "statement": "_sync_loop runs while running: it times one _process_frame() call, clamps the configured settings.fps into 1-60 (falling back to 30 on a bad value), sleeps max(0, 1/fps_target - elapsed), and computes the reported real fps as 1 over the mean of the last 30 total loop times (including sleep). Any non-KeyboardInterrupt exception increments stats errors, queues an 'error' status, and sleeps 1 s; KeyboardInterrupt breaks the loop, which then queues ('status', 'stopped').",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/sync.py#L208-L253",
+          "version": "repo-lines-v1:sha256:8ac3de767e8e60918f1471a781f32c05ea6c91d75258eabc03b1875e0144f635:eyJzZWxlY3RlZExpbmVDb3VudCI6NDYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijc5MGYyOGRhYTg5NTY1NmM5ZWY5NjdkOTdlOGZlZDFjZTM4MGY1ZWY4Mzg4ZjAzOWNlNTM1OTRhNGRjNTI3NWYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg1YmM0YmJlNjAyNzA2Nzg4MTBiMzM5YTdiNjQyZTgyZTAzYjljZGMyMmZkZmQ5YzJlNDQzYTJiOTgwMjczMmEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjkyOGFkOTk0NGI5YzU5M2NjMGU5NzEyZGU4Y2VkODZkZjM5ZTU2NDBiMzYwZGIzNjg3N2VkMTFkNzI5NzBiNjciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjkyNzNmY2NkNDlhODc2NWQ5YTgwNDAxYjIzYjJiOWQxZTgyNTdhYjY2M2M1OGRmMWQxODc4MzBmNzAxMWNkZTIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_608ead3d469a4af28d4b58a8d6e90723",
+      "statement": "stop() shuts down in a fixed order: running=False; thread.join(timeout=3) with a warning if the thread is still alive; capture.stop_pipeline() to release the portal session; then the optional _on_stop_callback() in a try/except, which AppContext uses for auto-switching into reading mode after a manual stop.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/sync.py#L181-L202",
+          "version": "repo-lines-v1:sha256:a530db5dfed838ac3483cdbd1cd6459ea7c5fda46145f0f4a363c4ef1cbd32ae:eyJzZWxlY3RlZExpbmVDb3VudCI6MjIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgyY2U0YzE0YTUxZTdlMmRlYzI0ZDA3YmViYzViMDczMzE2ZDJjMDY1ZjNjYTI3NmEwNTVkODJkMjY4YWFiZDkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ0ZWVhYzJjOWQ4YWExZTZkMmM1MzhiM2NmNjk5MGMyMWZjM2JlOTE4ZTM1NmU3YzMwM2Q1YmI2ZDY3ZmE0MGUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijk1M2IxOWQ1NTljYWU4NDQ3MDc2MzM0ODQ0ZDZjMmM3ODcyYzY3YTBlYmQzZDNiNTA4NDhkNWRlYWMwYzg4NzEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjY5NjcwZmVhMzM0NzMxZGJhNjY3MzQ4NGMwM2VjNDQ4MmUwYjc5ZTcwMjIxODhlYWM5OGRkNTFkNjJiNDE3M2IifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_b6bfd6a7d39040709eb11aba871aef5b",
+      "statement": "_process_frame() times five stages — capture.capture(), zone_processor.process_image(), color_analyzer.analyze_zones_batch(), color_analyzer.apply_smoothing(settings.smoothing_factor), and _update_lights() — bailing early on None or empty results without counting an error, and records the rounded per-stage seconds (capture/zones/analyze/smooth/update/total) into _stats['last_stage_times'] under the lock; it then queues the RGB zone colors (not XY) to the GUI as the zone-preview payload. _queue_status uses put_nowait and drops on queue.Full so the pipeline never blocks on a slow UI; get_status returns the next queued item or None.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/sync.py#L255-L301",
+          "version": "repo-lines-v1:sha256:5cb1c72b354e990eea27b5130d6c3a8a1c339cd892209156d4b45caca3308fae:eyJzZWxlY3RlZExpbmVDb3VudCI6NDcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVhNDc3Mzg0ODY0OTkyYTRlOGFjMTEwNTM4NjM1OTg4YTI4OWM2Mzc2Nzg0MGY1ZjBhOTkzMjc2ZDAxZjc5Y2IiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZmM2MxMGE4ZDZjMDk5YTcwODFjODc0ZWQ1ZWI0YmRmODA0YTIyYTY4Njk1NjIxOWNmMTRlYjlmZjU3ODIwYmEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImM3MTU4N2Q5Mzk1MzNhZTlhYzYxNzMyMDFhMDdhMDVmMGJmMjhiZWJiYWQ3MGU0YjM4NWQxZGY1Y2YyYTAxNGQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImFmYjM3NDA0MDA5ZDk3NWQyZDNlNzIyODZhOGMwZWMyZjNmNGI1YzVmYTI5MDg2OGMwZmNlZGI2ODFjZjIzMzEifQ"
+        },
+        {
+          "resource": "repo://src/lumux/sync.py#L342-L354",
+          "version": "repo-lines-v1:sha256:7b6f3b72e8bdbfb3b1a40290c7a425fd87b5f9f4544ee2d9271877bf7c79e41d:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhiYjExOTk2YjQyNjY0MGM1Nzk0NGE3NjRiZTk0NTg3ZjEzYTc4MTEyMTZjMTgwYjBlNjZlZTY0NmRkMWMwZTAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQyMDc4MzkyZmZlOTM1MTNhNGNlYzA2MjQ2ODZhOTcyM2Y4MzgxYjM4YTNjNjBmYWQ0NmYzYjEwYTc2NjVlN2UiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE0MjQxMDEzNGZjOTg4MjZkZDZjOGY0ZjE3YWY4OTQyMWVjZjk2NDViMDkxOTk1OWZjNWE2YjRkMTMyY2Q5N2UiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjQ2NGMxYjhlY2ViOTkyMjZkNDBlZWVkODM3ZmRkMTVjZTU2N2UxNGZhYjNmMzhmMzRjMmRjNWE1ZmNmYzc1YmIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_ac1f7940bbb347f585378e85742f1277",
+      "statement": "_update_lights() skips (warning logged once per 300 frames) when the EntertainmentStream is absent or disconnected, otherwise merges the zone colors onto channels via the zone-to-channel map — averaging xy per-component and integer-averaging brightness for every additional zone landing on the same channel — and dispatches the merged dict with one entertainment_stream.send_colors_xy() call. The REST client's per-light setters (HueBridge.set_light_color / set_light_gradient / set_zone_color) are used by Reading Mode for one-shot scene settings, not by the sync loop, so a dropped DTLS connection halts live updates rather than falling back to REST.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/hue_bridge.py#L171-L245",
+          "version": "repo-lines-v1:sha256:8638ea2c1281ef15336c3fdca9f5ecd4489f639a574ac2a7a22af5ebf14cc4c0:eyJzZWxlY3RlZExpbmVDb3VudCI6NzUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZiMzI0NzI1OWE5NTNjY2Y1N2IzYWZmOGRmOGNmNjczNzE2ZTU3ZjU5NmIxN2UwYmZiNjVmZGY1MTQ1YmU3NWMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRlZmM2M2FiZWViZDFjMGZjZDliMmJmNGZjYzMzZjYyOGE1ODE0ZDkwMWQ1NzUxNWE5YzE0YTY5OTNlYzcxYTciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImZjN2FkMWVjOThmOTllNjE5ZTEyNDlhYTdjN2EwMjA2MzBjYTgzODVmZTViZTY3ZWNhZjkzNjdjMDE5MzgxMGUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjUwNjE2MWI5ZmUyYTdmMDVmOTRlNmQwYzllMTYyZGQ3YmZhOTc2NTkzYTE2NTM0YmM2MjcwNGYyNzc4YjU4OTcifQ"
+        },
+        {
+          "resource": "repo://src/lumux/reading_mode.py#L83-L83",
+          "version": "repo-lines-v1:sha256:f968e2a1d602928e981e86f1931249da90a0f0f8d204cb928130981e59aa3a70:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjk2OGUyYTFkNjAyOTI4ZTk4MWU4NmYxOTMxMjQ5ZGE5MGEwZjBmOGQyMDRjYjkyODEzMDk4MWU1OWFhM2E3MCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZjk2OGUyYTFkNjAyOTI4ZTk4MWU4NmYxOTMxMjQ5ZGE5MGEwZjBmOGQyMDRjYjkyODEzMDk4MWU1OWFhM2E3MCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiMzU2MzkwNGNjN2FiOTI2NDhmOTUxMDM1ODAwMTExYjE2MGNmMDhhNTc0YjhhYjkyYTI4MDI4MGJkZGRjOTkxZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNmY0ZDQ2NDJiYTEyMzQ0OTkxYzA1ZmJjNzNiZGNkZmFiMDE2YjU5MDcyN2JiMThjZDdiM2FhMDY2ZjUzOGZiNyJ9"
+        },
+        {
+          "resource": "repo://src/lumux/sync.py#L303-L340",
+          "version": "repo-lines-v1:sha256:39c86cae064f0ee8471e8180b4f5f6b06eb3e5820c06362a57325da2daaedb19:eyJzZWxlY3RlZExpbmVDb3VudCI6MzgsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjI5YWI4YzIwNDU3YThkNmFkMGI2YzgxZWIxMjE2MTIyMzFkNjllZjliZTA2MGU5MGY3MjFlNzI0ZjExMzg5OGEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE0NTMwMDJjZDRjM2M5YjZiNTkzN2YwNmM1ZDdjYmNhOWI0ZDg0NGFkMjg0M2IzNDE0YTIwOWQ4NWY0NDRjZTAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQ0NzA5MDY3NTQ2MmUzNTViMTAwNzViMWFiZWZlZTM1YzFjMmQwM2M4MDRhODU4YTEzNGE3ZTdkYjRmOTZlNzciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjRmN2RhOTA1NjdkMDZkNjNmMDk0MDg0ZTg5NWUzZjY1OTM4MTBmMjlkODU3NTExOGQ3NzkyZTkwMTgyM2RlN2EifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_818ac7e8f0814f41992f47dd0d14d56d",
+      "statement": "The GUI consumes the status channel in _update_status(), registered as a 100 ms GLib timeout: it drains the queue until empty and applies only the latest item ('syncing' updates the status card and feeds RGB zone colors to the zone preview widget when previews are enabled; 'stopped' resets the card to connected, re-enables the sync button, and re-presents the window if it had minimized to tray; 'error' sets the disconnected card and the error text as subtitle). It then renders get_stats()['fps'] to one decimal.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/gui/main_window.py#L59-L59",
+          "version": "repo-lines-v1:sha256:72512ddfc4d40ac1851ef372c108c71d793d480d5a49372c16ed79c6493b13fe:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNzI1MTJkZGZjNGQ0MGFjMTg1MWVmMzcyYzEwOGM3MWQ3OTNkNDgwZDVhNDkzNzJjMTZlZDc5YzY0OTNiMTNmZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzI1MTJkZGZjNGQ0MGFjMTg1MWVmMzcyYzEwOGM3MWQ3OTNkNDgwZDVhNDkzNzJjMTZlZDc5YzY0OTNiMTNmZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNDhhYmI5YmUwYTIwZjdkYWFhMzQ0YTU4MjA0MDBhMDVhZTk4MDljMDcxMmZiZTFiNmYwMDljZDY1MzQ2MzFhMyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYjc5ZmM1YmU5Y2I5NGJlZmUzNTE1NzZkNTA4ZWJhYjhmMDU1MzM1MjM0NzQwNjA1YjA4M2YyYTI3MzE2NWNhMiJ9"
+        },
+        {
+          "resource": "repo://src/lumux/gui/main_window.py#L745-L797",
+          "version": "repo-lines-v1:sha256:660256a75c5158e5d2369478445068c9d9d91f0b9c2ee6d688c11f56210b8801:eyJzZWxlY3RlZExpbmVDb3VudCI6NTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRjYjY0NThiNTJlYjg4OWNmOTJkNzE1NTVkYmM2ZGFlOTRiMTdmNzFiZjNkODVhNTY3ZWEzNjE4NTIxMWY2ZmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVlN2JjZDM2ZWY1M2I0NDUyM2U2NWU5OGQxOTQ0OTkzZTBmZjE3NDZmNTUzNmMxYTUxMTc0NmYzZTAxZTc1NmYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImY5MzQ5YWFmOGE3NDkwYTdjNDhkYjdlZDQ0ZWEyOTU3YTdjNTU2MTc2ODgzM2RlNDA4ZDMzMDhkZjk5NGU4ZjMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijg3OWRmZGY1YTIyNjg4ZjM2YWY0N2NjMzI0YTRkY2YxYTJlNzMzNzRjM2QyNTdjYTBkZWM1MzFkYTVmZDE4YjEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_e7f1bb1b7ccf4c879c8fc54eb0bb6d50",
+      "statement": "get_stats() returns a shallow copy of the stats dict under the controller lock (making the GTK-thread poll safe), and reset_stats() restores the four base keys (fps, frame_count, errors, last_update), dropping the last_stage_times entry until the next frame records it.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/sync.py#L356-L368",
+          "version": "repo-lines-v1:sha256:3c3f84ed296cce22c8c3dd3179bba0a4d19734cbe2ce2908e7be50bbdb52b2f8:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBjNDA1M2EwYjk0NDVlMTk5NmNkZmVmNzQ3MzAwMzUxNzFjNTU5ZmY3MTAzY2ZhZjg1MWJlZmMyYWYyNGNjOTAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImJmMTE5NGZmMzVmNDA4ZjYxZTY4MzY4N2ZmOTZlYmYxZjE0ZjU2NDU0MjEwY2U4YTllZjUzYzc2OTc3MjY4MWQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjgyZjIwNzRmNzQ0ODU4YTU2OGVmYjBhYjNlOWVjM2VkOTgzYWIxZWUyNGI2YmZmMjQzZmQ0MjhmMTQ3MWE2M2MiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjoxLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjU1MjJjNDJjZDE5YzZkMDNkODA4YzQ1MjcyMDU1MjgyNWI3ZWExYzViNDkxYjIxODUxMWNhYzc0MTVjZjlkOWIifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-15T02:33:14.256Z"
+  }
+}

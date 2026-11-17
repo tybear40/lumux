@@ -1,0 +1,170 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:a36df93acef58136ea00c15e5fcb74b96116f123830c5c03ff323cd7aefb3ba6",
+  "claims": [
+    {
+      "id": "claim_7542ca9208e4490386d80421cf8118d1",
+      "statement": "LumuxApp subclasses Adw.Application with application ID io.github.enginkirmaci.lumux and FLAGS_NONE, and registers Python signal handlers for SIGTERM and SIGINT in __init__ so the system can request a clean shutdown.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/__main__.py#L23-L36",
+          "version": "repo-lines-v1:sha256:5c12f9dddcb0179b5dc05e46a361dc820b079c68153cffceb11191633b2bffe5:eyJzZWxlY3RlZExpbmVDb3VudCI6MTQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImY0MDdjODlmMmEyODhlMjczMzEyMWY5MTMwOWViYWMxNTg5OTg3MzRjMDk5N2U4ZDcxYzVhOGM2YWFiNWQzYTkiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjVjZDAwNTc1ZDI2OGVmMmM3N2MzZjYwNDBmMDM2NGRmODg2NGE5ZmQ5NzcxNGI5ZjFjNGEwM2U2MzJmZDg0YmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImI5YjhhMjZjN2I3NDI2MjM5MDdlMTc0MTFkNDg2MTg3YWJmODE1ODlhMmViYzkwNzBiOGNlMDQ3MzYzNzhiOTAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImY3NjM2OWI1ZWI0MTM1ZDA1OWM1MWZhMTRkMDhjYjNmNjlhOWU1NjA2NjUxZWMxMDQxNjZjYmRlZGE5ZjM5NjIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_4d43f1a9b8f14aea9e44d68809ab9b70",
+      "statement": "The signal handler prints the received signal and defers _quit_safely to the GLib main loop via GLib.idle_add; _quit_safely sets main_window._quitting to True before calling self.quit() so the window does not minimize to the tray on a real shutdown.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/__main__.py#L38-L41",
+          "version": "repo-lines-v1:sha256:7d0e38a0f763bca389783d86d327ea142fe817eba01ffa84c428cbde54914ae1:eyJzZWxlY3RlZExpbmVDb3VudCI6NCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiOTRhMTAxNDdmNmIyZGI1OGQ2MzQzOTAyNmY0YjQyZmRlNzUyMjdkMDVkNWVhMWI1NWMxNzIzNGU4OTI1ZmQzZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzZhY2U4MWFiZDQ5ZjZmYTBlOGI4MjhhYjlhNTYxZjBmOTQxZmZiOTZjOWUxMzhmMzVhZTA3NGI5NTE1MjE0ZiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZmJkZmM1MzIyYzhhNmQ4Y2MzMjAzODNkNmFmODRkN2FlMjRmZWVhYmIzMzQ5OWIxMDYxYjJiMzcyMDE1NGYwYiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiOGQ4MTM3YjhhMjBlOTBlOWE0OWM0MDJhYmM1MzkwNjkyODhkZGJhNmRmMmU4YjY3MjJkZTgwNWQ4Y2M2YTQwMCJ9"
+        },
+        {
+          "resource": "repo://src/lumux/__main__.py#L76-L81",
+          "version": "repo-lines-v1:sha256:78cbd98bba4a863e444aed0ff3ff8b48da07a751c014d95b4fe1b34c7678fefd:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODM3YzUwM2NiZDA0ZjU1MTljOTg1YmVmZGRiZjUyNzgyYmNiZDE3YWRiMTdlNDdiNWZiNGQ3ZmI0NmU1YzM1NCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzQzNmJkMzVhMzU4NzU0ZDAyZWM5NmZjNjVkNGYxZjgxYzI5ZGE4NmM3NjA5YTk5YjY1YzYzMTM3MGM3ZDhjYSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZTlmNDUwNTViNzAzNmU5ODI4YjljYzYzZTA5Mzg4ZGE1NjUxZjVjODkwYjQ4NmEwMDMxNTcwM2VkMDY2N2ZmOSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYjhiNmYwMzgxYzAxYzM1NDI0MTA5OTY2Y2JjZWI0NmRhMDJiZWMxMDNmN2VkYmNlYzljYjc2OTY0YzM0NzAyZCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_a961d5e07e5c465c81ab68253e1ddc42",
+      "statement": "The tray menu is backed by three application-level Gio.SimpleActions - show, toggle-sync, and quit - where show presents the window, toggle-sync forwards to main_window._on_sync_toggle, and quit sets _quitting and quits.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/__main__.py#L43-L74",
+          "version": "repo-lines-v1:sha256:e057e0ff72dd96966657a96bbf8b3179cdf788d8ce0bd1fe19be21236fd1ead3:eyJzZWxlY3RlZExpbmVDb3VudCI6MzIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU4ZGE1MTk4NDVmOTU3MjhkYzQ5MDIzYmY0YWYzZTZlNjY5MjAyNDk5NjY1ZTA0MDhmZWUzZjgzZTcyZDA3ZGMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjFkNzA0Nzc1OTliYWY4ZDAyYjM0OTgyNTAxZjg4YjA1ZThlYWMwNzExMDlkYTk0YjJlMjdkMmQwYWY2NWExMTciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImFjZGQyZmY0ZDRiMTYxNjljMjk1MDlkMDliMGMxYjZkNzY4MDZhZGE1YmNlNjgwZWVhODY2N2JiNTMzYzY3Y2IiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjJhM2RhZjUzYTVmMzQ2NTZhYjViNmEyYWZmYWUzMWRkNzcwNTY5ZDM4NGI2MWVmZjc3ZWFmY2Y1YTRmZWIyODgifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_0fdcf3b2051d4d939b84ce631153b1b6",
+      "statement": "The on_activate startup sequence is: re-present an existing window, force the Adwaita dark color scheme, set up the app icon, create the SettingsManager singleton, construct AppContext and call its start() to bootstrap the bridge, construct MainWindow, then present or hide it based on ui.minimize_at_startup.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/__main__.py#L131-L161",
+          "version": "repo-lines-v1:sha256:d15f82ec6edae049223bac22947c445078e4955b7bf0beeb02a0c785214d6eda:eyJzZWxlY3RlZExpbmVDb3VudCI6MzEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImMwMDU5ZGM1ZWYwZGFmMGQzMjFmMTQxZWMyMmM0OTY0OGJhZjFlYTNkYjlkZjI3MmQ0YTBmZWI4NTI2NWY2OWIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ2NDJmNzMxZTMzMTNiZDdkMWUwYjdhZWMzMDIwMTFiYjNhMDJjNmZmNzFhZjA5NGQ3Yjc5Y2FjZmYxOGRhYmUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImJjNmQyYWNkYWRlOWQxMjY0MGEwZDlhYTM4ZDFhYzYzMWNjMzllZjMwNmZlMTNhZGEwZjVjN2Y1OGYxMzZkZjMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjMxZmEwYWVjNjQ1OGYxNDIxNzc2MzE0ZDZmMTg5ODM5NDFiZDk2YzU1N2Y3OGQ3Yzc1ZDlmZjA2MTE2ZjViYjQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_9bcf8707f27144528d24e1e5c025603d",
+      "statement": "When reading_mode.auto_activate_on_startup is enabled, on_activate schedules the _auto_activate_reading_mode GLib timeout 500 ms after startup if the bridge is already connected, and 2000 ms otherwise because the network may still be initializing at system startup.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/__main__.py#L163-L175",
+          "version": "repo-lines-v1:sha256:cf08b49e74bc3c6feb1faa2cefc31070ca4c7bfc02b5d678098fd7b13cc57958:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijk1NzA2YWVjMDliZDM5MWY3Yjc3NTc0OTg0ZjIzMmYwYTMwNWNmOTY1NTE5NDllMmI2OGMyOWE1Yjk5ZGU5MWEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNkMGU5N2RhZDgyZTkxNjMzNDQxMDE0NWYxZmQ5NTU0ODE3MmIxMDg1MWE2MDg5YzQ4MmVjNjU5ZDE1ZWRiNmUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjI5N2IzYWY2ZWE1NDYwZjYxNzJlMjE1YzAyZmQ1ZDdlZWJkZTg1ZWViMjkwZTkxMmU1Y2NmNGI2YjRlNDA0MzEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjFkNjA4ZDcxODk1YWEyOTc4NWExZTJmZTU4Zjk2NDA1MzhlMzY0OGY0YWQ2MTkyODZjMDcxZmM3NmFmNjIxMTMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_778f2e2b81d74f77b2006bbc2800cc7c",
+      "statement": "_auto_activate_reading_mode retries every 1 second for up to 20 times: it skips if reading mode is already active, connects the bridge if needed (blocking HTTP on the GTK main thread), then calls mode_manager.switch_to_reading(); the retry chain stops on success, after 20 attempts, or on exception.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/__main__.py#L83-L129",
+          "version": "repo-lines-v1:sha256:9f601175d28f9d16853491c46318ffd1e32346ac7196c8f782955ee80852233d:eyJzZWxlY3RlZExpbmVDb3VudCI6NDcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjJiNTU1MmJkYjM1MzgxODExODc1NjQ2ZDliMzdlMTgxM2FhNDgxZTE3MzExN2E4ODRmMWEwNWQ4NjE0NGQ0OGIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI5N2M3MTI0N2FmM2NkMWVkZjU1NWE3ZDEwNzU5MzE1N2Y2ZGMyYTIyYWYwZGU4MmU3Nzc0YWJmMTBmOGFkZTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImU5MTMyYjliNDVmMjUyOWVkMTQ5MmIyZjgyOTA5N2RlMTk0NmY1OWNkYTliYTcyNzY0MWJkYTIxOGViNDQ3MjciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjgzZjQ3MzY5MDc5MWE0MDUzYWU5MDNjNDAwOWUwYjRlNDg5N2I5YmU5ZDc3MjIzZjEyNmNlZTM1ODhkYzcxY2QifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_008035da14ae45a5be4ba11391233177",
+      "statement": "APP_ICON_PATH resolves two directory levels above src/lumux/ to project-root io.github.enginkirmaci.lumux.svg, and _setup_app_icon registers its directory with the GTK icon theme only if the file exists.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/__main__.py#L15-L20",
+          "version": "repo-lines-v1:sha256:cffc97bf3189d40526741e782ddab6afb2a887ae20dc1c9df17e5ea3b38120c3:eyJzZWxlY3RlZExpbmVDb3VudCI6NiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjY1NTQzYzgwZjFkYjJmOWMyMjlmNTYyNjBjMTdlNWMwMDQ2MDI2YmY0MDBkMjVjNmQ5N2M4OGJlZWZkYmM4ZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNzYxNWViMmIzZmE1ZmQ4YjMwZmJlYzA4ODUwY2Y0MWRhYzE3MDE1ZjM2NTk5OWU3MzJiYWJiYjY1M2Q3Njc1MSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYzU5MDM0ODZjOGY3MzY4YjMzMjA2NmIyMzg1NTBjMjkxMDY4YjlmM2IzNjgwY2Y2OWUwYjk0NWNlYzFlMzY4ZSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiODViMzkyMTUyNGY0MzIxMzNiMDNkMGU0YjY0YjI2M2M0NTI0ZWM1ZTNlYmI4NzVmMWQ0YjcyOTZiZmI2Mzk0ZSJ9"
+        },
+        {
+          "resource": "repo://src/lumux/__main__.py#L177-L185",
+          "version": "repo-lines-v1:sha256:e7c0da22ded8377680b143c10f55aa0ffb00ae9cb473b2807f8773f11c29aab1:eyJzZWxlY3RlZExpbmVDb3VudCI6OSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZGZkMjcyOGE0OGM0NzM0YWU2MzM3YTczZmZkMDNiYmI4ZmQ1M2ViMzM3YWVlYzYzMjkwMDlhNjNjYTlkZWE2MyIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiY2VlMTJhNDhhZjdmNDgxODgyNGE3NjllOWQ0ZDQ3YTc3OTg5MjMzNGNhYTI1YmIxMWI0NWIyZjJmNTJlMzVmZSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOTdjZmMxZGUwNmEwMjQ0ZGI3NzAwNGU1ZjFhOWVlNDYwOTg3NzY4MWFkZTJmNTFlMjlmMjhiMjFjN2Y5YjNhNCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYzhhOTdjZmNjNzMwNzljZTRiMGE3MzNjNmQyMGFmMjY1NjFkNGZmZjk1YmE0ZDllNjVmYTk1ZjlmN2M4MDM5NCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_efffa4dfe2794bdca7beae81e784cb00",
+      "statement": "do_shutdown calls app_context.shutdown() before the base Adw.Application shutdown, and main() constructs LumuxApp and runs it with a None argument list; this file is the console-script entry point (python -m lumux / lumux).",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/__main__.py#L187-L201",
+          "version": "repo-lines-v1:sha256:b410576b40cc96c06ce31948401652a1527aebbe8ad6bb469e56e1344cdc917f:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZmZmRiZGJjN2U4ZjFhNWEzYzU0MTA0Yzc4NDBiMTVlNmZjOGVkNjg4ZmE3YzU2ZDY0MjhkMzdlZDZjODdhNWQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjE4ZTk5MjMyY2QzYTMwOWY1MGNiZDZmNjYyMTI3ZWVhYWZjZTFmNzM2MjkyZGVmYjExM2Q5ODFhMjBjN2Q4NTIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjhiY2JhOTU5ZmU0OGQ0ZjM2ZmNmMjZkZGIzODdlMTFmMzcyMTQyYmJhNTFiYWQzOWZmNGE0NDYyM2IyZjM1YWIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_b6a91136439d42b0bf414a30bcffb1c8",
+      "statement": "AppContext.__init__ builds the component graph in order - HueBridge, ScreenCapture, ZoneProcessor, ColorAnalyzer, zone mapping, an optional EntertainmentStream (only when both client_key and entertainment_config_id are set), SyncController, ModeManager - then wires sync_controller's stop callback to mode_manager.on_video_sync_stopped and creates a threading.Lock guarding reconfiguration.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/app_context.py#L28-L76",
+          "version": "repo-lines-v1:sha256:22257f2313004539e11f40256b5462ba12a3f5939097c7aeee2342bd30cb8583:eyJzZWxlY3RlZExpbmVDb3VudCI6NDksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImViNDZiZGVmODA2OGVjNTEwNzAzMjg1NWY5ZTNiYzk0OGJhZDkzNzE0YmM1Mzk1MzlkNzI3OGZiY2U5OTVkMTQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI4MTRkNTI3NTE1ZGNjYzA4ODVlOTE3YjcwNDE2NGYzNjJlNzEwZWE5MzU5MjBjMjNjOTY0MDc0ZTBjYmM5YTgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjJlN2I0NjdiZjM3OTBhMjlhYjcwZThlOWJiM2ZiNjRjNjM4YzE5NWY2MWE5ZTcwNWVlYmE2NTJmYWI2NmY3ZWYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjViNGE3YTFhNjU0Y2Q4MTQ3N2Q5YzFiNjhlOTBhOTZjMDUwYjAyMzc4YTJjNGZiMmI0NzdkOWY1ZGE4NWQ4OTUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_9b1d5beb31df44d38afb2c182b706add",
+      "statement": "BridgeStatus is a frozen dataclass with fields connected, configured, bridge_ip, entertainment_zone_name, entertainment_channel_count, and entertainment_connected.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/app_context.py#L17-L24",
+          "version": "repo-lines-v1:sha256:213effba2ee47c6f93712586d6628b37010af3c389e6143f4f047186ca3d9cd8:eyJzZWxlY3RlZExpbmVDb3VudCI6OCwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiZjY5YTEzOTc1YzI1NmVjODMyMGUyMDE2MDgzYzk2ZGY2MzdjYTNkMzViZWJkZTIzMTRiZWUzYTQ3MTFiNTZjYSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOGFiNzA5ZDQ3NzhhNTUyOGM1YTNlZTM1NmEzMzVmYjdhNmFkMzNiYmYzZjk0MDc1YWQ5M2YxNDNmMGFlNGRiMCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiY2ZkZmZhYmIxMDVlMjg4MTg3NmQ0MWFmOGI4ODIwZTI5YWYyZGVlMzgwNDg4ZDAwYmQxNzMxN2Q0ZDU5NTExYyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiMmU3YjQ2N2JmMzc5MGEyOWFiNzBlOGU5YmIzZmI2NGM2MzhjMTk1ZjYxYTllNzA1ZWViYTY1MmZhYjY2ZjdlZiJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_b18fa321df9b4537a12e290aafb93439",
+      "statement": "AppContext.start() returns get_bridge_status(attempt_connect=True); start_entertainment gates DTLS streaming on the stream being configured and the bridge being reachable; shutdown calls mode_manager.turn_off(turn_off_lights=True) to turn lights off on exit, or otherwise stops the sync controller and entertainment stream.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/app_context.py#L101-L110",
+          "version": "repo-lines-v1:sha256:6fb766b293ea71c00b909da089c893be01cf13d4348ded200ddd400136f9246d:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQ2NTY3Mjc2NGQ1NmI0ODg0NTdmOWZjOWQ4ZjkyNTQ5MjE0M2ZjN2E5MzkwNTY0N2UxZmU5MWVmMzdiYzhkZGMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ0NDE5MGFiNDg4NTkyYWI1Mzg0YWE1NmNlMDg1MWY3NzA5Y2ZmODY0NjkwNTg4NTQyYzA2NWRkMTJkODhiZDYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQ4MDZjZDYyMTQ3ZDk2MDI5MGI4MTcwNTA2NzdlZTk2OTBhMmI5Mzc1ODM1YzMzY2RhODU1ZWYzZWU3YzZhYTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImJjZjFhZDRhMjQxMGNkNzg5M2M3MzVjNzM2MWRlZjNlNmFkYjFlNWVkY2M1ODY5YjJmODIyMDljOWRlNmZhZGEifQ"
+        },
+        {
+          "resource": "repo://src/lumux/app_context.py#L78-L94",
+          "version": "repo-lines-v1:sha256:9d79d7cad6ec520bb7785e69b7884593a32dd9c4029e4c075fc3292b96bce377:eyJzZWxlY3RlZExpbmVDb3VudCI6MTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA3N2E1YmIwOTViYjU5NWMyNDdkMDNlYzAyODg3MzViYTc4MTE0YzAyMjNiNDExOTBmODVjZTY5ZDMxNGViNDMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjU1N2VkMTIyYzk3N2JmZDg2MDQyNzIyNjk5NjE3YThlN2I5ZWE4ZGFjYjg3YTE4MDk0MjQwZmQ4NDI2MzEwYmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQxMWYwOTUwMzJjZjdkYTFkYjdmZjIwNDJmNmQ4YmVhZDJmOTdmZDMwNTBiNWVmY2Q1ZjM0NDdmNGQ5MWEzODkiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijk2M2VlZTg4NzJiZjZmNzU1OTcxOWYwMzUzYTUzMjNiODc5OTFlNmFlZDE2MDAzNzQ1MGM5YmQ0NTEwYTFlNDIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_6128fb7ee3cd48a7bc439fb37b172ea0",
+      "statement": "apply_settings reconfigures live components under _settings_lock: it updates HueBridge credentials (resetting the cached API handles when IP or key changed), capture scale factor/source type/black-bar settings, color-analyzer brightness and gamma, the zone grid rows/cols (then _rebuild_zone_ids), recreates the EntertainmentStream when the config changed and points the sync controller and mode manager at it, and refreshes the mode manager's reading settings.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/app_context.py#L112-L158",
+          "version": "repo-lines-v1:sha256:f95f869d61bb8f881aeedeec09722ec5af4b1bdde2764282adebb4897dd9a589:eyJzZWxlY3RlZExpbmVDb3VudCI6NDcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAyNzAyYTI5YjFkODFmOGYwNWM0ZWQyYzc2ZGY2NDY4MDIwMTBlMDg1ZmVmODUxZTllMzNkYmNmMzU1M2U0ZmUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA2ODZkYzQ1M2QwNmJjM2FhNjNlN2ZhMTU4MzU3ZjEzYmQwNWVhNTZiNzJmMWVjODM1OWU3NmQzOTI5YTc3NWYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImU4OTA2NWFiZjgzZjk2MDAwZGY4MTQzZjMxZDQyNDIxYTUyYWUwMzdiZGQ3MDczYzEwMTc5MTliMDQ1MjJhYWEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImEzMWRjMTllYTdlYTg5MmIwMDI2YzliNDUwYTI0MjRjNGFiNDA1MjA1NTkwNDI1MDAxYTQyNTQ0NTg4YzkyOTQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_d6a7fb027d104233835d01bc303201c1",
+      "statement": "_on_restore_token_changed persists the portal restore token to settings.capture.restore_token and saves settings.json so screen-share consent survives app restarts; AppContext registers it on ScreenCapture via set_on_restore_token_changed.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/app_context.py#L160-L176",
+          "version": "repo-lines-v1:sha256:c9a72e8c077b9ab8a6f0488510cd7ab20da63d28e9bf27cc8db06fb1ac903978:eyJzZWxlY3RlZExpbmVDb3VudCI6MTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE0MzdkM2Y4YmI3ZjkzZTM3YjBlOWRjNmM1ZmYwN2I3ZTNjMmYxZjA2YTExNzc3YzgxMmUyZDg1MTI3NTljMDgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjY4NDliYzNhYTA2Njc5YjkzYjEwN2QxNzEzMTdlZjc3OWQwM2E3OWQ3MzUyOGVkYjBmOWUxNTNmZjM0M2M1ZWMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjhjOTk4ZDUzYmVjNTRmZDJlOTVmNGM4Nzg3ZGRkMzlhNDRhZWE3MjNiMDE5MGRmZmQyYzVhNmRmNjlkMTcyNjEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImNjZDBjM2E3ODFmNTJjNDFiMDlhZWY2MmE2YzQ2NTgzMTBjMDQ0OTk3ZjdhMDE4NzMwYzFlMzRlMzk0NjM0MzcifQ"
+        },
+        {
+          "resource": "repo://src/lumux/app_context.py#L38-L38",
+          "version": "repo-lines-v1:sha256:6425fd94644ca286cd7aee5587526a409e518b0f7980b60a17e895d20fdbee76:eyJzZWxlY3RlZExpbmVDb3VudCI6MSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNjQyNWZkOTQ2NDRjYTI4NmNkN2FlZTU1ODc1MjZhNDA5ZTUxOGIwZjc5ODBiNjBhMTdlODk1ZDIwZmRiZWU3NiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiNjQyNWZkOTQ2NDRjYTI4NmNkN2FlZTU1ODc1MjZhNDA5ZTUxOGIwZjc5ODBiNjBhMTdlODk1ZDIwZmRiZWU3NiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYThmMzM0NjhiZDQ4ZjkzMGFkYWFiZDMyN2UxZWVlNTc0YmI5MjllNzYwOGJhZjgzNmI3MTY5Yzg3YmNjNGVhYiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZTI2OTc2NjM5OTRkNzMwYjNiOTNjYzE1ZmU1MzdhYmE3ZjUyNTU2NTcyYjA2ZTMwODU4NjhhZGMwMzYxMTAwOSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_668d599c4d3d4fa7ae3121bd584e866d",
+      "statement": "get_bridge_status builds a BridgeStatus from a bridge connection test (optionally attempting a connection) and, when connected, looks up the entertainment configuration by id to fill the zone name and channel count; get_bridge_status_async runs the same work on a daemon thread and delivers the result via GLib.idle_add, falling back to a direct callback if GLib is unavailable.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/app_context.py#L178-L207",
+          "version": "repo-lines-v1:sha256:6f93a016ad2236904d34f9cdb3d7bcd21acd02f89fb5ff63974582f96c201d88:eyJzZWxlY3RlZExpbmVDb3VudCI6MzAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImEwY2RkMjkyNDY3ODhiYzczMThmNzBlNTQ2YmY3MTJmYTFmOTQ4YTM4OGRmNTIzNzNhNzJiM2VjZGVhZjk4N2EiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImMyNDM0YTZhOGVjYzFmM2IxMjcyYzI0OGE5NzczNDRkY2Y3ZWM0MzQ1Y2ZmYWEwZTJhY2M3ZjQ0NDVjNjI2YjgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE5MTg5NTg0OTUwNjg4ZDU5MGM1MjQ1MzE4YTU1Y2M2MzA2ZTFhZmQ5MDkxYTc3ODcyZWJkODQ1ZmZiMDcwNzEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjczMGI3ZDA3OGY0OWViOGFlNDlhODI2MjExMTE4MzQ0NWRiMWUxZTJjMzI1NzlmZGM0MTc4Y2FkZTY2MWYwMjAifQ"
+        },
+        {
+          "resource": "repo://src/lumux/app_context.py#L210-L238",
+          "version": "repo-lines-v1:sha256:fc3710dba5cdb049710a94e30c9f624ad7db7fcdd562a97b827786bd61ae6d9e:eyJzZWxlY3RlZExpbmVDb3VudCI6MjksImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRkYTA2NDJhZWYxYTUzMTQ0MTA2YTAzYjY4ZjJkNmYzYmY3MTJiMmE5YzM4N2IwNDg3NWZiNGI1ZTIwYjUxZTAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjZlYjQ3YTZmNDEyYjhkOTZmZjUyOTljNDQ3ZThhY2Y5NjIzOTRlOWJhZmZmMGYyMTRiOGFmYTA0YTIxNjEzMTMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjZlNzdlNjgxZjg2NmY4NmFlZDM1NjNmOGFkMjVlZGIyZGNiNmZlZDYyMTEyN2ZkZTg5NjlkMmRmODZiZjc1NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjowLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-15T02:33:14.256Z"
+  }
+}

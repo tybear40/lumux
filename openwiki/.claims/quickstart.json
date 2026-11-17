@@ -1,0 +1,80 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:789026588414de96017eaa0bc16362fbb493c6443c2053226f89cde1595801fa",
+  "claims": [
+    {
+      "id": "claim_72027605b5d8459c880276263d51fd45",
+      "statement": "The app is installed either from Flathub (recommended) or from source via `pip install -e .`, then run with `python -m lumux` or the `lumux` console entrypoint (pyproject [project.scripts] maps lumux to lumux.__main__:main); PyGObject, pycairo and other system-bound deps have no wheels, so source installs on distros like Arch need -devel packages.",
+      "evidence": [
+        {
+          "resource": "repo://README.md#L21-L50",
+          "version": "repo-lines-v1:sha256:464d4706e26928f44f8c5ece553b03cd87aee636d34869836ec74cb734c91317:eyJzZWxlY3RlZExpbmVDb3VudCI6MzAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVjNmRlOTA4MmI3ODI4NDAyOGVmNTBkZjZmNTk0Yzk1YTkxNjc2ODdmMDc4MmZiNjhhOWYyNTAyNWIyMDdiZTYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjJiOTc0NmQwY2NiNjAyYTViMmY4MWE0ZGI3M2E4MGE1MjYxY2FkMTkyNzIyOGUxOGY4N2U1NjI3YTUzYjA5NzciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjRlMWQwOTNiNWNmZjg1YzA0MDEwMDUzYmI5YzcyOThkMDk1Zjk5OWIxYTc0N2QxNWI4MzJhZTU2ZTBmYWU2YmUifQ"
+        },
+        {
+          "resource": "repo://pyproject.toml#L43-L44",
+          "version": "repo-lines-v1:sha256:fa9a92b0909e07e7c41d4fc7a50d5effccb82647a5542226918d5d6812783097:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNGVhYjRlYzYzZGU1MTdkYTRjZDhlNWM4MzA3ZmIyYzc3MzdkMzkxOTBhYjY5ZjMyYTVlOWVmODFlYTQ0MTZkZSIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiOWFhZGU4MmI2M2NlZjEzZWM3Y2Q2NGE1MjYzNzIwZmY3ZmQwNmUwZjVlMDcxNTdhZTEzNmYzMGU0M2NkOWRiNyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZjVlMWVhNzY0NjJhNjZkYzE3NjM5MzQ3NzUzZDhkYTlkMzEyNWVhODk4MTExYzMzYzFkYzkyMjMyMTg0OTRmOCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNjRjYzczYmFkZDczMDE5Nzc5MmU3YjJlNDBkZmI4NTVhNGRjODA4NzFjZmU0ZGE0NjU4ODFlMjdiZDQ0MjIzOCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_988e1cee5dbb43f6a8e675e16a2f392b",
+      "statement": "The code entrypoint is src/lumux/__main__.py: LumuxApp (an Adw.Application, app-id io.github.enginkirmaci.lumux) whose do_activate creates the SettingsManager singleton, AppContext, starts the bridge connection, and builds the MainWindow; main() is its entry function. lumux/__init__.py re-exports the 12 core classes (AppContext, HueBridge, BridgeClient, ScreenCapture, ZoneProcessor, ColorAnalyzer, SyncController, ModeManager, EntertainmentStream, ReadingModeController, BlackBarDetector, plus the version).",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/__init__.py#L1-L23",
+          "version": "repo-lines-v1:sha256:bd179ddfaad8062865f00c8db5f98970fa5aa069d59ad73d96ead32e070dd767:eyJzZWxlY3RlZExpbmVDb3VudCI6MjMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQwZWFiMmViYjllZGVkNWVlZTk0ODM5MzRiOTVlY2IzNmNiODlhMDRhZTE0NGFjZDg3MWYxMTQxYTZhYzE2NWQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImQxOGMxMTNkZmNjNjg1OGUxZjA0ZDg4MzJhMzFlYjJjMDFmMGEzZDJmNTk5YWVlNjVjYjdlYjYwYTg3YWNkZTEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImFiYjA3MTViYmQ1MjQzMGZkMTc3MjViNGFkOTA2NDQ4YzY5NDJkODQ4ZDBjOThkMDE3Mjc5ZTMxY2QyYjBmNDUifQ"
+        },
+        {
+          "resource": "repo://src/lumux/__main__.py#L28-L32",
+          "version": "repo-lines-v1:sha256:b398924034f87d9c2214d712017f962353d5456ff172571e060d8e99dd323ff7:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiNTkwOWE1M2E2MThkMDI4ZTFkMzAwMGMwYTdhYmNlZWNiZTVmYjM3ZjRlNTExZWZlNDY2NDNmYWQ2ZTY2ODcyZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDFiYTQ3MTljODBiNmZlOTExYjA5MWE3YzA1MTI0YjY0ZWVlY2U5NjRlMDljMDU4ZWY4Zjk4MDVkYWNhNTQ2YiIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiOTI4YTM2ZjJlYWVmOTA0ZTM4YjgyY2EyYzcyMzBhM2VlYTFhMGZlOTEzMGVkMGNkZTkxMzI0ZDQ2Yjg5MWZhOCIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYWMzZjY1NDY2ZDhkM2M4NzJjYjc4ZjMwMGU2ZDMyZTE5MzJhODMyYmEzOTQ3OWFmMjQ2ZmNmNDFmNzkxM2Y2YyJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_2e723fd3b55a4003967319f284e0504d",
+      "statement": "pyproject declares testpaths = [\"tests\"] and pytest dev extras, but no tests/ directory exists in the repository — the test scaffolding is aspirational and there is no automated test suite. STABILITY_TODOS.md at the repo root is the authoritative known-issues list: a full investigation dated 2026-11-14 (v0.6.2, branch main, against a CachyOS Wayland instability report) with 22 items triaged P0-P2, each with file/line evidence and a confident fix direction.",
+      "evidence": [
+        {
+          "resource": "repo://STABILITY_TODOS.md#L1-L24",
+          "version": "repo-lines-v1:sha256:08d45999ca8dd74c510a178297ee087496e16a1dff7bfaade2ed89f66eba7307:eyJzZWxlY3RlZExpbmVDb3VudCI6MjQsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQ3ODdhMzU1ODUzN2Q5MGUwM2FhMDdkYjYyOWM4YTc5YzgzMjIzZWNjODJiMjI0NzQ4OWRhODk0NDYwMWQyNGQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjA5NGI4NzVkZjQ2OGRhMmEyNTg2YTU5ZTkzNjM1ZTUwY2NmMTI0ZDE5OGNkZjNkYzNkN2FjN2VjZDIzMjhkMDYiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjowLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUzYjBjNDQyOThmYzFjMTQ5YWZiZjRjODk5NmZiOTI0MjdhZTQxZTQ2NDliOTM0Y2E0OTU5OTFiNzg1MmI4NTUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImYwYzU2NGMxMDM0MmU5MWVmYzkyNjU1ODgxNmMzODNmNGFkYTBlODE2MzA1MjM2Mjk5Njk3NzIzZjUxY2ExODUifQ"
+        },
+        {
+          "resource": "repo://pyproject.toml#L64-L65",
+          "version": "repo-lines-v1:sha256:0f792d73d83e29f0fb703a46db10647879b1415b0de84941d5c746117996609f:eyJzZWxlY3RlZExpbmVDb3VudCI6MiwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiODY3NmU2NDE0NjVhNjU1MWU5ZTljZmZkN2ZhYTFlNmE0MmY5YjcyNDgwOTgxM2M5MDNkN2VkY2I1MmYzMDA2ZiIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiMDEwODVhZDA5MDQyNTcxMWFkYjRmMTVmMjhlMjVjMTcxMDc5MmMxZDQ1ZGE3Mzk0ZWU5MTJlMDM4MTkwNDU5MSIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiNDZlOWEyOTU2NTczZThhMmU2YzE1YTY3YmQ4YTI1OGI5OTUxNWZhNjYzMjM1ZTUyZmJjNmZkYjUwNmZhMjY2NiIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiNzZlOGY2MTUzMWNhZjQzZTc3NDhhMDZjMGI5MmE0ZTU5YTVkNTUzMWZiYWMyODgyZmY3NmM1MzQ4MmFjZWNmOCJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_ea17cebc186d4628b77fa028fd13451d",
+      "statement": "Headline P0 items in STABILITY_TODOS.md: synchronous Hue REST + DTLS calls on the GTK main thread (up to ~20-30 s freezes at startup/settings/wizard, risking GApplication D-Bus unresponsiveness); a reproduced ModeManager race where turn_off() within 1 s of switch_to_reading() re-activates lights; plus portal D-Bus and GStreamer thread-affinity bugs. P1 items include broken dev/tray icon paths pointing at files that don't exist (the SVG actually lives in flatpak/).",
+      "evidence": [
+        {
+          "resource": "repo://STABILITY_TODOS.md#L146-L160",
+          "version": "repo-lines-v1:sha256:5b4700e2997a89057a04c267b8cc47f6458f96096501eb47c13ee0c9dc7bc63d:eyJzZWxlY3RlZExpbmVDb3VudCI6MTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRhYmQxOTI3ODljMWNhZWY1ZDU0NjI3YTQ1NTdmODhmZDMyMGE4Zjk5MDRjMjI3NjYxOWI4N2U5NzZkZjJhZjgiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjdiMmVhOGY0ZDNlMjE5ZTAyNjAyNWVlMzY2ZGM3MTNmMDg5MGZkYjFlZGM5ZWExNmQ3NzQzYzBkYzJkY2U5M2MiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImY0MThkNTRkZjJjYjYwNmI1OGJlMzQ4MzYyZDY5MjNjMDU0OTQ2MGZlZGY0NDVhY2JmNGYzMWRmY2JhNGIzOWIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImRiYTc0N2ZhZmMyYmZkNjg1YzM1NGY3ZjE1YWNiNTNjYzc0YzhjN2Q0MGU5MzYwYTEyMWE3NTNmMDAwYzc4NDkifQ"
+        },
+        {
+          "resource": "repo://STABILITY_TODOS.md#L251-L260",
+          "version": "repo-lines-v1:sha256:8c838fb47c64451ba28868cea1a34d16740bf9793e4cd35c44a61c304b9cd718:eyJzZWxlY3RlZExpbmVDb3VudCI6MTAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUwY2I4MjQ4OWFkMjVlZmUwYjUxMjhkOWMzYjNiYmFlZjA2ZjVhY2NlMjkwMGI1NDJlZjA4YTM2MzhiZTJhZmYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImNkOWUwYzFlYTZiMjEwM2RjMjlkMzdjOTUwZmQ3ZjgyMDQwYWU0ODJmYTJmZTQyNTQ5ZTZlYzE2MTIwYWUwNWEiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjUxMGQwNDkzYjI0MDg0MTE5MzlmYjA2NGY1ZTc2NjY0ZDRlZjM0NDIyN2U4ZjA4ZTRlOTk3ZTc0MmY3YzVjYzEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjVhZDAxMzA0YjUyMjcxM2IzZmNmMWM4ZTEzNGNjMThjYTQzZDZiODFkODVhZDI2N2VkYzI5OWJjMjAwNTM4NjMifQ"
+        },
+        {
+          "resource": "repo://STABILITY_TODOS.md#L28-L40",
+          "version": "repo-lines-v1:sha256:cfdfdbf2840226460ccb796d041ee5f76989896fb2f3dbacc7d0806d4bec9823:eyJzZWxlY3RlZExpbmVDb3VudCI6MTMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjRjMTQ3YzE5MGM0OWFkOGNhNjdlMzA0MTdmNTE1NTE0MjFjY2VjYmRmMTI3YjM4ZTJmMmZiZWM2NzFiMjVlOGYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6Ijg4YTEzMmU4Y2I1YTAzMDEwODQwNTJjNjFkMmNkNWMzYWE5MTA4ZWQzNmYyYjgyNTRkMzUwYzUzZmRlMzg5ZTAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImYwYzU2NGMxMDM0MmU5MWVmYzkyNjU1ODgxNmMzODNmNGFkYTBlODE2MzA1MjM2Mjk5Njk3NzIzZjUxY2ExODUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6Ijc5OGVjOTg0YTNkNjkzOWQ5NDkyYzQ3NjZhZGNlNWI5NTc3NGMyNjY0MWFhNmQzYzE3MDdjMTUzM2ZiODhhZTEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_b2f690fad90544928f33a28239d0fecf",
+      "statement": "The investigation flagged uncommitted working-tree edits (a partial app_context.py change syncing mode_manager.entertainment_stream inside apply_settings, an incomplete version of its item 12) — check git status before assuming the committed state matches what runs, and finish the else-branch handling rather than committing as-is.",
+      "evidence": [
+        {
+          "resource": "repo://STABILITY_TODOS.md#L456-L460",
+          "version": "repo-lines-v1:sha256:a585043eb84a52d6ac9213dea21511aece47e55461ae326f0d1b057bfbd5bd41:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiYTZhOTM0MWQ0YTYwNzhlYjI5ZGQ2OWE0NjlkNjZlZTcyZjA3Mzk3ZjFlM2FkMWM2M2NhODQzODM0NTg5Y2UzNCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiODQ4NDI1ZmI4MjhkNjJlMWQ4OWE2YzFmNTNiNThhMDMzZDYwOGRlNWJlZWY5M2ZiYjYxODdiZmE3Mzk3YzBlMyIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiYTkxODEyYzczYjc2MGFiMmRmZmQyYzcyNzA0ZjdlMWVkYmYzNmIyZDVmNTc2NjgxNGRhYzdjOTZmYmY0ZmVlNyIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiZjY5MDIwNjlhZjc2ZGQ4OWU0ODM5YjkzZjZkMGFhZGNjNjU5YTU5NDVkNjUzMWFjNjBmMTdjNjc3NmE4NTUwZCJ9"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-15T02:33:14.256Z"
+  }
+}

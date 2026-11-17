@@ -1,0 +1,152 @@
+{
+  "schemaVersion": 1,
+  "pageVersion": "sha256:7938c4407aa7fd0ee49f81fe4c885e08cc98a472a5b8e8b18807c40218c48a43",
+  "claims": [
+    {
+      "id": "claim_846b01898730440f915d952db3be4143",
+      "statement": "BridgeClient is a requests.Session-based client with verify=False (Hue bridge serves a self-signed certificate; urllib3 insecure-request warnings are disabled at module import); every request targets https://{bridge_ip}/clip/v2{path} with the app key sent as the hue-application-key header and a default 5 s timeout.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/bridge_client.py#L16-L58",
+          "version": "repo-lines-v1:sha256:eec8be676a705c3c23b976b5b62d17f2dc07b72c3b8c63f3fb8787eae2b90673:eyJzZWxlY3RlZExpbmVDb3VudCI6NDMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjhhZmJlMjZiMmM5NmQ3ZmJmMDBlODg5OWI5ZWQ0MzlmMTg1ODc2NzBlMDc1NWMyZmQ4NjNmYzllOWMyZDY5NWUiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImFjOTQyYTViNDVhY2ViZDFlZjY2ZWNiNjQ2OTEwMWRkNzllNWM5YzJkODVlZjVhOWVjMjNjZmYzMzE3Y2Y0MmIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjVkM2RiYmU1ZmNjZGYzYjhjMTAzMTc4ODVmZTUxN2JiY2IzZjQ2MTY3NzJmYzBhZDk2OTIxZWJkOGFhMGEzYjQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_9d629869ce2a4502ab8df2218c555105",
+      "statement": "_request maps failures onto a three-class hierarchy rooted at BridgeError: HTTP 401/403 → BridgeAuthError, HTTP 404 → BridgeError, HTTP ≥500 → BridgeConnectionError, requests timeout/connection error → BridgeConnectionError, any other RequestException → BridgeError.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/bridge_client.py#L19-L35",
+          "version": "repo-lines-v1:sha256:fb5adf5ae7b0902a0692245ea5ddaa9de703047e1f3fca4125a0488321dfe306:eyJzZWxlY3RlZExpbmVDb3VudCI6MTcsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjViY2YwYTk5N2QzNTVmOTBjMDM4MTNlMjg4NmE4MDIwNDVjM2M2YTZhZjUwODZlMTRiNmZmNTE4MDIxMmZmN2EiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjcwMjRlZTMxZWIyMDA5ZGJiODUyM2YzZTRmYjRjMDc2MTllMTg4MDM4MDAwZmI3MjZkN2I3N2EzMjQwM2UwZDAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImY4YzMzNzY3ZjU2NTA4ZGRhYjY3ZDI0YjVkNzRhYTdmYmY0MDY3OGU5MTVmZmZkMDA2NDA1ZDExYmE0Y2I0MjAifQ"
+        },
+        {
+          "resource": "repo://src/lumux/bridge_client.py#L59-L129",
+          "version": "repo-lines-v1:sha256:05fba9dbc6c10a7f3160aa7255297eaf694117f19ea4ffc9362b2cd3f3f705dd:eyJzZWxlY3RlZExpbmVDb3VudCI6NzEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImE0OTEyMDE5MDU3YjE0Mzc1MDdlZWJhYmVlOTIwNmVlYjZhZTQ0ZDhiMzI3ZmZiMmVmZTU0YjA4NGZlYjMwNTAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBkMjk3MTAwMjFiMDdmZGRhMzc5NmIxNTAwYTY2YjExYTVlZmVmZTZmNzNiMTAxMzdiNmM0OGViM2I3MTQzNTUiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImE4ZTUzN2I4NzcxYjEzZDBjZTExZDhjZjllNzFlODIwOGNjZmU2YzdiNzcwMDVkMzY3NjY4NzVlZjMyOTAzZTMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjNkNWM0MDExMzdhNTZmYzNhMjQ5ODUzMDI2NTliYjMwOWNmMzE1MTgzYjFhMWU4YTZlYzc0ODk2NTgwYjE5ZDEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_d90df4d2c54e4e94b9d967327e84a2b9",
+      "statement": "get_application_id bypasses the requests session and uses urllib.request with an unverified TLS context to GET /auth/v1, returning the hue-application-id response header (the DTLS PSK identity for entertainment streaming); it returns None on any failure instead of raising.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/bridge_client.py#L131-L155",
+          "version": "repo-lines-v1:sha256:1c671e67f5d900d34215c8b48534b00f29fd5e62d95f4a25c358ac1986e3a4b3:eyJzZWxlY3RlZExpbmVDb3VudCI6MjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjUyMjUzZTAyNTEzM2JhNjdmZWNmNDQwN2E1OGQyMjA1ZmUwY2QwZGU3NTAxNTFmZDAwMzY0NjY4Zjg0MjEzOTEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQyMDc4MzkyZmZlOTM1MTNhNGNlYzA2MjQ2ODZhOTcyM2Y4MzgxYjM4YTNjNjBmYWQ0NmYzYjEwYTc2NjVlN2UiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjM2NDk4OWIxMzBmZjE1YmFiYjMwNTA2ZDYwNTAxNzYxMTQxOGM1Y2M2NmUzYjY1YjUxZGU3Y2I2OTBmM2I4MTciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjkyMTYzYjgzZjFiZmRiMWMwMTFhNzFjYjA2YWEyYTk3Y2NjMGU4NWNiYTJmN2Y3YTY4MzBiYTlhMWUyYmQ0YjUifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_9c73aa1897ed43a49548481ef98bd7c1",
+      "statement": "set_light_color builds the v2 payload {\"color\": {\"xy\"}, \"dimming\": {\"brightness\": brightness/254*100}, \"on\": {\"on\": true}} with optional dynamics.duration for transition, clamping brightness to 0–254; set_light_gradient validates each point to a plain xy color entry and rejects payloads with fewer than 2 formatted points.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/bridge_client.py#L189-L260",
+          "version": "repo-lines-v1:sha256:b18ff96219a7b990e92f7e7aa7adba066bbc444d2d8563a0bfe4ede8a0f44c18:eyJzZWxlY3RlZExpbmVDb3VudCI6NzIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZiMzI0NzI1OWE5NTNjY2Y1N2IzYWZmOGRmOGNmNjczNzE2ZTU3ZjU5NmIxN2UwYmZiNjVmZGY1MTQ1YmU3NWMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI4MmI3NmI1ZDJlZjQ2YWQ4NjA3ZDMyYjBiMjQzMDMyY2JiMjMxZTE5NDhhNDM4YTM1NWYwNDQzMTU5ZmU1ZTAiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImQ1NmFkMTIxOGYwMWE2OTc2YzhjYjhjNWViNDc0Mjk0M2I3M2FhMzNmOTI4ODAyNzAxMzM2ZjNmNTQwZWRlZTQiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjY5ZjVjMjIxNWU4NmMyMTBiN2I5ZmY0YjgwNGMwY2JkMTVjNTQyYjEzMWViZWMzM2MxNGNjZGVjYjUzZDgwMDMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_2c8f8e3257534f3696554bca38d24268",
+      "statement": "Entertainment streaming activation and deactivation are REST PUTs of {\"action\": \"start\"} and {\"action\": \"stop\"} on /resource/entertainment_configuration/{id}.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/bridge_client.py#L309-L333",
+          "version": "repo-lines-v1:sha256:bd1e88dcc126908c08e13e2514ce82816c322e1ee5515fa64df425d2786e03d7:eyJzZWxlY3RlZExpbmVDb3VudCI6MjUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImJjN2JjZTU4NGIxY2IwOTZkZjU2MTE1YTFmYWZkZjUyNmMyNWI2MDA1Y2RhYjRmZjRkNmM5ZDczZTIxYmE1YWQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjlhNTJhMDZjOTIxMmI1ZjNmODhkYjVmOWEzODUzNDE4Y2IyYmMxNmViOTc2OGU2YmJlYWVjYWIwMGE3MThjMDgiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImY2ZWVlZWVjM2IyN2U0OWQ0OGI4MzJmZGM5N2Q1NWZjMzFkOWY4MzkyZWI4NThhMzUzNWJiNzM2MDRjYjBjNDIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjlhM2MyZjE5YjdmMGYwMjM4NDBjOGQ2ZTM1MjkzMjE1YzZkNGUyNjMyNGJkNTQwYWNhNzE4ZWQwNWZmOTg4NjQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_1a1f19adb0954ce5a54c21b14433bc2f",
+      "statement": "create_user is a staticmethod speaking the legacy v1 API: POST https://{bridge_ip}/api with {\"devicetype\": \"<name>#user\", \"generateclientkey\": true} and verify=False; it returns the app_key (success.username) and client_key (success.clientkey), raising BridgeAuthError on a bridge-level error and BridgeConnectionError on transport failure.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/bridge_client.py#L343-L383",
+          "version": "repo-lines-v1:sha256:28f059a1c4107722b4ad48bd0ab3e86592917d102d81a7a02a580ba2a57871a1:eyJzZWxlY3RlZExpbmVDb3VudCI6NDEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImM3MzRjNWZlZTBhNTAzZDVmZjI3YTU2MTdmYjhmNGNlZGQ4ODYxYzNmY2EwMjM2ZmY5MThhYmM0ZTY1YjJjYTMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVlN2M5NTdiY2I0NGZiNjczYzk4YjAwNTBhNzVkMzgwODJkYjgxZDkxOGRlMzEzYTNmMDdjMTIzNTMwNmQ3ZWMiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImUxYzJkMjk2NjgxN2MxNGNhMWJjNzJiMmU4MGZlN2E5ODZmYzI2MzUzMmM1NzFiZDI2NjFjYjg3MzIxOWM4YjciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImRjNjBmZmY2MGY3NDhiZWQ0ZTZjMDc5NTgzZmE3YTczNDY2MGMxYTk2MTA5OWM1MzcyODAzYjA4MmQ5OWZhNjMifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_9907824c86fe403891d8e9a7eefb53bb",
+      "statement": "HueBridge constructs its BridgeClient lazily via the client property only when both bridge_ip and app_key are set; connect() succeeds iff refresh_devices() runs without a BridgeError, and create_user stores the new credentials and resets the client so it rebuilds with them.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/hue_bridge.py#L24-L84",
+          "version": "repo-lines-v1:sha256:75cf4674a3690c5a07b0eff46d763ce18b2a1e98b3156bc56eb0a7f71300e5fb:eyJzZWxlY3RlZExpbmVDb3VudCI6NjEsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjBhYzE0MjE2MWIyNjFiYmExZDY4NzI5NjhlODU4MzllNjA0MTU0ZDI5OTg3MjM1YmNhZDc2ZDY4MTkzNTMwMzEiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQyMDc4MzkyZmZlOTM1MTNhNGNlYzA2MjQ2ODZhOTcyM2Y4MzgxYjM4YTNjNjBmYWQ0NmYzYjEwYTc2NjVlN2UiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjNlOTgzM2E2OTEzNjI2MmYxYWMwNmEyNDc5NWIzNjc1ZTljYmUzN2M0NmE5Y2M0NmFiNzJjYjg3ZTk2YmM4ZmYiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImI5YzRjMmUzZDZiMGE3MzMwNzYzZWY4MDc2Njc4YmYwMWUwODk3ZTJiMzFjMGNiYzViZGQ0MTI1MGQ3M2FlNDIifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_360b388e04c44d8e998d710cab9fc3a0",
+      "statement": "refresh_devices rebuilds three caches: lights (id → raw resource), light_info (per light: name, archetype, modelid, type, on-state, is_gradient derived from gradient.points/points_capable, gradient_points, gamut fields, position initialized to None), and zones (id → raw resource).",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/hue_bridge.py#L86-L125",
+          "version": "repo-lines-v1:sha256:3c5f63298e7a6b54c17f4fbc0ef3e1e9ac5ad4be547202a432315b063bf91cb4:eyJzZWxlY3RlZExpbmVDb3VudCI6NDAsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAzNTg4NjNlNzAxZjg1Mjg1NjM0YjNjYmUzYzY3OTY4ZWU2N2JhYjY3Yjg2MDgxNjg1MDQyN2NmZGZlNTUzZTYiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImVkMGJhN2RkZDVkM2QzMjE2NTk2N2M3NjBiMGJmNGU1M2MxZTE3NzM4YjkyYzkyY2U3ODQxZDRmNGZhMDg4M2QiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImRlYzc2OWVkOTg3ZDNiYjdlODZhZGQ1ZjdkZDIzNWE2NzQxY2MyYjhhOWY0OTUzMDM3ZTBjNzMwMDliN2ZiMmEiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImRkOTE0YzMxMDA1Y2VlOWU3YjIzNWMwN2U5Y2U1MmUyNTg2OGZiM2Q2N2UxNTU2MGMyODkzZDEwMDI5MjcxNWEifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_79b7837105324533bf5139829ac03f7b",
+      "statement": "_refresh_spatial_data first maps each device's light service RID to its entertainment service RID from the device's services list, then walks every entertainment configuration's locations.service_locations and fills light_info[light_rid]['position'] wherever the RIDs match — this is how the app learns where physical lights sit.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/hue_bridge.py#L127-L169",
+          "version": "repo-lines-v1:sha256:23220350647581f2b7e1d89de9f8452359daff964df61415b6f69ddb45f80647:eyJzZWxlY3RlZExpbmVDb3VudCI6NDMsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRiMjFkY2FjMzI5ZWEzNzZmODc3NzZkZGIxZWU2ZTc2M2JmOTAxM2JiMTlkNWQwYzFjYzhlYjQ5ODBkNjFhZWIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImMxMDE5MzQ4MmEyNGQ5MTg1ZmQ3ODUzY2FhYjQ4ZjcyMDVmYWM0ZDVmN2FlNjA4MTI5ODViOGZmNWY2Y2IwZWQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjQ3ODVmMjkxYjFmZWY2YzYyOTJhOTc4NDIzZDk2ZWRiYmMxYzRiYzZhZmM0ZWNjNGE3NDkxMGFkNDZkNmQ5ZDciLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjliNjZjN2M5MWVlY2RlYWY2YzQ2ZjI1MWMzOGU1M2VhOGU4ZmE5YTIwMTEwZmMyZGNjZjZlM2IxZmJmNTUwMzYifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_6a862f184b2244a8b4ebf635663460d7",
+      "statement": "get_entertainment_light_ids(config_id) collects every service RID referenced by the configuration's channel members and service locations, then returns the light RIDs of any device whose services intersect that set — the definition of which lights belong to the entertainment zone.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/hue_bridge.py#L521-L575",
+          "version": "repo-lines-v1:sha256:7b018bb887cf226c2e399ae05fe1e069d0fd567e9cf6172153d7aa1b5a655dd1:eyJzZWxlY3RlZExpbmVDb3VudCI6NTUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6IjgyODA4NGZmMTAzNGIwYjg5YzI1N2MzZTYwMGMzOGRjYzQxNjkxOTExYTI5ODQwOGQ2OGQwNWIwNTc1Y2QyOTAiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImEwZjEwZjc5NDIyNzE2NzJmN2YzOWJmOGZhODY5NzVmZjFiM2YzYzI0YTRmMTYxZTE3YzY2MTRhYmFlNzc2NWQiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6Ijg3ZjE3NzlhMzc0OWE1NjAzZDQwNTdiZmQyYTQwYThlZWNhMDRlN2YzMGRkNTkxNDM4MmM1YWEzNjI3Zjg5YjAiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImE2MTMwMjVmNDc3OGNlMjIyMWJmNTQwNWZlNDc0Y2ZmNWFiZWQ5Y2Y2ZmI2ZWRjMGI2NTYyMjExODE2ZThiZTQifQ"
+        }
+      ]
+    },
+    {
+      "id": "claim_cf29ff4568bc48f982964e3a8dddb224",
+      "statement": "Every HueBridge control and getter method catches BridgeError, prints it, and returns a safe default (False, [], or None), so GUI and sync callers never see a raise from the bridge layer; test_connection is the success of a GET lights probe.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/hue_bridge.py#L171-L245",
+          "version": "repo-lines-v1:sha256:8638ea2c1281ef15336c3fdca9f5ecd4489f639a574ac2a7a22af5ebf14cc4c0:eyJzZWxlY3RlZExpbmVDb3VudCI6NzUsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImZiMzI0NzI1OWE5NTNjY2Y1N2IzYWZmOGRmOGNmNjczNzE2ZTU3ZjU5NmIxN2UwYmZiNjVmZGY1MTQ1YmU3NWMiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRlZmM2M2FiZWViZDFjMGZjZDliMmJmNGZjYzMzZjYyOGE1ODE0ZDkwMWQ1NzUxNWE5YzE0YTY5OTNlYzcxYTciLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6ImZjN2FkMWVjOThmOTllNjE5ZTEyNDlhYTdjN2EwMjA2MzBjYTgzODVmZTViZTY3ZWNhZjkzNjdjMDE5MzgxMGUiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjUwNjE2MWI5ZmUyYTdmMDVmOTRlNmQwYzllMTYyZGQ3YmZhOTc2NTkzYTE2NTM0YmM2MjcwNGYyNzc4YjU4OTcifQ"
+        },
+        {
+          "resource": "repo://src/lumux/hue_bridge.py#L473-L477",
+          "version": "repo-lines-v1:sha256:ca0ac21fee8bdffc4a53c96a5faaa3a21a31c0ec91f27a5a03e892529bd03e09:eyJzZWxlY3RlZExpbmVDb3VudCI6NSwiZmlyc3RTZWxlY3RlZExpbmVIYXNoIjoiMjBiZTg1N2U4MjVmMmYwMmNjODVlYzgwYmExMzA1MDcxMmM4NzAwMjk1Y2U1NTJmODNmZDM1NjdiNTAzYzIyMCIsImxhc3RTZWxlY3RlZExpbmVIYXNoIjoiZjgxMzQwODEwZDEzMzM1ZDg4NzgyMmFkNWMyMTlhOGVmMjk4NDFmYzc5YzlhZDNmMjZiMDhiY2ZjYWU4ODE0NCIsInByZWNlZGluZ0NvbnRleHRMaW5lQ291bnQiOjMsInByZWNlZGluZ0NvbnRleHRIYXNoIjoiZDkxMGNhYjA2OGUwZjEwM2VlMmZjZDJmYjMzNWJhYzdlYTdlMzk3MmY4NTUyYTRlODFjOGZmZTg0MWYyYTg0MSIsImZvbGxvd2luZ0NvbnRleHRMaW5lQ291bnQiOjMsImZvbGxvd2luZ0NvbnRleHRIYXNoIjoiYzY3OWQwMDZiZjEwN2ZmYTZiOTI4OTRiMmI4OGRjNWQ4ZDM3M2M1ZDI0ODQ5ZmYwZmUwYzU0ZTFlZGViOWI2MSJ9"
+        }
+      ]
+    },
+    {
+      "id": "claim_347e42acc696480799921ef796dd43ed",
+      "statement": "discover_bridges runs three independent, exception-tolerant probes in order — SSDP (M-SEARCH to 239.255.255.250:1900, matching hue-bridgeid/phillips-hue in responses), mDNS (optional zeroconf import browsing _hue._tcp.local), and N-UPnP cloud (https://discovery.meethue.com) — deduplicates results, and retries the whole pass with exponential backoff capped at 10 s when nothing is found.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/hue_bridge.py#L264-L335",
+          "version": "repo-lines-v1:sha256:2cd4bc8cfb204bbdc8b6cd26c78c313cdc0498bd6f05e1b01b98c6b214f82083:eyJzZWxlY3RlZExpbmVDb3VudCI6NzIsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImRjMThlY2JhZWM2MjA4OWEwYjhmNGY0NTYzYTg4OGE0YTMzZmJmZDI5YmU5YjRmMThhMTdmNTYyMzFiYmQ2YmIiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjAxYmE0NzE5YzgwYjZmZTkxMWIwOTFhN2MwNTEyNGI2NGVlZWNlOTY0ZTA5YzA1OGVmOGY5ODA1ZGFjYTU0NmIiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjI5Y2VmMjYyMjVlOTY5NjBkZWE2MzAyZWYwOWFiMDk3M2QzYWYxYzkxMzQyOTQyNWMxODliYThlNmQ3OTk3ZDMiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6IjA4ZTgzNTMzZjJiOTBhNmFlNDZkMzRhOGVlZDdiZWM2ZWE2MzVjYWQwZjJkNDkwOTE2ZWI3MzNiODExYTlmNGIifQ"
+        },
+        {
+          "resource": "repo://src/lumux/hue_bridge.py#L337-L471",
+          "version": "repo-lines-v1:sha256:7f6002e7ed3297f7e4a0f603e7352240e97d009440c7ac9bfd4e3a7396b0af72:eyJzZWxlY3RlZExpbmVDb3VudCI6MTM1LCJmaXJzdFNlbGVjdGVkTGluZUhhc2giOiJiOWY2OTI5MDg0YTM2OGNiN2NmMTEyZjUxYjI2YWI3Yzc1MTM2MjE0ZDRmMjBiOTZmNWQ2YjE1ZjJkZjJiYTQ0IiwibGFzdFNlbGVjdGVkTGluZUhhc2giOiJjMTFmMTNkOGUxYzY2M2U1NzY2YmMxZDcyYmQ5MjVmNzZhMDM5YjBiYjBmZjcxODMyMjM4NTAzNzc4MzM1YzRmIiwicHJlY2VkaW5nQ29udGV4dExpbmVDb3VudCI6MywicHJlY2VkaW5nQ29udGV4dEhhc2giOiIzMGJiM2ViZTVlZmQwODkwMDgyNzk0NDIwMGFiNTY0YjlmM2RlYWM0ZDQ4NzQ0MmQ0NzMwN2E0YzNkNTkwMDExIiwiZm9sbG93aW5nQ29udGV4dExpbmVDb3VudCI6MywiZm9sbG93aW5nQ29udGV4dEhhc2giOiI5NjYxMDQzYmZjZWQ3M2JkZjU0MmFhNjljODA5YjFlYTc4NjQ2NWI1Zjg0YzFjNTkyZDY0ZDM0OGI0YmI0ZWMzIn0"
+        }
+      ]
+    },
+    {
+      "id": "claim_2365e195a6454467964861edb015f366",
+      "statement": "HueBridge.create_user's signature accepts max_retries and timeout and its docstring describes exponential-backoff retry while waiting for the link button, but the implementation makes exactly one attempt and ignores both parameters — the promised retry behavior is not implemented in this snapshot.",
+      "evidence": [
+        {
+          "resource": "repo://src/lumux/hue_bridge.py#L59-L84",
+          "version": "repo-lines-v1:sha256:978c9145c403e100adf652dfaf991339ce92b8777315006ad756fcb951b52ed6:eyJzZWxlY3RlZExpbmVDb3VudCI6MjYsImZpcnN0U2VsZWN0ZWRMaW5lSGFzaCI6ImI4NWIyZDZiNTgzZWViOTk0Y2E1YTEyZmM0MTM4ZWE1YWM3Y2RmYjgzYThjMGU3NGY4NWYzOTNmYzYwN2VjMGQiLCJsYXN0U2VsZWN0ZWRMaW5lSGFzaCI6IjQyMDc4MzkyZmZlOTM1MTNhNGNlYzA2MjQ2ODZhOTcyM2Y4MzgxYjM4YTNjNjBmYWQ0NmYzYjEwYTc2NjVlN2UiLCJwcmVjZWRpbmdDb250ZXh0TGluZUNvdW50IjozLCJwcmVjZWRpbmdDb250ZXh0SGFzaCI6IjUyZDc1MTQ5YTAyYmU2MGQwY2Y3NjA1ZTA2NjE2ZjEzYmU5ZTNkM2RkZDAzOTI5YjliNjU4ZDA1NjEzYmE1NGIiLCJmb2xsb3dpbmdDb250ZXh0TGluZUNvdW50IjozLCJmb2xsb3dpbmdDb250ZXh0SGFzaCI6ImI5YzRjMmUzZDZiMGE3MzMwNzYzZWY4MDc2Njc4YmYwMWUwODk3ZTJiMzFjMGNiYzViZGQ0MTI1MGQ3M2FlNDIifQ"
+        }
+      ]
+    }
+  ],
+  "verification": {
+    "by": "openwiki/0.9.0",
+    "at": "2026-11-15T02:33:14.256Z"
+  }
+}
